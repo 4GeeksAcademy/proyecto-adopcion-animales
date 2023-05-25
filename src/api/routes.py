@@ -29,13 +29,10 @@ def get_animals():
 @api.route('/animal', methods=['POST'])
 def post_animal():
 
-    # obtener los datos de la petición que están en formato JSON a un tipo de datos entendibles por pyton (a un diccionario). En principio, en esta petición, deberían enviarnos 3 campos: el nombre, la descripción del planeta y la población
     data = request.get_json()
 
-    # creamos un nuevo objeto de tipo Planet
     animal = Animal(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'])
 
-    # añadimos el planeta a la base de datos
     db.session.add(animal)
     db.session.commit()
 
