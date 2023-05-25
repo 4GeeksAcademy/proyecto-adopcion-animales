@@ -2,13 +2,14 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import SignUp from "./signUp";
+import Login from "./login";
 
 export const Home = () => {
-	const { store, actions } = useContext(Context);
+  const { store, actions } = useContext(Context);
 
-	return (
-		<div className="text-center mt-5">
-			{/* <h1>Hello Rigo!!</h1>
+  return (
+    <div className="text-center mt-5">
+      {/* <h1>Hello Rigo!!</h1>
 			
 			<div className="alert alert-info">
 				{store.message || "Loading message from the backend (make sure your python backend is running)..."}
@@ -19,7 +20,9 @@ export const Home = () => {
 					Read documentation
 				</a>
 			</p> */}
-			<SignUp />
-		</div>
-	);
+      {/* <SignUp />
+      <hr /> */}
+      <Login />
+    </div>
+  );
 };

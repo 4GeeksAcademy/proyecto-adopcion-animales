@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export default function SingUp() {
   const initialForm = {
@@ -61,6 +62,7 @@ export default function SingUp() {
 
     setErrors(newError);
     setForm({ ...initialForm });
+    navigate("/demo");
   };
 
   let styles = {
