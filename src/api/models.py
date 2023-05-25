@@ -35,6 +35,7 @@ class Animal(db.Model):
             "nombre": self.nombre,
             "raza": self.raza,
             "genero": self.genero,
-            "descripcion": self.descripcion
+            "descripcion": self.descripcion,
+            "edad": self.edad
             # do not serialize the password, its a security breach
         }
