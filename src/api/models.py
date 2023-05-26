@@ -17,7 +17,7 @@ class User(db.Model):
     
 
     def __repr__(self):
-        return f'<User {self.email}>'
+        return '<User %r>' % self.username
 
     def serialize(self):
         return {
@@ -28,17 +28,40 @@ class User(db.Model):
             # do not serialize the password, its a security breach
         }
 
+class Animal(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50), unique=False, nullable=False)
+    raza = db.Column(db.String(80), unique=False, nullable=False)
+    edad = db.Column(db.String(50), unique=False, nullable=False)
+    genero = db.Column(db.String(50), unique=False, nullable=False)
+    descripcion = db.Column(db.String(500), unique=False, nullable=False)
+
+    def __repr__(self):
+        return f'<Animal {self.nombre}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "raza": self.raza,
+            "genero": self.genero,
+            "descripcion": self.descripcion,
+            "edad": self.edad
+            # do not serialize the password, its a security breach
+        }
+
 class Adoption(db.Model):
         id = db.Column(db.Integer, primary_key=True)
         user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-        # animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+        animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
         date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
         status = db.Column(db.String(80), unique=False, nullable=False)
 
 
         user = relationship('User', backref='adoptions')
-        # animal = relationship('Animal', backref='adoptions')
+        animal = relationship('Animal', backref='adoptions')
 
         def __repr__(self):
             return f'{self.user.name} - {self.date}'
         # En cuanto Miguel meta la tabla Animal, añadir :   - {self.animal.name} y descomentar relationship línea 39 y 33
+
