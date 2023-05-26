@@ -117,7 +117,7 @@ def delete_user(user_id):
         return jsonify({'message': f'User: {user_id} not found'})
     
     
-#ADOPTION
+#ADOPTION--------------------------------------------------------
 
 @api.route('/adoption', methods=['GET'])
 def get_adoptions():
@@ -146,12 +146,12 @@ def post_adoption(user_id, animal_id):
     submitted_date = body['submitted_date']
     status = body['status']
 
-    # user = User.query.get(user_id)
-    # animal = Animal.query.get(animal_id)
+    user = User.query.get(user_id)
+    animal = Animal.query.get(animal_id)
 
-    # if user is None or animal is None:
-        # response_body = {"message": "User or animal dont exist"}
-        # return jsonify(response_body), 404
+    if user is None or animal is None:
+        response_body = {"message": "User or animal dont exist"}
+        return jsonify(response_body), 404
 
     new_adoption = Adoption(user_id=user_id, animal_id=animal_id, submitted_date=submitted_date, status=status)
 

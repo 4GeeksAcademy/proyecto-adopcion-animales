@@ -49,19 +49,36 @@ class Animal(db.Model):
             "edad": self.edad
             # do not serialize the password, its a security breach
         }
+    
+class Asociation(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50), unique=False, nullable=False)
+    email = db.Column(db.String(80), unique=False, nullable=False)
+    ciudad = db.Column(db.String(80), unique=False, nullable=False)
+
+    def __repr__(self):
+        return f'<Asociacion {self.nombre}>'
+
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "email": self.email,
+            "ciudad": self.ciudad,
+            # do not serialize the password, its a security breach
+        }
 
 class Adoption(db.Model):
-        id = db.Column(db.Integer, primary_key=True)
-        user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-        animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-        date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
-        status = db.Column(db.String(80), unique=False, nullable=False)
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+    date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
+    status = db.Column(db.String(80), unique=False, nullable=False)
 
 
-        user = relationship('User', backref='adoptions')
-        animal = relationship('Animal', backref='adoptions')
+    user = relationship('User', backref='adoptions')
+    animal = relationship('Animal', backref='adoptions')
 
-        def __repr__(self):
-            return f'{self.user.name} - {self.date}'
-        # En cuanto Miguel meta la tabla Animal, añadir :   - {self.animal.name} y descomentar relationship línea 39 y 33
+    def __repr__(self):
+        return f'{self.user.name} - {self.animal.name} - {self.date}'    
 
