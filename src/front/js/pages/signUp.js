@@ -51,7 +51,7 @@ export default function SingUp() {
           },
           body: JSON.stringify({
             name: form.name,
-            lastname: form.last_name,
+            last_name: form.last_name,
             email: form.email,
             password: form.password,
           }),
@@ -138,34 +138,3 @@ export default function SingUp() {
     </div>
   );
 }
-
-// if (Object.keys(newError).length === 0) {
-//   try {
-//     const response = await fetch("/api/signup", {
-//       method: "POST",
-//       headers: {
-//         "Content-Type": "application/json",
-//         Accept: "application/json",
-//       },
-//       body: JSON.stringify({
-//         name: form.name,
-//         lastname: form.last_name,
-//         email: form.email,
-//         password: form.password,
-//       }),
-//     });
-
-//     if (response.ok) {
-//       const data = await response.json();
-//       console.log(data);
-//       // navigate("/demo"); // Redirige a la ruta "/demo" después de completar el registro exitosamente
-//     } else {
-//       throw new Error("Error al registrar el usuario");
-//     }
-//   } catch (error) {
-//     console.log(error);
-//   }
-// }
-
-// setErrors(newError);
-// setForm({ ...initialForm });
