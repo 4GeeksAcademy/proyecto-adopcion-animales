@@ -90,14 +90,21 @@ def get_one_adoption(id):
         return jsonify({"message": "Adoption not found"}), 404
     
 
-@api.route('/adoption', methods=['POST'])
-def post_adoption():
+@api.route('/adoption/user/<int:user_id>/animal/<int:animal_id>', methods=['POST'])
+def post_adoption(user_id, animal_id):
 
     body = request.get_json()
     user_id = body['user_id']
     animal_id = body['animal_id']
     submitted_date = body['submitted_date']
     status = body['status']
+
+    # user = User.query.get(user_id)
+    # animal = Animal.query.get(animal_id)
+
+    # if user is None or animal is None:
+        # response_body = {"message": "User or animal dont exist"}
+        # return jsonify(response_body), 404
 
     new_adoption = Adoption(user_id=user_id, animal_id=animal_id, submitted_date=submitted_date, status=status)
 
@@ -106,7 +113,7 @@ def post_adoption():
 
     response_body = {"message": "Adoption created successfully"}
 
-    return jsonify(response_body)
+    return jsonify(response_body), 200
 
 
 @api.route('/adoption/<int:adoption_id>', methods=['DELETE'])
