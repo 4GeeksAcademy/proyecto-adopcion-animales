@@ -21,8 +21,8 @@ export const Home = () => {
 					Read documentation
 				</a>
 			</p> */}
-      {/* <SignUp /> */}
-      <AnimalForm />
+      <SignUp />
+      {/* <AnimalForm /> */}
 
       {/* <Login /> */}
     </div>
