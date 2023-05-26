@@ -195,7 +195,7 @@ def get_asociation_id(id):
 
 #POST
 @api.route('/animal', methods=['POST'])
-def post_animal():
+def post_asociation():
 
     data = request.get_json()
 
