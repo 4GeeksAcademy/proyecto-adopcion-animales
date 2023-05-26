@@ -25,6 +25,16 @@ def get_animals():
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
 
+#GET ID
+@api.route('/animal/<int:id>', methods=['GET'])
+def get_animal_id(id):
+
+    animal = Animal.query.get(id)
+    if animal:
+        return jsonify(animal.serialize()), 200
+    else:
+        return jsonify({"message": "Animal not found"}), 404
+
 #POST
 @api.route('/animal', methods=['POST'])
 def post_animal():
@@ -38,3 +48,16 @@ def post_animal():
 
     response_body = {"msg": "El animal fué añadido exitosamente"}
     return jsonify(response_body), 200
+
+#DELETE
+@api.route('/animal/<int:animal_id>', methods=['DELETE'])
+def delete_delete(animal_id):
+    
+    animal = Animal.query.get(animal_id)
+
+    if(animal):
+        db.session.delete(animal)
+        db.session.commit()
+        return jsonify({'message': f'Animal: {animal_id} deleted successfully'})
+    else:
+        return jsonify({'message': f'Animal: {animal_id} not found'})
