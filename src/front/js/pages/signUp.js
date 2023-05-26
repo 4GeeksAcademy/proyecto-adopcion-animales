@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 export default function SingUp() {
   const initialForm = {
     name: "",
+    last_name: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -25,6 +25,12 @@ export default function SingUp() {
       newError.name =
         "El campo 'Nombre' sólo acepta letras y espacios en blanco";
     }
+    if (!form.last_name.trim()) {
+      newError.last_name = "El campo nombre es requerido";
+    } else if (!regexName.test(form.last_name.trim())) {
+      newError.last_name =
+        "El campo 'Apellidos' sólo acepta letras y espacios en blanco";
+    }
     if (!form.email.trim()) {
       newError.email = "El campo 'Email' es requerido";
     } else if (!regexEmail.test(form.email.trim())) {
@@ -37,21 +43,19 @@ export default function SingUp() {
 
     if (Object.keys(newError).length === 0) {
       try {
-        const response = await fetch(
-          "https://formsubmit.co/ajax/jotaverdugo24@gmail.com",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-              Accept: "application/json",
-            },
-            body: JSON.stringify({
-              name: form.name,
-              email: form.email,
-              password: form.password,
-            }),
-          }
-        );
+        const response = await fetch(process.env.BACKEND_URL + "/api/user", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: form.name,
+            lastname: form.last_name,
+            email: form.email,
+            password: form.password,
+          }),
+        });
 
         const data = await response.json();
         console.log(data);
@@ -62,7 +66,6 @@ export default function SingUp() {
 
     setErrors(newError);
     setForm({ ...initialForm });
-    navigate("/demo");
   };
 
   let styles = {
@@ -75,7 +78,7 @@ export default function SingUp() {
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
         <div>
-          <label htmlFor="name">Name</label>
+          <label htmlFor="name">Nombre:</label>
           <input
             type="text"
             id="name"
@@ -86,7 +89,18 @@ export default function SingUp() {
           {errors.name && <p style={styles}>{errors.name}</p>}
         </div>
         <div>
-          <label htmlFor="email">Email</label>
+          <label htmlFor="lastname">Apellidos:</label>
+          <input
+            type="text"
+            id="lastname"
+            value={form.last_name}
+            onChange={(e) => setForm({ ...form, last_name: e.target.value })}
+            required
+          />
+          {errors.last_name && <p style={styles}>{errors.last_name}</p>}
+        </div>
+        <div>
+          <label htmlFor="email">Email:</label>
           <input
             type="email"
             id="email"
@@ -97,7 +111,7 @@ export default function SingUp() {
           {errors.email && <p style={styles}>{errors.email}</p>}
         </div>
         <div>
-          <label htmlFor="password">Password</label>
+          <label htmlFor="password">Contraseña:</label>
           <input
             type="password"
             id="password"
@@ -107,7 +121,7 @@ export default function SingUp() {
           />
         </div>
         <div>
-          <label htmlFor="passwordConfirmation">Password Confirmation</label>
+          <label htmlFor="passwordConfirmation">Confirmar Contraseña:</label>
           <input
             type="password"
             id="passwordConfirmation"
@@ -124,3 +138,34 @@ export default function SingUp() {
     </div>
   );
 }
+
+// if (Object.keys(newError).length === 0) {
+//   try {
+//     const response = await fetch("/api/signup", {
+//       method: "POST",
+//       headers: {
+//         "Content-Type": "application/json",
+//         Accept: "application/json",
+//       },
+//       body: JSON.stringify({
+//         name: form.name,
+//         lastname: form.last_name,
+//         email: form.email,
+//         password: form.password,
+//       }),
+//     });
+
+//     if (response.ok) {
+//       const data = await response.json();
+//       console.log(data);
+//       // navigate("/demo"); // Redirige a la ruta "/demo" después de completar el registro exitosamente
+//     } else {
+//       throw new Error("Error al registrar el usuario");
+//     }
+//   } catch (error) {
+//     console.log(error);
+//   }
+// }
+
+// setErrors(newError);
+// setForm({ ...initialForm });

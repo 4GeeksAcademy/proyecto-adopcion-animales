@@ -3,6 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import SignUp from "./signUp";
 import Login from "./login";
+import AnimalForm from "./animalForm";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -20,9 +21,10 @@ export const Home = () => {
 					Read documentation
 				</a>
 			</p> */}
-      {/* <SignUp />
-      <hr /> */}
-      <Login />
+      {/* <SignUp /> */}
+      <AnimalForm />
+
+      {/* <Login /> */}
     </div>
   );
 };
