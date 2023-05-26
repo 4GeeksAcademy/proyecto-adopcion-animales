@@ -51,7 +51,7 @@ def post_animal():
 
 #DELETE
 @api.route('/animal/<int:animal_id>', methods=['DELETE'])
-def delete_delete(animal_id):
+def delete_animal(animal_id):
     
     animal = Animal.query.get(animal_id)
 
