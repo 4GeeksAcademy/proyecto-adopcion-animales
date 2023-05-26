@@ -51,15 +51,15 @@ class Animal(db.Model):
         }
 
 
-# class Adoption(db.Model):
-#     id = db.Column(db.Integer, primary_key=True)
-#     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-#     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-#     date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
-#     status = db.Column(db.String(80), unique=False, nullable=False)
+class Adoption(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+    date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
+    status = db.Column(db.String(80), unique=False, nullable=False)
 
-#     user = db.relationship('User', backref='adoptions')
-#     animal = db.relationship('Animal', backref='adoptions')
+    user = db.relationship('User', backref='adoptions')
+    animal = db.relationship('Animal', backref='adoptions')
 
-#     # def __repr__(self):
-#     #     return f'{self.user.name} - {self.date} - {self.animal.name}'
+    def __repr__(self):
+        return f'{self.user.name} - {self.date} - {self.animal.name}'

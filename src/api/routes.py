@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal
+from api.models import db, User, Animal, Adoption
 
 from api.utils import generate_sitemap, APIException
 
@@ -119,59 +119,59 @@ def delete_user(user_id):
     
 #ADOPTION
 
-# @api.route('/adoption', methods=['GET'])
-# def get_adoptions():
-#     all_adoptions = Adoption.query.all()
-#     result = [element.serialize() for element in all_adoptions]
-#     print(result)
-#     return jsonify(result), 200
+@api.route('/adoption', methods=['GET'])
+def get_adoptions():
+     all_adoptions = Adoption.query.all()
+     result = [element.serialize() for element in all_adoptions]
+     print(result)
+     return jsonify(result), 200
 
 
-# @api.route('/adoption/<int:id>', methods=['GET'])
-# def get_one_adoption(id):
+@api.route('/adoption/<int:id>', methods=['GET'])
+def get_one_adoption(id):
 
-#     adoption = Adoption.query.get(id)
-#     if adoption:
-#         return jsonify(adoption.serialize()), 200
-#     else:
-#         return jsonify({"message": "Adoption not found"}), 404
+     adoption = Adoption.query.get(id)
+     if adoption:
+        return jsonify(adoption.serialize()), 200
+     else:
+        return jsonify({"message": "Adoption not found"}), 404
     
 
-# @api.route('/adoption/user/<int:user_id>/animal/<int:animal_id>', methods=['POST'])
-# def post_adoption(user_id, animal_id):
+@api.route('/adoption/user/<int:user_id>/animal/<int:animal_id>', methods=['POST'])
+def post_adoption(user_id, animal_id):
 
-#     body = request.get_json()
-#     user_id = body['user_id']
-#     animal_id = body['animal_id']
-#     submitted_date = body['submitted_date']
-#     status = body['status']
+    body = request.get_json()
+    user_id = body['user_id']
+    animal_id = body['animal_id']
+    submitted_date = body['submitted_date']
+    status = body['status']
 
-#     # user = User.query.get(user_id)
-#     # animal = Animal.query.get(animal_id)
+    user = User.query.get(user_id)
+    animal = Animal.query.get(animal_id)
 
-#     # if user is None or animal is None:
-#         # response_body = {"message": "User or animal dont exist"}
-#         # return jsonify(response_body), 404
+    if user is None or animal is None:
+        response_body = {"message": "User or animal dont exist"}
+        return jsonify(response_body), 404
 
-#     new_adoption = Adoption(user_id=user_id, animal_id=animal_id, submitted_date=submitted_date, status=status)
+    new_adoption = Adoption(user_id=user_id, animal_id=animal_id, submitted_date=submitted_date, status=status)
 
-#     db.session.add(new_adoption)
-#     db.session.commit()
+    db.session.add(new_adoption)
+    db.session.commit()
 
-#     response_body = {"message": "Adoption created successfully"}
+    response_body = {"message": "Adoption created successfully"}
 
-#     return jsonify(response_body), 200
+    return jsonify(response_body), 200
 
 
-# @api.route('/adoption/<int:adoption_id>', methods=['DELETE'])
-# def delete_adoption(adoption_id):
+@api.route('/adoption/<int:adoption_id>', methods=['DELETE'])
+def delete_adoption(adoption_id):
     
-#     adoption = Adoption.query.get(adoption_id)
+    adoption = Adoption.query.get(adoption_id)
 
-#     if adoption:
-#         db.session.delete(adoption)
-#         db.session.commit()
-#         return jsonify({'message': f'Adoption: {adoption_id} deleted successfully'})
-#     else:
-#         return jsonify({'message': f'Adoption: {adoption_id} not found'})
+    if adoption:
+        db.session.delete(adoption)
+        db.session.commit()
+        return jsonify({'message': f'Adoption: {adoption_id} deleted successfully'})
+    else:
+        return jsonify({'message': f'Adoption: {adoption_id} not found'})
 
