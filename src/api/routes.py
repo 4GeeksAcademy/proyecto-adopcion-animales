@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal, Adoption
+from api.models import db, User, Animal, Adoption, Asociation
 
 from api.utils import generate_sitemap, APIException
 
@@ -175,3 +175,47 @@ def delete_adoption(adoption_id):
     else:
         return jsonify({'message': f'Adoption: {adoption_id} not found'})
 
+#ASOCIATION ------------------------------------------------------------------
+#GET
+@api.route('/asociation', methods=['GET'])
+def get_asociations():
+    allAsociations = Asociation.query.all()
+    result = [element.serialize() for element in allAsociations]
+    return jsonify(result), 200
+
+#GET ID
+@api.route('/asociation/<int:id>', methods=['GET'])
+def get_asociation_id(id):
+
+    asociation = Asociation.query.get(id)
+    if asociation:
+        return jsonify(asociation.serialize()), 200
+    else:
+        return jsonify({"message": "Asociation not found"}), 404
+
+#POST
+@api.route('/animal', methods=['POST'])
+def post_animal():
+
+    data = request.get_json()
+
+    animal = Animal(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'])
+
+    db.session.add(animal)
+    db.session.commit()
+
+    response_body = {"msg": "El animal fué añadido exitosamente"}
+    return jsonify(response_body), 200
+
+#DELETE
+@api.route('/asociation/<int:asociation_id>', methods=['DELETE'])
+def delete_asociation(asociation_id):
+    
+    asociation = Asociation.query.get(asociation_id)
+
+    if(asociation):
+        db.session.delete(asociation)
+        db.session.commit()
+        return jsonify({'message': f'Animal: {asociation_id} deleted successfully'})
+    else:
+        return jsonify({'message': f'Animal: {asociation_id} not found'})
