@@ -216,6 +216,6 @@ def delete_asociation(asociation_id):
     if(asociation):
         db.session.delete(asociation)
         db.session.commit()
-        return jsonify({'message': f'Animal: {asociation_id} deleted successfully'})
+        return jsonify({'message': f'Asociation: {asociation_id} deleted successfully'})
     else:
-        return jsonify({'message': f'Animal: {asociation_id} not found'})
+        return jsonify({'message': f'Asociation: {asociation_id} not found'})
