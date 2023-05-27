@@ -75,7 +75,7 @@ export default function SingUp() {
 
   return (
     <div>
-      <h1>Sign Up</h1>
+      <h1>Registro de Usuario</h1>
       <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="name">Nombre:</label>
