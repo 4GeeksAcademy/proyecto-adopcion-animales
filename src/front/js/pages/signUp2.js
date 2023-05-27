@@ -46,7 +46,7 @@ export default function SignUp2() {
 
             if (Object.keys(newError).length === 0) {
                 try {
-                    const response = await fetch(process.env.BACKEND_URL + "/api/user", {
+                    const response = await fetch(process.env.BACKEND_URL + "/api/asociation", {
                         method: "POST",
                         headers: {
                             "Content-Type": "application/json",
@@ -57,6 +57,7 @@ export default function SignUp2() {
                             last_name: form.last_name,
                             email: form.email,
                             password: form.password,
+                            // Cambiar los nombres según el back
                         }),
                     });
 

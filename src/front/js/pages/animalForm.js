@@ -33,7 +33,26 @@ export default function AnimalForm() {
     if (!form.genero.trim()) {
       newError.genero = "El campo genero es requerido";
     }
-    
+    if (Object.keys(newError).length === 0) {
+      try {
+        const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify(form),
+        });
+        const data = await response.json();
+        console.log(data);
+        if (data.success) {
+          setForm(initialForm);
+          setErrors(newError);
+        }
+      } catch (error) {
+        console.log(error);
+      }
+    }
   };
 
   return (

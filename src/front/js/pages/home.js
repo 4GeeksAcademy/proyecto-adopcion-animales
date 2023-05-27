@@ -14,8 +14,8 @@ export const Home = () => {
   return (
     <div className="text-center mt-5">
 
-      <Carousel></Carousel>
-      {/* <SignUp /> */}
+      {/* <Carousel /> */}
+      <AnimalForm />
     </div>
   );
 
