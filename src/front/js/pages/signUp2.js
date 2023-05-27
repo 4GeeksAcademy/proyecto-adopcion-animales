@@ -1,14 +1,14 @@
 import React, { useState } from "react";
-export default function SignUp2() {
 
+export default function SignUp2() {
     const initialForm = {
-        name: "",
+        nombre: "",
         email: "",
         provincia: "",
         NIF: "",
         password: "",
         passwordConfirmation: "",
-    }
+    };
 
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState({});
@@ -17,14 +17,14 @@ export default function SignUp2() {
         e.preventDefault();
 
         let newError = {};
-        let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+        let regexNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
         let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
         let regexNIF = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
 
-        if (!form.name.trim()) {
-            newError.name = "El campo nombre es requerido";
-        } else if (!regexName.test(form.name.trim())) {
-            newError.name =
+        if (!form.nombre.trim()) {
+            newError.nombre = "El campo nombre es requerido";
+        } else if (!regexNombre.test(form.nombre.trim())) {
+            newError.nombre =
                 "El campo 'Nombre' sólo acepta letras y espacios en blanco";
         }
         if (!form.email.trim()) {
@@ -33,7 +33,6 @@ export default function SignUp2() {
             newError.email = "El campo 'Email' es incorrecto";
         }
         if (!form.provincia.trim()) {
-
             if (!form.NIF.trim()) {
                 newError.NIF = "El campo 'NIF' es requerido";
             } else if (!regexNIF.test(form.NIF.trim())) {
@@ -43,41 +42,41 @@ export default function SignUp2() {
                 newError.password =
                     "El campo 'Contraseña' y 'Confirmar contraseña' no coinciden";
             }
+        }
 
-            if (Object.keys(newError).length === 0) {
-                try {
-                    const response = await fetch(process.env.BACKEND_URL + "/api/asociation", {
-                        method: "POST",
-                        headers: {
-                            "Content-Type": "application/json",
-                            Accept: "application/json",
-                        },
-                        body: JSON.stringify({
-                            name: form.name,
-                            last_name: form.last_name,
-                            email: form.email,
-                            password: form.password,
-                            // Cambiar los nombres según el back
-                        }),
-                    });
+        if (Object.keys(newError).length === 0) {
+            try {
+                const response = await fetch(process.env.BACKEND_URL + "/api/asociacion", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                        Accept: "application/json",
+                    },
+                    body: JSON.stringify({
+                        nombre: form.nombre,
+                        email: form.email,
+                        provincia: form.provincia,
+                        NIF: form.NIF,
+                        password: form.password,
+                        // Cambiar los nombres según el back
+                    }),
+                });
 
-                    const data = await response.json();
-                    console.log(data);
-                } catch (error) {
-                    console.log(error);
-                }
+                const data = await response.json();
+                console.log(data);
+            } catch (error) {
+                console.log(error);
             }
+        }
 
-            setErrors(newError);
-            setForm({ ...initialForm });
-        };
+        setErrors(newError);
+        setForm({ ...initialForm });
+    };
 
-        let styles = {
-            fontWeight: "bold",
-            color: "#dc3545",
-        };
-    }
-
+    let styles = {
+        fontWeight: "bold",
+        color: "#dc3545",
+    };
 
     return (
         <div>
@@ -88,11 +87,11 @@ export default function SignUp2() {
                     <input
                         type="text"
                         id="name"
-                        value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })}
+                        value={form.nombre}
+                        onChange={(e) => setForm({ ...form, nombre: e.target.value })}
                         required
                     />
-                    {errors.name && <p style={styles}>{errors.name}</p>}
+                    {errors.nombre && <p style={styles}>{errors.nombre}</p>}
                 </div>
                 <div>
                     <label htmlFor="email">Email:</label>

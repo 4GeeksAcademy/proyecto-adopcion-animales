@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal, Adoption
+from api.models import db, User, Animal, Adoption, Asociacion
 
 from api.utils import generate_sitemap, APIException
 
@@ -175,3 +175,55 @@ def delete_adoption(adoption_id):
     else:
         return jsonify({'message': f'Adoption: {adoption_id} not found'})
 
+#ASOCIACION ------------------------------------------------------------------
+
+#GET
+@api.route('/asociacion', methods=['GET'])
+def get_asociations():
+    allAsociations = Asociacion.query.all()
+    result = [element.serialize() for element in allAsociations]
+    return jsonify(result), 200
+
+#GET ID
+@api.route('/asociacion/<int:id>', methods=['GET'])
+def get_asociation_id(id):
+
+    asociation = Asociacion.query.get(id)
+    if asociation:
+        return jsonify(asociation.serialize()), 200
+    else:
+        return jsonify({"message": "Asociation not found"}), 404
+    
+#POST
+@api.route('/asociacion', methods=['POST'])
+def post_asociation():
+    
+        body = request.get_json()
+    
+        asociacion = Asociacion(nombre=body['nombre'], email=body['email'], provincia = body['provincia'], NIF = body['NIF'], password = body['password'])
+    
+        db.session.add(asociacion)
+        db.session.commit()
+    
+        response_body = {"msg": "La asociación fué añadida exitosamente"}
+        return jsonify(response_body), 200
+
+
+def post_user():
+
+    body = request.get_json()
+    print("AQUÍ ESTÁ EL BODY: ", body)
+
+    name = body['name']
+    last_name = body['last_name']
+    email = body['email']
+    password = body['password']
+
+    new_user = User(name=name, last_name=last_name, email=email, password=password)
+
+    db.session.add(new_user)
+    db.session.commit()
+
+    response_body = {"message": "User created successfully"}
+
+    return jsonify(response_body), 200
