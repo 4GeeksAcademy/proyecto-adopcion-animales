@@ -26,7 +26,7 @@ export const Navbar = () => {
           <span className="navbar-brand mb-0 h1">No Tenemos Nombre Muchachos</span>
         </a>
         <button
-          className="navbar-toggler"
+          className={`navbar-toggler ${darkMode ? "dark-mode" : ""}`}
           type="button"
           data-bs-toggle="collapse"
           data-bs-target="#navbarNavAltMarkup"
@@ -34,10 +34,10 @@ export const Navbar = () => {
           aria-expanded="false"
           aria-label="Toggle navigation"
         >
-          <span className="navbar-toggler-icon" />
+          <i class="fa-solid fa-bars"></i>
         </button>
         <div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
-          <div className="navbar-nav">
+          <div className="navbar-nav text-center">
             <a className="nav-link m-1" aria-current="page" href="#">
               Perros
             </a>
