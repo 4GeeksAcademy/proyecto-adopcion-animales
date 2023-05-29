@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function SingUp() {
+export default function SingUpUsuario() {
   const initialForm = {
     name: "",
     last_name: "",

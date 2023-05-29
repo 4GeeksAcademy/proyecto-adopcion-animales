@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-export default function SignUp2() {
+export default function SignUpAsociacion() {
     const initialForm = {
         nombre: "",
         email: "",

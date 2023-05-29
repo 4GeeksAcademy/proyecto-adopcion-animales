@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 // import { useNavigate } from "react-router-dom";
 
-export default function Login() {
+export default function LoginUsuario() {
   const initialForm = {
     email: "",
     password: "",
@@ -14,7 +14,7 @@ export default function Login() {
     e.preventDefault();
 
     try {
-      const response = await fetch(process.env.BACKEND_URL + "/api/login", {
+      const response = await fetch(process.env.BACKEND_URL + "/api/login_user", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <div>
-      <h1>Login</h1>
+      <h1>Login Usuario</h1>
       {loginError && <p style={styles}>Usuario o contraseña incorrectos</p>}
       <form onSubmit={handleSubmit}>
         <div>

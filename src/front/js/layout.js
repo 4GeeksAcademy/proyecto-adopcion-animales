@@ -10,11 +10,13 @@ import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
-// import SingUp from "./pages/signUp";
+
 import ChooseSignUp from "./pages/chooseSignUp";
-import SingUp2 from "./pages/signUp2";
-import SingUp from "./pages/signUp";
-import Login from "./pages/login";
+import SingUpAsociacion from "./pages/signUpAsociacion";
+import SingUpUsuario from "./pages/signUpUsuario";
+import ChooseLogin from "./pages/chooseLogin";
+import LoginUsuario from "./pages/loginUsuario";
+import LoginAsociacion from "./pages/loginAsociacion";
 
 //create your first component
 const Layout = () => {
@@ -33,10 +35,12 @@ const Layout = () => {
                         <Route element={<Home />} path="/" />
                         <Route element={<Demo />} path="/demo" />
                         <Route element={<Single />} path="/single/:theid" />
-                        <Route element={<ChooseSignUp />} path="/choose" />
-                        <Route element={<SingUp />} path="/signup" />
-                        <Route element={<SingUp2 />} path="/signup2" />
-                        <Route element={<Login />} path="/login" />
+                        <Route element={<ChooseSignUp />} path="/choosesignup" />
+                        <Route element={<ChooseLogin />} path="/chooselogin" />
+                        <Route element={<SingUpUsuario />} path="/signup" />
+                        <Route element={<SingUpAsociacion />} path="/signup2" />
+                        <Route element={<LoginUsuario />} path="/loginUsuario" />
+                        <Route element={<LoginAsociacion />} path="/loginAsociacion" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

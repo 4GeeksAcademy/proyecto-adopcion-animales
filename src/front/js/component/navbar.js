@@ -30,11 +30,11 @@ export const Navbar = () => {
 						<a className="nav-link m-1" href="#">
 							Gatos
 						</a>
-						<Link to="/login">
+						<Link to="/chooselogin">
 							<button className="btn btn-light m-1">Iniciar Sesión</button>
 						</Link>
-						<Link to="/choose">
-							<button className="btn btn-light m-1">Registrase</button>
+						<Link to="/choosesignup">
+							<button className="btn btn-light m-1">Registrarse</button>
 						</Link>
 					</div>
 				</div>

@@ -208,6 +208,7 @@ def post_asociation():
         response_body = {"msg": "La asociación fué añadida exitosamente"}
         return jsonify(response_body), 200
 
+# FALTA DELETE ASOCIACION
 
 def post_user():
 
