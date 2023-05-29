@@ -35,6 +35,9 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+    asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
+
+    asociacion = db.relationship('Asociacion', backref='animals')
 
     def __repr__(self):
         return f'<Animal {self.nombre}>'
@@ -62,4 +65,40 @@ class Adoption(db.Model):
     animal = db.relationship('Animal', backref='adoptions')
 
     def __repr__(self):
-        return f'{self.user.name} - {self.date} - {self.animal.name}'
+        return f'{self.user.name} - {self.animal.name} - {self.date} '
+    
+
+class Asociacion(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50), unique=False, nullable=False)
+    email = db.Column(db.String(80), unique=False, nullable=False)
+    provincia = db.Column(db.String(80), unique=False, nullable=False)
+    NIF = db.Column(db.String(80), unique=False, nullable=False)
+    password = db.Column(db.String(80), unique=False, nullable=False)
+ 
+    def __repr__(self):
+        return f'<Asociacion {self.nombre}>'
+ 
+    def serialize(self):
+        return {
+            "id": self.id,
+            "nombre": self.nombre,
+            "email": self.email,
+            "provincia": self.provincia,
+            "NIF": self.NIF
+            # do not serialize the password, its a security breach
+        }    
+    
+class Favorite(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
+    animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+    insertion_date = db.Column(db.Date, default=datetime.datetime.now())
+
+
+    user = db.relationship('User', backref='favorites')
+    animal = db.relationship('Animal', backref='favorites')
+
+    def __repr__(self):
+        return f'{self.user.name} - {self.animal.name} - {self.date}'
+

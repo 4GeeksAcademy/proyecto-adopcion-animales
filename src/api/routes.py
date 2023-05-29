@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal, Adoption
+from api.models import db, User, Animal, Adoption, Asociacion
 
 from api.utils import generate_sitemap, APIException
 
@@ -130,8 +130,8 @@ def post_user():
     return jsonify(response_body), 200
 
 
-@api.route('/login', methods=['POST'])
-def login():
+@api.route('/login_user', methods=['POST'])
+def login_user():
 # obtenemos los datos desde el lado cliente
     body = request.get_json()
     email = body['email']
@@ -157,11 +157,7 @@ def login():
     return jsonify(response_body), 200
 
 
- 
-    
-
-
-
+# DELETE USER 
 @api.route('/user/<int:user_id>', methods=['DELETE'])
 @jwt_required()
 def delete_user(user_id):
@@ -241,3 +237,86 @@ def delete_adoption(adoption_id):
     else:
         return jsonify({'message': f'Adoption: {adoption_id} not found'})
 
+
+
+# ASOCIACIÓN----------------------------------------------------------
+
+#GET
+@api.route('/asociacion', methods=['GET'])
+def get_asociations():
+    allAsociations = Asociacion.query.all()
+    result = [element.serialize() for element in allAsociations]
+    return jsonify(result), 200
+ 
+#GET ID
+@api.route('/asociacion/<int:id>', methods=['GET'])
+def get_asociation_id(id):
+ 
+    asociation = Asociacion.query.get(id)
+    if asociation:
+        return jsonify(asociation.serialize()), 200
+    else:
+        return jsonify({"message": "Asociation not found"}), 404
+ 
+#POST
+@api.route('/asociacion', methods=['POST'])
+def post_asociacion():
+ 
+        body = request.get_json()
+ 
+        asociacion = Asociacion(nombre=body['nombre'], email=body['email'], provincia = body['provincia'], NIF = body['NIF'], password = body['password'])
+ 
+        db.session.add(asociacion)
+        db.session.commit()
+ 
+        response_body = {"msg": "La asociación fué añadida exitosamente"}
+        return jsonify(response_body), 200
+
+
+#DELETE
+@api.route('/asociacion/<int:asociacion_id>', methods=['DELETE'])
+@jwt_required()
+def delete_asociacion(asociacion_id):
+
+    current_asociacion = get_jwt_identity()
+    current_asociacion_id = current_asociacion['id']
+    
+    asociacion = Asociacion.query.get(asociacion_id)
+
+    if asociacion:
+        if asociacion.id == current_asociacion_id:
+            db.session.delete(asociacion)
+            db.session.commit()
+            return jsonify({'message': f'Association: {asociacion_id} deleted successfully'})
+        else:
+            return jsonify({'message': 'Unauthorized'}), 401
+    else:
+        return jsonify({'message': f'Association: {asociacion_id} not found'}), 404
+    
+
+# LOGIN_ASOCIACION
+@api.route('/login_asociacion', methods=['POST'])
+def login_asociacion():
+# obtenemos los datos desde el lado cliente
+    body = request.get_json()
+    email = body['email']
+    password = body['password']
+
+# Comprobar si exisate el usuario en la base de datos
+    asociacion = Asociacion.query.filter_by(email=email, password=password).first()
+
+    if asociacion == None:
+          return jsonify({"msg": "association or password, Not exist!"}), 401
+
+# Flask crea un nuevo token JWT. Se lo guarda en su base de datos y lo asocia al usuario que hemos recuperado de la base de datos
+    access_token = create_access_token(identiy=asociacion.serialize())
+
+# Devolvemos el token (string) al cliente para que en futuras peticiones a nuestros endpoints protegidos se pueda autentificar
+    
+    response_body = {
+        "msg": "Token create successfully",
+        "token": access_token,
+        "email": email
+    }
+
+    return jsonify(response_body), 200
