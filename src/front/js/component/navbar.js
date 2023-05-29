@@ -45,12 +45,12 @@ export const Navbar = () => {
               Gatos
             </a>
             <Link to="/demo">
-              <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1`}>Iniciar Sesión</button>
+              <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1 border border-primary`}>Iniciar Sesión</button>
             </Link>
             <Link to="/demo">
-              <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1`}>Registrarse</button>
+              <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1 border border-primary`}>Registrarse</button>
             </Link>
-            <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1`} onClick={toggleDarkMode}>
+            <button className={`btn ${darkMode ? "btn-dark" : "btn-light"} m-1 border border-primary`} onClick={toggleDarkMode}>
               {darkMode ? (
                 <i className="fa-regular fa-sun"></i>
               ) : (
