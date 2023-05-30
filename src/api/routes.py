@@ -144,7 +144,7 @@ def login_user():
           return jsonify({"msg": "User or password, Not exist!"}), 401
 
 # Flask crea un nuevo token JWT. Se lo guarda en su base de datos y lo asocia al usuario que hemos recuperado de la base de datos
-    access_token = create_access_token(identiy=user.serialize())
+    access_token = create_access_token(identity=user.serialize())
 
 # Devolvemos el token (string) al cliente para que en futuras peticiones a nuestros endpoints protegidos se pueda autentificar
     
@@ -309,7 +309,7 @@ def login_asociacion():
           return jsonify({"msg": "association or password, Not exist!"}), 401
 
 # Flask crea un nuevo token JWT. Se lo guarda en su base de datos y lo asocia al usuario que hemos recuperado de la base de datos
-    access_token = create_access_token(identiy=asociacion.serialize())
+    access_token = create_access_token(identity=asociacion.serialize())
 
 # Devolvemos el token (string) al cliente para que en futuras peticiones a nuestros endpoints protegidos se pueda autentificar
     

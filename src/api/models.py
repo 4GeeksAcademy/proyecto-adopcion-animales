@@ -1,3 +1,4 @@
+
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.orm import relationship
 import datetime
@@ -101,4 +102,5 @@ class Favorite(db.Model):
 
     def __repr__(self):
         return f'{self.user.name} - {self.animal.name} - {self.date}'
+
 

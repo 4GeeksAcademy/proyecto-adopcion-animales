@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import"../../styles/component.css"
+import "../../styles/component.css"
 
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light" id="navbar">
 			<div className="container-fluid" >
 				<a className="navbar-brand" href="/" >
-					
-						<span className="navbar-brand mb-0 h1">No Tenemos Nombre Muchachos</span>
-					
+
+					<span className="navbar-brand mb-0 h1">No Tenemos Nombre Muchachos</span>
+
 				</a>
 				<button
 					className="navbar-toggler"
@@ -30,11 +30,11 @@ export const Navbar = () => {
 						<a className="nav-link m-1" href="#">
 							Gatos
 						</a>
-						<Link to="/demo">
+						<Link to="/chooselogin">
 							<button className="btn btn-light m-1">Iniciar Sesión</button>
 						</Link>
-						<Link to="/demo">
-							<button className="btn btn-light m-1">Registrase</button>
+						<Link to="/choosesignup">
+							<button className="btn btn-light m-1">Registrarse</button>
 						</Link>
 					</div>
 				</div>
