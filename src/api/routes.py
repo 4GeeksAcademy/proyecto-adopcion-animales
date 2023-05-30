@@ -12,6 +12,8 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
+
+
 api = Blueprint('api', __name__)
 
 
@@ -32,12 +34,19 @@ def get_animals():
 
 # Obtengo el usuario al que pertenece el token JWT
     current_user = get_jwt_identity()
-# ID de usuario
-    current_user_id = current_user['id']
 
+  # Verificar el tipo de usuario
+    if 'last_name' in current_user:
+        # Si es un USER (tiene la propiedad last_name)
+        allAnimals = Animal.query.all() 
+    elif 'CIF' in current_user:
+        # Asociación (tiene la propiedad CIF)
+        asociacion_id = current_user['CIF']
+        allAnimals = Animal.query.filter_by(asociacion_id = asociacion_id).all()   
+    else:
+        # Tipo de usuario no reconocido
+        return jsonify({'message': 'Unrecognized user type'}), 400
 
-# Hacemos petición de todos los animales, filtrando por el usuario ya autentificado
-    allAnimals = Animal.query.filter_by(user_id=current_user_id).all()
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
 
@@ -49,12 +58,18 @@ def get_animal_id(animal_id):
 # Obtengo el usuario al que pertenece el token JWT
     current_user = get_jwt_identity()
 
-# ID de usuario
-    current_user_id = current_user['id']
-    
-# Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
-    animal = Animal.query.filter_by(id=animal_id, user_id = current_user_id).first()
-    
+# Verificar el tipo de usuario
+    if 'last_name' in current_user:
+        # Si es un USER (tiene la propiedad last_name)
+        animal = Animal.query.get(animal_id)
+    elif 'CIF' in current_user:
+        # Asociación (tiene la propiedad CIF)
+        asociacion_id = current_user['CIF']
+        animal = Animal.query.filter_by(asociacion_id=asociacion_id, animal_id=animal_id ).first()    
+    else:
+        # Tipo de usuario no reconocido
+        return jsonify({'message': 'Unrecognized user type'}), 400
+
     if animal:
         return jsonify(animal.serialize()), 200
     else:
@@ -62,16 +77,21 @@ def get_animal_id(animal_id):
 
 #POST
 @api.route('/animal', methods=['POST'])
+@jwt_required()
 def post_animal():
+
+    asociacion = get_jwt_identity()
+    asociacion_id = asociacion['id']
+    
 
     data = request.get_json()
 
-    animal = Animal(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'])
+    animal = Animal(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'], asociacion_id=asociacion_id)
 
     db.session.add(animal)
     db.session.commit()
 
-    response_body = {"msg": "El animal fué añadido exitosamente"}
+    response_body = {"message": "The animal was added successfully"}
     return jsonify(response_body), 200
 
 #DELETE
@@ -79,10 +99,10 @@ def post_animal():
 @jwt_required()
 def delete_animal(animal_id):
 
-    current_user = get_jwt_identity()
-    current_user_id = current_user['id']
+    asociacion = get_jwt_identity()
+    asociacion_id = asociacion['id']
     
-    animal = Animal.query.filter_by(id=animal_id, user_id=current_user_id).first()
+    animal = Animal.query.filter_by(id=animal_id, asociacion_id=asociacion_id).first()
 
     if(animal):
         db.session.delete(animal)

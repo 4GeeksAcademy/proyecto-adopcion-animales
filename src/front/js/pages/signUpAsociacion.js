@@ -19,7 +19,7 @@ export default function SignUpAsociacion() {
         let newError = {};
         let regexNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
         let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-        let regexNIF = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
+        let regexCIF = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
 
         if (!form.nombre.trim()) {
             newError.nombre = "El campo nombre es requerido";
@@ -34,8 +34,8 @@ export default function SignUpAsociacion() {
         }
         if (!form.provincia.trim()) {
             if (!form.CIF.trim()) {
-                newError.cIF = "El campo 'CIF' es requerido";
-            } else if (!regexNIF.test(form.CIF.trim())) {
+                newError.CIF = "El campo 'CIF' es requerido";
+            } else if (!regexCIF.test(form.CIF.trim())) {
                 newError.CIF = "El campo 'CIF' es incorrecto";
             }
             if (form.password !== form.passwordConfirmation) {
