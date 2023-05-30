@@ -22,21 +22,37 @@ export default function LoginUsuario() {
         body: JSON.stringify({ email: form.email, password: form.password }),
       });
 
-      if (response.ok) {
-        setLoginError(false);
+      if (response.status === 200) {
         const data = await response.json();
         const token = data.token;
-
         localStorage.setItem("token", token);
-
         setForm(initialForm);
+        setLoginError(false);
       } else {
+        const errorData = await response.json();
         setLoginError(true);
+        console.error(errorData.msg);
       }
     } catch (error) {
       console.error("Error:", error);
       setLoginError(true);
     }
+
+    //   if (response.ok) {
+    //     setLoginError(false);
+    //     const data = await response.json();
+    //     const token = data.token;
+
+    //     localStorage.setItem("token", token);
+
+    //     setForm(initialForm);
+    //   } else {
+    //     setLoginError(true);
+    //   }
+    // } catch (error) {
+    //   console.error("Error:", error);
+    //   setLoginError(true);
+    // }
   };
   let styles = {
     fontWeight: "bold",
