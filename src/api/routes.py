@@ -35,6 +35,7 @@ def get_animals():
 # ID de usuario
     current_user_id = current_user['id']
 
+
 # Hacemos petición de todos los animales, filtrando por el usuario ya autentificado
     allAnimals = Animal.query.filter_by(user_id=current_user_id).all()
     result = [element.serialize() for element in allAnimals]
