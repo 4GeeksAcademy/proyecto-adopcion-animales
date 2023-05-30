@@ -74,7 +74,7 @@ class Asociacion(db.Model):
     nombre = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(80), unique=False, nullable=False)
     provincia = db.Column(db.String(80), unique=False, nullable=False)
-    NIF = db.Column(db.String(80), unique=False, nullable=False)
+    CIF = db.Column(db.String(80), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
  
     def __repr__(self):
