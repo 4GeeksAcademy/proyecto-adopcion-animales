@@ -5,7 +5,7 @@ export default function SignUpAsociacion() {
         nombre: "",
         email: "",
         provincia: "",
-        NIF: "",
+        CIF: "",
         password: "",
         passwordConfirmation: "",
     };
@@ -33,10 +33,10 @@ export default function SignUpAsociacion() {
             newError.email = "El campo 'Email' es incorrecto";
         }
         if (!form.provincia.trim()) {
-            if (!form.NIF.trim()) {
-                newError.NIF = "El campo 'NIF' es requerido";
-            } else if (!regexNIF.test(form.NIF.trim())) {
-                newError.NIF = "El campo 'NIF' es incorrecto";
+            if (!form.CIF.trim()) {
+                newError.cIF = "El campo 'CIF' es requerido";
+            } else if (!regexNIF.test(form.CIF.trim())) {
+                newError.CIF = "El campo 'CIF' es incorrecto";
             }
             if (form.password !== form.passwordConfirmation) {
                 newError.password =
@@ -56,7 +56,7 @@ export default function SignUpAsociacion() {
                         nombre: form.nombre,
                         email: form.email,
                         provincia: form.provincia,
-                        NIF: form.NIF,
+                        CIF: form.CIF,
                         password: form.password,
                         // Cambiar los nombres según el back
                     }),
@@ -159,15 +159,15 @@ export default function SignUpAsociacion() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="NIF">NIF:</label>
+                    <label htmlFor="NIF">CIF:</label>
                     <input
                         type="text"
                         id="NIF"
-                        value={form.NIF}
-                        onChange={(e) => setForm({ ...form, NIF: e.target.value })}
+                        value={form.CIF}
+                        onChange={(e) => setForm({ ...form, CIF: e.target.value })}
                         required
                     />
-                    {errors.NIF && <p style={styles}>{errors.NIF}</p>}
+                    {errors.NIF && <p style={styles}>{errors.CIF}</p>}
                 </div>
                 <div>
                     <label htmlFor="password">Contraseña:</label>
