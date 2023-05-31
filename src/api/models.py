@@ -36,7 +36,7 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
-    asociacion_name = db.Column(db.Integer, db.ForeignKey('asociacion.name'), unique=False, nullable=False)
+    asociacion_name = db.Column(db.Integer, db.ForeignKey('asociacion.nombre'), unique=False, nullable=False)
 
     asociacion = db.relationship('Asociacion', backref='animals')
 
