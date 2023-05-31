@@ -19,7 +19,7 @@ export default function SignUpAsociacion() {
         let newError = {};
         let regexNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
         let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
-        let regexNIF = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
+        let regexCIF = /^[0-9]{8}[TRWAGMYFPDXBNJZSQVHLCKE]$/i;
 
         if (!form.nombre.trim()) {
             newError.nombre = "El campo nombre es requerido";
@@ -35,7 +35,7 @@ export default function SignUpAsociacion() {
         if (!form.provincia.trim()) {
             if (!form.CIF.trim()) {
                 newError.cIF = "El campo 'CIF' es requerido";
-            } else if (!regexNIF.test(form.CIF.trim())) {
+            } else if (!regexCIF.test(form.CIF.trim())) {
                 newError.CIF = "El campo 'CIF' es incorrecto";
             }
             if (form.password !== form.passwordConfirmation) {
@@ -159,15 +159,15 @@ export default function SignUpAsociacion() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="NIF">CIF:</label>
+                    <label htmlFor="CIF">CIF:</label>
                     <input
                         type="text"
-                        id="NIF"
+                        id="CIF"
                         value={form.CIF}
                         onChange={(e) => setForm({ ...form, CIF: e.target.value })}
                         required
                     />
-                    {errors.NIF && <p style={styles}>{errors.CIF}</p>}
+                    {errors.CIF && <p style={styles}>{errors.CIF}</p>}
                 </div>
                 <div>
                     <label htmlFor="password">Contraseña:</label>

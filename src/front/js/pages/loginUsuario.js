@@ -38,21 +38,6 @@ export default function LoginUsuario() {
       setLoginError(true);
     }
 
-    //   if (response.ok) {
-    //     setLoginError(false);
-    //     const data = await response.json();
-    //     const token = data.token;
-
-    //     localStorage.setItem("token", token);
-
-    //     setForm(initialForm);
-    //   } else {
-    //     setLoginError(true);
-    //   }
-    // } catch (error) {
-    //   console.error("Error:", error);
-    //   setLoginError(true);
-    // }
   };
   let styles = {
     fontWeight: "bold",
