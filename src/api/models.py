@@ -86,7 +86,7 @@ class Asociacion(db.Model):
             "nombre": self.nombre,
             "email": self.email,
             "provincia": self.provincia,
-            "NIF": self.NIF
+            "CIF": self.CIF
             # do not serialize the password, its a security breach
         }    
     
