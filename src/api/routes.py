@@ -121,19 +121,19 @@ def delete_user(user_id):
 
 @api.route('/adoption', methods=['GET'])
 def get_adoptions():
-
-    all_adoptions = Adoption.query.all()
-    result = [element.serialize() for element in all_adoptions]
-    return jsonify(result), 200
+     all_adoptions = Adoption.query.all()
+     result = [element.serialize() for element in all_adoptions]
+     print(result)
+     return jsonify(result), 200
 
 
 @api.route('/adoption/<int:id>', methods=['GET'])
 def get_one_adoption(id):
 
-    adoption = Adoption.query.get(id)
-    if adoption:
+     adoption = Adoption.query.get(id)
+     if adoption:
         return jsonify(adoption.serialize()), 200
-    else:
+     else:
         return jsonify({"message": "Adoption not found"}), 404
     
 
