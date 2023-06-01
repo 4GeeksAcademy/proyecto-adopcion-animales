@@ -7,16 +7,16 @@ import "../../styles/home.css";
 
 import "../../styles/home.css";
 import { Carousel } from "../component/carousel";
-
 import Asociacion from "./asociacion";
+
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
     <div className="text-center mt-5">
-      {/* <Carousel /> */}
-      <Asociacion />
+      <Carousel />
+      {/* <Asociacion /> */}
     </div>
   );
 

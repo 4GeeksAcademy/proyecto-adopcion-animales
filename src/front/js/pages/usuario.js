@@ -25,7 +25,7 @@ export default function Usuario() {
     return (
         <>
             <div>
-                <h1>Fetch Animal</h1>
+                <h1>Recuperando todos los animales en la vista de usuario</h1>
                 {animals.map((animal, index) => {
                     return (
                         <div key={index}>
@@ -37,7 +37,6 @@ export default function Usuario() {
                                 <li>{animal.descripcion}</li>
                             </ul>
                         </div>
-
                     )
                 })}
             </div>
