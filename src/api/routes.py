@@ -26,17 +26,35 @@ def handle_hello():
 
 #ANIMAL ENDPOINT -------------------------------------------------------------------
 #GET
+
+# OBTENGO TODOS LOS ANIMALES POSTEADOS POR TODAS LAS ASOCIACIONES
+
+@api.route('/allanimal', methods=['GET'])
+@jwt_required()
+
+def get_all_animals():
+    allAnimals = Animal.query.all()
+    result = [animal.serialize() for animal in allAnimals]
+    
+    if allAnimals:
+        return jsonify(result), 200
+    else:
+        return jsonify({"message": "Animal not found"}), 404
+ 
+
+# OBTIENE TODOS LOS ANIMALES POSTEADOS POR UNA ASOCIACIÓN EN CONCRETO
 @api.route('/animal', methods=['GET'])
 @jwt_required()
 def get_animals():
 
 # Obtengo el usuario al que pertenece el token JWT
-    current_user = get_jwt_identity()
+    current_asociacion = get_jwt_identity()
+
 # ID de usuario
-    current_user_id = current_user['id']
+    current_asociacion_id = current_asociacion['id']
 
 # Hacemos petición de todos los animales, filtrando por el usuario ya autentificado
-    allAnimals = Animal.query.filter_by(user_id=current_user_id).all()
+    allAnimals = Animal.query.filter_by(asociacion_id = current_asociacion_id).all()
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
 
@@ -46,13 +64,13 @@ def get_animals():
 def get_animal_id(animal_id):
 
 # Obtengo el usuario al que pertenece el token JWT
-    current_user = get_jwt_identity()
+    current_asociacion = get_jwt_identity()
 
 # ID de usuario
-    current_user_id = current_user['id']
+    current_asociacion_id = current_asociacion['id']
     
 # Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
-    animal = Animal.query.filter_by(id=animal_id, user_id = current_user_id).first()
+    animal = Animal.query.filter_by(id=animal_id, asociacion_id = current_asociacion_id).first()
     
     if animal:
         return jsonify(animal.serialize()), 200

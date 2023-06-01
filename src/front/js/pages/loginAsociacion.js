@@ -31,6 +31,7 @@ export default function LoginAsociacion() {
                 setForm(initialForm);
                 setLoginError(false);
                 navigate("/asociacion");
+                console.log(data);
             } else {
                 const errorData = await response.json();
                 setLoginError(true);

@@ -29,6 +29,32 @@ class User(db.Model):
         }
 
 
+# class Animal(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     nombre = db.Column(db.String(50), unique=False, nullable=False)
+#     raza = db.Column(db.String(80), unique=False, nullable=False)
+#     edad = db.Column(db.String(50), unique=False, nullable=False)
+#     genero = db.Column(db.String(50), unique=False, nullable=False)
+#     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+#     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
+
+#     asociacion = db.relationship('Asociacion', backref='animals')
+
+#     def __repr__(self):
+#         return f'<Animal {self.nombre}>'
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "nombre": self.nombre,
+#             "raza": self.raza,
+#             "genero": self.genero,
+#             "descripcion": self.descripcion,
+#             "edad": self.edad
+#             # do not serialize the password, it's a security breach
+#         }
+
+
 class Animal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), unique=False, nullable=False)
@@ -50,9 +76,11 @@ class Animal(db.Model):
             "raza": self.raza,
             "genero": self.genero,
             "descripcion": self.descripcion,
-            "edad": self.edad
-            # do not serialize the password, it's a security breach
+            "edad": self.edad,
+            "asociacion_id": self.asociacion_id,
+             "asociacion_nombre": self.asociacion.nombre
         }
+
 
 
 class Adoption(db.Model):
