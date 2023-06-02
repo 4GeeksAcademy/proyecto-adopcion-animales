@@ -7,14 +7,15 @@ import "../../styles/home.css";
 
 import "../../styles/home.css";
 import { Carousel } from "../component/carousel";
+import InfoAdoption from "../component/infoAdoption";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="text-center mt-5">
-
-n      <Carousel />
+    <div className="text-center">
+        <Carousel />
+        <InfoAdoption></InfoAdoption>
       {/* <AnimalForm /> */}
     </div>
   );
