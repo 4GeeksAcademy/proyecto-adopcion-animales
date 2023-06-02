@@ -11,6 +11,7 @@ class User(db.Model):
     last_name = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/avatar-personaje-empresario-aislado_24877-60111.jpg?w=826&t=st=1685727589~exp=1685728189~hmac=c77fc74d78d0c3418589bd27f9d276ca118cc83404eef729f972b414da8526d5', nullable=False)  
 
 
     def validate_password(self, password):
@@ -25,7 +26,8 @@ class User(db.Model):
             "id": self.id,
             "name": self.name,
             "last_name": self.last_name,
-            "email": self.email
+            "email": self.email,
+            "image_url": self.image_url
             
             # do not serialize the password, it's a security breach
         }
@@ -38,6 +40,7 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-lindo-perro-gato-lindo_138676-3238.jpg?w=826&t=st=1685726659~exp=1685727259~hmac=a431aa59abb1642efdeb6cfc2deca33296a142d07ce35860158892c6d5ef97e1', nullable=False)  
 
     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
 
@@ -53,7 +56,8 @@ class Animal(db.Model):
             "raza": self.raza,
             "genero": self.genero,
             "descripcion": self.descripcion,
-            "edad": self.edad
+            "edad": self.edad,
+            "image_url": self.image_url
             
             # do not serialize the password, it's a security breach
         }
@@ -80,6 +84,7 @@ class Asociacion(db.Model):
     provincia = db.Column(db.String(80), unique=False, nullable=False)
     CIF = db.Column(db.String(80), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/agrega-amigos-red-social-internet-comunidad-ilustracion-amistad-web_1284-47694.jpg?w=826&t=st=1685727734~exp=1685728334~hmac=73ee31dafe900f83498edb4195355135f4937c2f55c68ab40aa53561b45cf832', nullable=False)  
 
  
     def __repr__(self):
@@ -91,7 +96,8 @@ class Asociacion(db.Model):
             "nombre": self.nombre,
             "email": self.email,
             "provincia": self.provincia,
-            "CIF": self.CIF
+            "CIF": self.CIF,
+            "image_url": self.image_url
             
             # do not serialize the password, its a security breach
         }    
