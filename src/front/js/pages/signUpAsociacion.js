@@ -159,15 +159,15 @@ export default function SignUpAsociacion() {
                     </select>
                 </div>
                 <div>
-                    <label htmlFor="NIF">CIF:</label>
+                    <label htmlFor="CIF">CIF:</label>
                     <input
                         type="text"
-                        id="NIF"
+                        id="CIF"
                         value={form.CIF}
                         onChange={(e) => setForm({ ...form, CIF: e.target.value })}
                         required
                     />
-                    {errors.NIF && <p style={styles}>{errors.CIF}</p>}
+                    {errors.CIF && <p style={styles}>{errors.CIF}</p>}
                 </div>
                 <div>
                     <label htmlFor="password">Contraseña:</label>
