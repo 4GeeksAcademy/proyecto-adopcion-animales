@@ -41,7 +41,7 @@ def get_animals():
         allAnimals = Animal.query.all() 
     elif 'CIF' in current_user:
         # Asociación (tiene la propiedad CIF)
-        asociacion_id = current_user['CIF']
+        asociacion_id = current_user['id']
         allAnimals = Animal.query.filter_by(asociacion_id = asociacion_id).all()   
     else:
         # Tipo de usuario no reconocido

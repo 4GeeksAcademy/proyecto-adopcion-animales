@@ -12,6 +12,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
 
+
     def validate_password(self, password):
         if len(password) < 6:
             return "La contraseña debe tener al menos 6 caracteres."
@@ -25,6 +26,7 @@ class User(db.Model):
             "name": self.name,
             "last_name": self.last_name,
             "email": self.email
+            
             # do not serialize the password, it's a security breach
         }
 
@@ -36,6 +38,7 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+
     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
 
     asociacion = db.relationship('Asociacion', backref='animals')
@@ -51,6 +54,7 @@ class Animal(db.Model):
             "genero": self.genero,
             "descripcion": self.descripcion,
             "edad": self.edad
+            
             # do not serialize the password, it's a security breach
         }
 
@@ -76,6 +80,7 @@ class Asociacion(db.Model):
     provincia = db.Column(db.String(80), unique=False, nullable=False)
     CIF = db.Column(db.String(80), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
+
  
     def __repr__(self):
         return f'<Asociacion {self.nombre}>'
@@ -87,6 +92,7 @@ class Asociacion(db.Model):
             "email": self.email,
             "provincia": self.provincia,
             "CIF": self.CIF
+            
             # do not serialize the password, its a security breach
         }    
     
@@ -94,7 +100,7 @@ class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-    insertion_date = db.Column(db.Date, default=datetime.datetime.now())
+    date = db.Column(db.Date, default=datetime.datetime.now())
 
 
     user = db.relationship('User', backref='favorites')
