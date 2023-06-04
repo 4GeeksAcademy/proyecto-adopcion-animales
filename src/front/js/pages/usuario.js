@@ -6,8 +6,8 @@ export default function Usuario() {
 
     const token = localStorage.getItem("token");
 
-    const handleSubmit = async (e) => {
-        const response = await fetch(process.env.BACKEND_URL + "/api/allanimal", {
+    const fetchAnimal = async (e) => {
+        const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -19,7 +19,7 @@ export default function Usuario() {
         console.log(data);
     };
     useEffect(() => {
-        handleSubmit()
+        fetchAnimal()
     }, [])
 
     return (
@@ -29,13 +29,16 @@ export default function Usuario() {
                 {animals.map((animal, index) => {
                     return (
                         <div key={index}>
-                            <h2>{animal.nombre}</h2>
+                            <h2>Nombre: {animal.nombre}</h2>
+                            <h3>Nombre de la asociación: {animal.asociacion_nombre
+                            }</h3>
                             <ul>
-                                <li>{animal.raza}</li>
-                                <li>{animal.edad}</li>
-                                <li>{animal.genero}</li>
-                                <li>{animal.descripcion}</li>
+                                <li>Raza: {animal.raza}</li>
+                                <li>Edad: {animal.edad}</li>
+                                <li>Género: {animal.genero}</li>
+                                <li>Descripción: {animal.descripcion}</li>
                             </ul>
+                            <hr ></hr>
                         </div>
                     )
                 })}
