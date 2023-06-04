@@ -73,7 +73,7 @@ class Adoption(db.Model):
     animal = db.relationship('Animal', backref='adoptions')
 
     def __repr__(self):
-        return f'{self.user.name} - {self.animal.name} - {self.date} '
+        return f'{self.user.nombre} - {self.animal.nombre} - {self.date} '
     
 
 class Asociacion(db.Model):
@@ -113,5 +113,12 @@ class Favorite(db.Model):
 
     def __repr__(self):
         return f'{self.user.name} - {self.animal.name} - {self.date}'
+    
+    def serialize(self):
+        return {
+            'user_id': self.user_id,
+            'animal_id': self.animal_id,
+            'date': self.date.strftime('%Y-%m-%d')  # Convierte la fecha a formato string
+        }
 
 
