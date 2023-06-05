@@ -97,4 +97,4 @@ class Favorite(db.Model):
     animal = db.relationship('Animal', backref='favorites')
 
     def __repr__(self):
-        return f'{self.user.name} - {self.animal.name} - {self.date}'
+        return f'{self.user.nombre} - {self.animal.nombre} - {self.insertion_date}'
