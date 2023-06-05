@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: c2bd36877801
+Revision ID: 44717992b0eb
 Revises: 
-Create Date: 2023-05-30 09:01:44.174309
+Create Date: 2023-06-05 15:08:24.534963
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'c2bd36877801'
+revision = '44717992b0eb'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -23,7 +23,7 @@ def upgrade():
     sa.Column('nombre', sa.String(length=50), nullable=False),
     sa.Column('email', sa.String(length=80), nullable=False),
     sa.Column('provincia', sa.String(length=80), nullable=False),
-    sa.Column('NIF', sa.String(length=80), nullable=False),
+    sa.Column('CIF', sa.String(length=80), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
@@ -43,6 +43,7 @@ def upgrade():
     sa.Column('edad', sa.String(length=50), nullable=False),
     sa.Column('genero', sa.String(length=50), nullable=False),
     sa.Column('descripcion', sa.String(length=500), nullable=False),
+    sa.Column('image_url', sa.String(length=500), nullable=False),
     sa.Column('asociacion_id', sa.Integer(), nullable=False),
     sa.ForeignKeyConstraint(['asociacion_id'], ['asociacion.id'], ),
     sa.PrimaryKeyConstraint('id')

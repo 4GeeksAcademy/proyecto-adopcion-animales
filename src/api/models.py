@@ -29,6 +29,36 @@ class User(db.Model):
         }
 
 
+# class Animal(db.Model):
+#     id = db.Column(db.Integer, primary_key=True)
+#     nombre = db.Column(db.String(50), unique=False, nullable=False)
+#     raza = db.Column(db.String(80), unique=False, nullable=False)
+#     edad = db.Column(db.String(50), unique=False, nullable=False)
+#     genero = db.Column(db.String(50), unique=False, nullable=False)
+#     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+#     image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-lindo-perro-gato-lindo_138676-3238.jpg?w=826&t=st=1685726659~exp=1685727259~hmac=a431aa59abb1642efdeb6cfc2deca33296a142d07ce35860158892c6d5ef97e1', nullable=False)  
+#     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
+
+#     asociacion = db.relationship('Asociacion', backref='animals')
+
+#     def __repr__(self):
+#         return f'<Animal {self.nombre}>'
+
+#     def serialize(self):
+#         return {
+#             "id": self.id,
+#             "nombre": self.nombre,
+#             "raza": self.raza,
+#             "genero": self.genero,
+#             "descripcion": self.descripcion,
+#             "edad": self.edad,
+#             "asociacion_id": self.asociacion_id,
+#             "asociacion_nombre": self.asociacion.nombre,
+#             "asociacion_provincia": self.asociacion.provincia,
+#             "image_url": self.image_url
+#         }
+
+
 class Animal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), unique=False, nullable=False)
@@ -36,6 +66,7 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
+    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-lindo-perro-gato-lindo_138676-3238.jpg?w=826&t=st=1685726659~exp=1685727259~hmac=a431aa59abb1642efdeb6cfc2deca33296a142d07ce35860158892c6d5ef97e1', nullable=False)  
     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
 
     asociacion = db.relationship('Asociacion', backref='animals')
@@ -51,8 +82,11 @@ class Animal(db.Model):
             "genero": self.genero,
             "descripcion": self.descripcion,
             "edad": self.edad,
+            "image_url": self.image_url,
             "asociacion_id": self.asociacion_id,
-             "asociacion_nombre": self.asociacion.nombre
+            "asociacion_nombre": self.asociacion.nombre,
+            "asociacion_provincia": self.asociacion.provincia, 
+            # do not serialize the password, it's a security breach
         }
 
 
