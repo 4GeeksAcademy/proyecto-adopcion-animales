@@ -32,6 +32,7 @@ export default function Asociacion() {
                             <h2>Nombre: {animal.nombre}</h2>
                             <h3>Nombre de la asociación: {animal.asociacion_nombre
                             }</h3>
+                            <img src={animal.image_url} alt={animal.nombre} />
                             <ul>
                                 <li>Raza: {animal.raza}</li>
                                 <li>Edad: {animal.edad}</li>

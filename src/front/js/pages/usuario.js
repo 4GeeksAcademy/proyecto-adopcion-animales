@@ -143,7 +143,7 @@ export default function Usuario() {
                         onChange={(e) => setFiltros({ ...filtros, genero: e.target.value })}
                         name='genero'
                         id='genero'>
-                        <option value=''>Seleccione un animal</option>
+                        <option value=''>Seleccione un género</option>
                         <option value='Macho'>Macho</option>
                         <option value='Hembra'>Hembra</option>
                     </select>

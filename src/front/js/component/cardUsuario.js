@@ -7,6 +7,7 @@ export default function Card({ animal }) {
         <div className='animal'>
             <h2>Nombre: {animal.nombre}</h2>
             <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
+            <img src={animal.image_url} alt={animal.nombre} />
             <ul>
                 <li>Raza: {animal.raza}</li>
                 <li>Edad: {animal.edad}</li>
@@ -14,7 +15,6 @@ export default function Card({ animal }) {
                 <li>Provincia: {animal.asociacion_provincia}</li>
                 <li>Descripción: {animal.descripcion}</li>
             </ul>
-            <img src={animal.image_url} alt={animal.nombre} />
         </div>
     )
 }

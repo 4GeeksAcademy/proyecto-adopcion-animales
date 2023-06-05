@@ -26,7 +26,7 @@ export default function FilterAnimal({ animals, filtros }) {
                     return <Card key={animal.id} animal={animal} />
                 })
             ) : (
-                <p>No hay resultados</p>
+                <h2>No hay resultados</h2>
             )}
         </div>
     )
