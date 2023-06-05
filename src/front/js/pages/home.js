@@ -4,6 +4,7 @@ import "../../styles/home.css";
 // import SignUp from "./signUp";
 // import Login from "./login";
 // import AnimalForm from "./animalForm";
+// import Favorite from "./favorite";
 
 import "../../styles/home.css";
 import { Carousel } from "../component/carousel";

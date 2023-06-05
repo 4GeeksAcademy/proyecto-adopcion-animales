@@ -46,7 +46,7 @@ class Animal(db.Model):
     asociacion = db.relationship('Asociacion', backref='animals')
 
     def __repr__(self):
-        return f'<Animal {self.nombre}>'
+        return f'{self.nombre} - {self.asociacion.nombre}'
 
     def serialize(self):
         return {
@@ -73,7 +73,15 @@ class Adoption(db.Model):
     animal = db.relationship('Animal', backref='adoptions')
 
     def __repr__(self):
-        return f'{self.user.nombre} - {self.animal.nombre} - {self.date} '
+        return f'{self.user.name} - {self.animal.nombre} - {self.date} '
+    
+    def serialize(self):
+        return {
+            'id': self.id,
+            'user_id': self.user_id,
+            'animal_id': self.animal_id,
+            'date': self.date.strftime('%Y-%m-%d')
+        }
     
 
 class Asociacion(db.Model):
@@ -112,7 +120,7 @@ class Favorite(db.Model):
     animal = db.relationship('Animal', backref='favorites')
 
     def __repr__(self):
-        return f'{self.user.name} - {self.animal.name} - {self.date}'
+        return f'{self.user.name} - {self.animal.nombre} - {self.date}'
     
     def serialize(self):
         return {
