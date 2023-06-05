@@ -7,8 +7,8 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120), unique=False, nullable=False)
-    last_name = db.Column(db.String(120), unique=False, nullable=False)
+    nombre = db.Column(db.String(120), unique=False, nullable=False)
+    apellido = db.Column(db.String(120), unique=False, nullable=False)
     email = db.Column(db.String(120), unique=True, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
 
@@ -17,13 +17,13 @@ class User(db.Model):
             return "La contraseña debe tener al menos 6 caracteres."
 
     def __repr__(self):
-        return f'<User {self.name}>'
+        return f'<User {self.nombre}>'
 
     def serialize(self):
         return {
             "id": self.id,
-            "name": self.name,
-            "last_name": self.last_name,
+            "nombre": self.nombre,
+            "apellido": self.apellido,
             "email": self.email
             # do not serialize the password, it's a security breach
         }
@@ -32,11 +32,12 @@ class User(db.Model):
 class Animal(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), unique=False, nullable=False)
+    tipo_animal = db.Column(db.String(50), unique=False, nullable=False) 
     raza = db.Column(db.String(80), unique=False, nullable=False)
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
-    asociacion_name = db.Column(db.Integer, db.ForeignKey('asociacion.nombre'), unique=False, nullable=False)
+    asociacion_nombre = db.Column(db.Integer, db.ForeignKey('asociacion.nombre'), unique=False, nullable=False)
 
     asociacion = db.relationship('Asociacion', backref='animals')
 
@@ -47,14 +48,16 @@ class Animal(db.Model):
         return {
             "id": self.id,
             "nombre": self.nombre,
+            "tipo_animal": self.tipo_animal,
             "raza": self.raza,
             "genero": self.genero,
             "descripcion": self.descripcion,
-            "edad": self.edad
+            "edad": self.edad,
+            "asociacion_nombre": self.asociacion_nombre
             # do not serialize the password, it's a security breach
         }
     
-class Asociation(db.Model):
+class Asociacion(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50), unique=False, nullable=False)
     email = db.Column(db.String(80), unique=False, nullable=False)
@@ -83,11 +86,8 @@ class Adoption(db.Model):
     user = db.relationship('User', backref='adoptions')
     animal = db.relationship('Animal', backref='adoptions')
 
-    user = relationship('User', backref='adoptions')
-    animal = relationship('Animal', backref='adoptions')
-
     def __repr__(self):
-        return f'{self.user.name} - {self.animal.name} - {self.date} '
+        return f'{self.user.nombre} - {self.animal.nombre} - {self.date} '
     
 
 class Asociacion(db.Model):
