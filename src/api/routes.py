@@ -332,3 +332,39 @@ def login_asociacion():
     }
 
     return jsonify(response_body), 200
+
+# -------------------FAVORITE-------------------------
+
+# GET
+@api.route('/user/favorites', methods=['GET'])
+@jwt_required()
+def get_user_favorites():
+
+    # Obtengo el usuario al que pertenece el token JWT
+    current_user = get_jwt_identity()
+    current_user_id = current_user['id']
+
+    favorites = Favorite.query.filter_by(user_id=current_user_id).all()
+
+    result = [element.serialize() for element in favorites]
+            
+    return jsonify(result), 200
+
+# POST
+@api.route('/user/favorites', methods=['POST'])
+@jwt_required()
+def add_favorite():
+
+     # Obtengo el usuario al que pertenece el token JWT
+    current_user = get_jwt_identity()
+    current_user_id = current_user['id']
+
+    body= request.get_json()
+    animal_id = body['animal_id']
+
+    favorites = Favorite(user_id=current_user_id, animal_id=animal_id)
+
+    db.session.add(favorites)
+    db.session.commit()
+
+    return jsonify({'message':'Favorite added successfully'})

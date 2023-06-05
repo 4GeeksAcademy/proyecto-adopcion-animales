@@ -133,7 +133,7 @@ class Favorite(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
-    insertion_date = db.Column(db.Date, default=datetime.datetime.now())
+    date = db.Column(db.Date, default=datetime.datetime.now())
 
 
     user = db.relationship('User', backref='favorites')
@@ -143,3 +143,9 @@ class Favorite(db.Model):
         return f'{self.user.name} - {self.animal.name} - {self.date}'
 
 
+    def serialize(self):
+        return {
+            'user_id': self.user_id,
+            'animal_id': self.animal_id,
+            'date': self.date.strftime('%Y-%m-%d')  # Convierte la fecha a formato string
+        }
