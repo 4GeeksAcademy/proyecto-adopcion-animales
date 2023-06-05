@@ -2,6 +2,7 @@ import React from 'react';
 
 export const SearchBar = () => {
     return (
+        <form>
         <div className='row m-5 bg-dark'>
             <div className='col-4 m-3'>
                 <select className="form-select" aria-label="Default select example">
@@ -23,5 +24,6 @@ export const SearchBar = () => {
                 <button type="button" className="btn btn-primary" disabled>Buscar</button>
             </div>
         </div>
+        </form>
     );
 };
