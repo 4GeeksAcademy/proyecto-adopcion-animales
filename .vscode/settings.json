@@ -4,7 +4,14 @@
     "workbench.editorAssociations": {   
         "*.md": "vscode.markdown.preview.editor"
     },
+<<<<<<< HEAD
+    "[python]": {
+        "editor.defaultFormatter": "ms-python.black-formatter"
+    },
+    "python.formatting.provider": "none"
+=======
     "[javascript]": {
         "editor.defaultFormatter": "vscode.typescript-language-features"
     }
+>>>>>>> main
 }
