@@ -116,12 +116,12 @@ def post_user():
     body = request.get_json()
     print("AQUÍ ESTÁ EL BODY: ", body)
 
-    name = body['name']
-    last_name = body['last_name']
+    nombre = body['nombre']
+    apellido = body['apellido']
     email = body['email']
     password = body['password']
 
-    new_user = User(name=name, last_name=last_name, email=email, password=password)
+    new_user = User(nombre=nombre, apellido=apellido, email=email, password=password)
 
     db.session.add(new_user)
     db.session.commit()
