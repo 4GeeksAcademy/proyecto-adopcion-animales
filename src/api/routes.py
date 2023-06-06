@@ -127,13 +127,6 @@ def post_user():
     body = request.get_json()
     print("AQUÍ ESTÁ EL BODY: ", body)
 
-    # name = body['name']
-    # last_name = body['last_name']
-    # email = body['email']
-    # password = body['password']
-
-    # new_user = User(name=name, last_name=last_name, email=email, password=password)
-
     nombre = body['nombre']
     apellido = body['apellido']
     email = body['email']
@@ -198,7 +191,7 @@ def delete_user(user_id):
         return jsonify({'message': f'User: {user_id} not found'}), 404
     
     
-#ADOPTION
+#ADOPTION--------------------------------------------------------
 
 @api.route('/adoption', methods=['GET'])
 def get_adoptions():
