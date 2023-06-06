@@ -2,8 +2,8 @@ import React, { useState } from "react";
 
 export default function SingUpUsuario() {
   const initialForm = {
-    name: "",
-    last_name: "",
+    nombre: "",
+    apellido: "",
     email: "",
     password: "",
     passwordConfirmation: "",
@@ -16,19 +16,19 @@ export default function SingUpUsuario() {
     e.preventDefault();
 
     let newError = {};
-    let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
+    let regexNombre = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
     let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
 
-    if (!form.name.trim()) {
-      newError.name = "El campo nombre es requerido";
-    } else if (!regexName.test(form.name.trim())) {
-      newError.name =
+    if (!form.nombre.trim()) {
+      newError.nombre = "El campo nombre es requerido";
+    } else if (!regexNombre.test(form.nombre.trim())) {
+      newError.nombre =
         "El campo 'Nombre' sólo acepta letras y espacios en blanco";
     }
-    if (!form.last_name.trim()) {
-      newError.last_name = "El campo nombre es requerido";
-    } else if (!regexName.test(form.last_name.trim())) {
-      newError.last_name =
+    if (!form.apellido.trim()) {
+      newError.apellido = "El campo nombre es requerido";
+    } else if (!regexNombre.test(form.apellido.trim())) {
+      newError.apellido =
         "El campo 'Apellidos' sólo acepta letras y espacios en blanco";
     }
     if (!form.email.trim()) {
@@ -50,8 +50,8 @@ export default function SingUpUsuario() {
             Accept: "application/json",
           },
           body: JSON.stringify({
-            name: form.name,
-            last_name: form.last_name,
+            nombre: form.nombre,
+            apellido: form.apellido,
             email: form.email,
             password: form.password,
           }),
@@ -82,22 +82,22 @@ export default function SingUpUsuario() {
           <input
             type="text"
             id="name"
-            value={form.name}
-            onChange={(e) => setForm({ ...form, name: e.target.value })}
+            value={form.nombre}
+            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
             required
           />
-          {errors.name && <p style={styles}>{errors.name}</p>}
+          {errors.nombre && <p style={styles}>{errors.nombre}</p>}
         </div>
         <div>
           <label htmlFor="lastname">Apellidos:</label>
           <input
             type="text"
             id="lastname"
-            value={form.last_name}
-            onChange={(e) => setForm({ ...form, last_name: e.target.value })}
+            value={form.apellido}
+            onChange={(e) => setForm({ ...form, apellido: e.target.value })}
             required
           />
-          {errors.last_name && <p style={styles}>{errors.last_name}</p>}
+          {errors.apellido && <p style={styles}>{errors.apellido}</p>}
         </div>
         <div>
           <label htmlFor="email">Email:</label>

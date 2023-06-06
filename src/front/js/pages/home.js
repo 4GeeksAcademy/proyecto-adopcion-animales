@@ -15,9 +15,9 @@ export const Home = () => {
 
   return (
     <div className="text-center">
-        <Carousel />
-        <SearchBar />
-        <InfoAdoption></InfoAdoption>
+      <Carousel />
+      <SearchBar />
+      <InfoAdoption></InfoAdoption>
       {/* <AnimalForm /> */}
     </div>
   );

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-// import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 export default function LoginAsociacion() {
     const initialForm = {
@@ -9,6 +9,8 @@ export default function LoginAsociacion() {
 
     const [form, setForm] = useState(initialForm);
     const [loginError, setLoginError] = useState(false);
+
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -28,6 +30,8 @@ export default function LoginAsociacion() {
                 localStorage.setItem("token", token);
                 setForm(initialForm);
                 setLoginError(false);
+                navigate("/asociacion");
+                console.log(data);
             } else {
                 const errorData = await response.json();
                 setLoginError(true);
