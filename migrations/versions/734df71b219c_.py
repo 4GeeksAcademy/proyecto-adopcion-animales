@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 44717992b0eb
+Revision ID: 734df71b219c
 Revises: 
-Create Date: 2023-06-05 15:08:24.534963
+Create Date: 2023-06-06 15:15:51.677367
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '44717992b0eb'
+revision = '734df71b219c'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -25,12 +25,13 @@ def upgrade():
     sa.Column('provincia', sa.String(length=80), nullable=False),
     sa.Column('CIF', sa.String(length=80), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
+    sa.Column('image_url', sa.String(length=500), nullable=False),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),
-    sa.Column('name', sa.String(length=120), nullable=False),
-    sa.Column('last_name', sa.String(length=120), nullable=False),
+    sa.Column('nombre', sa.String(length=120), nullable=False),
+    sa.Column('apellido', sa.String(length=120), nullable=False),
     sa.Column('email', sa.String(length=120), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
     sa.PrimaryKeyConstraint('id'),
@@ -39,6 +40,7 @@ def upgrade():
     op.create_table('animal',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('nombre', sa.String(length=50), nullable=False),
+    sa.Column('tipo_animal', sa.String(length=50), nullable=False),
     sa.Column('raza', sa.String(length=80), nullable=False),
     sa.Column('edad', sa.String(length=50), nullable=False),
     sa.Column('genero', sa.String(length=50), nullable=False),
@@ -62,7 +64,7 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('animal_id', sa.Integer(), nullable=False),
-    sa.Column('insertion_date', sa.Date(), nullable=True),
+    sa.Column('date', sa.Date(), nullable=True),
     sa.ForeignKeyConstraint(['animal_id'], ['animal.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')

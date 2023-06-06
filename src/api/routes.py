@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal, Adoption, Asociacion
+from api.models import db, User, Animal, Adoption, Asociacion, Favorite
 
 from api.utils import generate_sitemap, APIException
 
@@ -36,7 +36,7 @@ def get_animals():
     current_user = get_jwt_identity()
 
   # Verificar el tipo de usuario
-    if 'last_name' in current_user:
+    if 'apellido' in current_user:
         # Si es un USER (tiene la propiedad last_name)
         allAnimals = Animal.query.all() 
     elif 'CIF' in current_user:
@@ -127,12 +127,19 @@ def post_user():
     body = request.get_json()
     print("AQUÍ ESTÁ EL BODY: ", body)
 
-    name = body['name']
-    last_name = body['last_name']
+    # name = body['name']
+    # last_name = body['last_name']
+    # email = body['email']
+    # password = body['password']
+
+    # new_user = User(name=name, last_name=last_name, email=email, password=password)
+
+    nombre = body['nombre']
+    apellido = body['apellido']
     email = body['email']
     password = body['password']
 
-    new_user = User(name=name, last_name=last_name, email=email, password=password)
+    new_user = User(nombre=nombre, apellido=apellido, email=email, password=password)
 
     db.session.add(new_user)
     db.session.commit()
