@@ -13,6 +13,8 @@ import { SearchBar } from "../component/searchBar";
 export const Home = () => {
   const { store, actions } = useContext(Context);
 
+  
+
   return (
     <div className="text-center">
       <Carousel />

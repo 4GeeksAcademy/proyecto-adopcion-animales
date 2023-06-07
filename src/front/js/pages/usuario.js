@@ -33,7 +33,7 @@ export default function Usuario() {
         <>
             <div>
                 <h1>Recuperando todos los animales en la vista de usuario</h1>
-                <div className='filtros'>
+                <form className='filtros'>
                     <label htmlFor='provincia'>Provincia: </label>
                     <select
                         onChange={(e) =>
@@ -110,7 +110,7 @@ export default function Usuario() {
                         <option value='Perro'>Perro</option>
                         <option value='Gato'>Gato</option>
                     </select>
-                </div>
+                </form>
                 <div>
                     <FilterAnimal animals={animals} filtros={filtros} />
                 </div>
@@ -120,48 +120,3 @@ export default function Usuario() {
 }
 
 
-
-
-// import React, { useState, useEffect } from "react";
-
-
-// export default function Usuario() {
-//     const [animals, setAnimals] = useState([])
-
-
-//     const token = localStorage.getItem("token");
-
-//     const fetchAnimal = async (e) => {
-//         const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
-//             method: "GET",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         });
-//         const data = await response.json();
-//         setAnimals(data);
-//         console.log(data);
-//     }
-//     useEffect(() => {
-//         fetchAnimal()
-//     }, [])
-//     return (
-
-//         <div>
-//             <h1>Recuperando todos los animales en la vista de usuario</h1>
-//             {/* <div className='animal'>
-//                 <h2>Nombre: {animal.nombre}</h2>
-//                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
-//                 <img src={animal.image_url} alt={animal.nombre} />
-//                 <ul>
-//                     <li>Raza: {animal.raza}</li>
-//                     <li>Edad: {animal.edad}</li>
-//                     <li>Género: {animal.genero}</li>
-//                     <li>Provincia: {animal.asociacion_provincia}</li>
-//                     <li>Descripción: {animal.descripcion}</li>
-//                 </ul>
-//             </div> */}
-//         </div>
-//     )
-// }
