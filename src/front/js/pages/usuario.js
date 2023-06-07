@@ -8,6 +8,7 @@ export default function Usuario() {
     const [filtros, setFiltros] = useState({
         provincia: "",
         genero: "",
+        tipo_animal: "",
     })
 
     const token = localStorage.getItem("token");
@@ -32,8 +33,8 @@ export default function Usuario() {
         <>
             <div>
                 <h1>Recuperando todos los animales en la vista de usuario</h1>
-                <div className='filtros'>
-                    <label htmlFor='provincia'>Provincia</label>
+                <form className='filtros'>
+                    <label htmlFor='provincia'>Provincia: </label>
                     <select
                         onChange={(e) =>
                             setFiltros({ ...filtros, provincia: e.target.value })
@@ -91,7 +92,7 @@ export default function Usuario() {
                         <option value="Zamora">Zamora</option>
                         <option value="Zaragoza">Zaragoza</option>
                     </select>
-                    <label htmlFor='genero'>Género</label>
+                    <label htmlFor='genero'>Género: </label>
                     <select
                         onChange={(e) => setFiltros({ ...filtros, genero: e.target.value })}
                         name='genero'
@@ -100,7 +101,16 @@ export default function Usuario() {
                         <option value='Macho'>Macho</option>
                         <option value='Hembra'>Hembra</option>
                     </select>
-                </div>
+                    <label htmlFor='tipo_animal'>Tipo de Animal: </label>
+                    <select
+                        onChange={(e) => setFiltros({ ...filtros, tipo_animal: e.target.value })}
+                        name='tipo_animal'
+                        id='tipo_animal'>
+                        <option value=''>Seleccione un tipo de animal</option>
+                        <option value='Perro'>Perro</option>
+                        <option value='Gato'>Gato</option>
+                    </select>
+                </form>
                 <div>
                     <FilterAnimal animals={animals} filtros={filtros} />
                 </div>
@@ -110,48 +120,3 @@ export default function Usuario() {
 }
 
 
-
-
-// import React, { useState, useEffect } from "react";
-
-
-// export default function Usuario() {
-//     const [animals, setAnimals] = useState([])
-
-
-//     const token = localStorage.getItem("token");
-
-//     const fetchAnimal = async (e) => {
-//         const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
-//             method: "GET",
-//             headers: {
-//                 "Content-Type": "application/json",
-//                 Authorization: `Bearer ${token}`,
-//             },
-//         });
-//         const data = await response.json();
-//         setAnimals(data);
-//         console.log(data);
-//     }
-//     useEffect(() => {
-//         fetchAnimal()
-//     }, [])
-//     return (
-
-//         <div>
-//             <h1>Recuperando todos los animales en la vista de usuario</h1>
-//             {/* <div className='animal'>
-//                 <h2>Nombre: {animal.nombre}</h2>
-//                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
-//                 <img src={animal.image_url} alt={animal.nombre} />
-//                 <ul>
-//                     <li>Raza: {animal.raza}</li>
-//                     <li>Edad: {animal.edad}</li>
-//                     <li>Género: {animal.genero}</li>
-//                     <li>Provincia: {animal.asociacion_provincia}</li>
-//                     <li>Descripción: {animal.descripcion}</li>
-//                 </ul>
-//             </div> */}
-//         </div>
-//     )
-// }

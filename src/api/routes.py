@@ -50,6 +50,16 @@ def get_animals():
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
 
+# Ruta pública para obtener todos los animales en la Home
+
+@api.route('/animal_public', methods=['GET'])
+def get_animals_public():
+    
+        allAnimals = Animal.query.all()
+        result = [element.serialize() for element in allAnimals]
+        return jsonify(result), 200
+
+
 
 #GET ID
 @api.route('/animal/<int:id>', methods=['GET'])

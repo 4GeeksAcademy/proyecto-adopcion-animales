@@ -3,18 +3,14 @@
 import React from "react";
 import Card from "./cardUsuario";
 
-export default function FilterAnimal({ animals, filtros }) {
+export default function FilterAnimalHome({ animals, filtros }) {
     const animalsFiltered = animals.filter((animal) => {
-        if (filtros.provincia && filtros.genero && filtros.tipo_animal) {
+        if (filtros.provincia && filtros.tipo_animal) {
             return (
-                animal.asociacion_provincia === filtros.provincia &&
-                animal.genero === filtros.genero &&
-                animal.tipo_animal === filtros.tipo_animal
+                animal.asociacion_provincia === filtros.provincia && animal.tipo_animal === filtros.tipo_animal
             );
         } else if (filtros.provincia) {
             return animal.asociacion_provincia === filtros.provincia;
-        } else if (filtros.genero) {
-            return animal.genero === filtros.genero;
         } else if (filtros.tipo_animal) {
             return animal.tipo_animal === filtros.tipo_animal;
         } else
@@ -22,7 +18,7 @@ export default function FilterAnimal({ animals, filtros }) {
     });
 
     return (
-        <div className="animales">
+        <div>
             {animalsFiltered.length > 0 ? (
                 animalsFiltered.map((animal) => (
                     <Card key={animal.id} animal={animal} />
