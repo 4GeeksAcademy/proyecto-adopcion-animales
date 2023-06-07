@@ -83,9 +83,8 @@ export default function SingUpUsuario() {
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Registro de Usuariosgi
+                      Registro de Usuarios
                     </p>
-                    <h1>holaaa</h1>
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
                         <i className="fas fa-user fa-lg me-3 fa-fw" />
