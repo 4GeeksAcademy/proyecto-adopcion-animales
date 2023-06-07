@@ -8,6 +8,7 @@ export default function Usuario() {
     const [filtros, setFiltros] = useState({
         provincia: "",
         genero: "",
+        tipo_animal: "",
     })
 
     const token = localStorage.getItem("token");
@@ -33,7 +34,7 @@ export default function Usuario() {
             <div>
                 <h1>Recuperando todos los animales en la vista de usuario</h1>
                 <div className='filtros'>
-                    <label htmlFor='provincia'>Provincia</label>
+                    <label htmlFor='provincia'>Provincia: </label>
                     <select
                         onChange={(e) =>
                             setFiltros({ ...filtros, provincia: e.target.value })
@@ -91,7 +92,7 @@ export default function Usuario() {
                         <option value="Zamora">Zamora</option>
                         <option value="Zaragoza">Zaragoza</option>
                     </select>
-                    <label htmlFor='genero'>Género</label>
+                    <label htmlFor='genero'>Género: </label>
                     <select
                         onChange={(e) => setFiltros({ ...filtros, genero: e.target.value })}
                         name='genero'
@@ -99,6 +100,15 @@ export default function Usuario() {
                         <option value=''>Seleccione un género</option>
                         <option value='Macho'>Macho</option>
                         <option value='Hembra'>Hembra</option>
+                    </select>
+                    <label htmlFor='tipo_animal'>Tipo de Animal: </label>
+                    <select
+                        onChange={(e) => setFiltros({ ...filtros, tipo_animal: e.target.value })}
+                        name='tipo_animal'
+                        id='tipo_animal'>
+                        <option value=''>Seleccione un tipo de animal</option>
+                        <option value='Perro'>Perro</option>
+                        <option value='Gato'>Gato</option>
                     </select>
                 </div>
                 <div>

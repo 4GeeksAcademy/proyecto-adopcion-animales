@@ -37,17 +37,20 @@ import Card from "./cardUsuario";
 
 export default function FilterAnimal({ animals, filtros }) {
     const animalsFiltered = animals.filter((animal) => {
-        if (filtros.provincia && filtros.genero) {
+        if (filtros.provincia && filtros.genero && filtros.tipo_animal) {
             return (
                 animal.asociacion_provincia === filtros.provincia &&
-                animal.genero === filtros.genero
+                animal.genero === filtros.genero &&
+                animal.tipo_animal === filtros.tipo_animal
             );
         } else if (filtros.provincia) {
             return animal.asociacion_provincia === filtros.provincia;
         } else if (filtros.genero) {
             return animal.genero === filtros.genero;
-        }
-        return animals;
+        } else if (filtros.tipo_animal) {
+            return animal.tipo_animal === filtros.tipo_animal;
+        } else
+            return animals;
     });
 
     return (
