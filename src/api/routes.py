@@ -315,7 +315,7 @@ def login_asociacion():
 # Devolvemos el token (string) al cliente para que en futuras peticiones a nuestros endpoints protegidos se pueda autentificar
     
     response_body = {
-        "msg": "Token create successfully",
+        "msg": "Token create successfully", 
         "token": access_token,
         "email": email
     }
