@@ -17,7 +17,7 @@ export default function ChooseSignUp() {
                                 With supporting text below as a natural lead-in to additional content.
                             </p>
                             <Link to="/signup">
-                                <button className="btn btn-primary">Registrarse</button>
+                                <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
                             </Link>
                         </div>
                     </div>
@@ -30,7 +30,7 @@ export default function ChooseSignUp() {
                                 With supporting text below as a natural lead-in to additional content.
                             </p>
                             <Link to="/signup2">
-                                <button className="btn btn-primary">Registrarse</button>
+                                <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
                             </Link>
                         </div>
                     </div>

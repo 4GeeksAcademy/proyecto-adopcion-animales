@@ -18,7 +18,7 @@ export default function ChooseSignUp() {
                             With supporting text below as a natural lead-in to additional content.
                         </p>
                         <Link to="/loginUsuario">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-dark btn-lg btn-block">Login</button>
                         </Link>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ export default function ChooseSignUp() {
                             With supporting text below as a natural lead-in to additional content.
                         </p>
                         <Link to="/loginAsociacion">
-                            <button className="btn btn-primary">Login</button>
+                            <button className="btn btn-dark btn-lg btn-block">Login</button>
                         </Link>
                     </div>
                 </div>

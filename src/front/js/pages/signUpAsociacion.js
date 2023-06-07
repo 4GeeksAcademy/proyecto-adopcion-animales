@@ -131,9 +131,9 @@ export default function SignUpAsociacion() {
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fa-solid fa-location-dot fa-lg me-3 fa-fw" />
                                                 <div className="form-input flex-fill mb-0">
-                                                    <select 
-                                                    className="form-select" aria-label="Default select example"
-                                                    value={form.provincia}  onChange={(e) => setForm({ ...form, provincia: e.target.value })}>
+                                                    <select
+                                                        className="form-select" aria-label="Default select example"
+                                                        value={form.provincia} onChange={(e) => setForm({ ...form, provincia: e.target.value })}>
                                                         <option selected>Selecciona una provincia</option>
                                                         <option value="A Coruña">A Coruña</option>
                                                         <option value="Álava">Álava</option>
@@ -246,11 +246,10 @@ export default function SignUpAsociacion() {
                 </label> */}
                                                 </div>
                                             </div>
-                                            <p class="text-center text-muted mb-5">Have already an account? <a href="/loginAsociacion"
-                                                class="fw-bold text-body"><u>Login here</u></a></p>
-
+                                            <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginAsociacion"
+                                                className="fw-bold text-body">Inicia sesión</a></p>
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="submit" className="btn btn-primary btn-lg">
+                                                <button type="submit" className="btn btn-dark btn-lg btn-block">
                                                     Registrarse
                                                 </button>
                                             </div>
