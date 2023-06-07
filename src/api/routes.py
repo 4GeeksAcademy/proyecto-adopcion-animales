@@ -3,7 +3,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
 
-from api.models import db, User, Animal, Adoption, Asociacion
+from api.models import db, User, Animal, Adoption, Asociacion, Favorite
 
 from api.utils import generate_sitemap, APIException
 
@@ -26,19 +26,30 @@ def handle_hello():
 
 #ANIMAL ENDPOINT -------------------------------------------------------------------
 #GET
+
+
 @api.route('/animal', methods=['GET'])
 @jwt_required()
 def get_animals():
 
 # Obtengo el usuario al que pertenece el token JWT
     current_user = get_jwt_identity()
-# ID de usuario
-    current_user_id = current_user['id']
 
-# Hacemos petición de todos los animales, filtrando por el usuario ya autentificado
-    allAnimals = Animal.query.filter_by(user_id=current_user_id).all()
+  # Verificar el tipo de usuario
+    if 'apellido' in current_user:
+        # Si es un USER (tiene la propiedad last_name)
+        allAnimals = Animal.query.all() 
+    elif 'CIF' in current_user:
+        # Asociación (tiene la propiedad CIF)
+        asociacion_id = current_user['id']
+        allAnimals = Animal.query.filter_by(asociacion_id = asociacion_id).all()   
+    else:
+        # Tipo de usuario no reconocido
+        return jsonify({'message': 'Unrecognized user type'}), 400
+
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
+
 
 #GET ID
 @api.route('/animal/<int:id>', methods=['GET'])
@@ -46,13 +57,13 @@ def get_animals():
 def get_animal_id(animal_id):
 
 # Obtengo el usuario al que pertenece el token JWT
-    current_user = get_jwt_identity()
+    current_asociacion = get_jwt_identity()
 
 # ID de usuario
-    current_user_id = current_user['id']
+    current_asociacion_id = current_asociacion['id']
     
 # Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
-    animal = Animal.query.filter_by(id=animal_id, user_id = current_user_id).first()
+    animal = Animal.query.filter_by(id=animal_id, asociacion_id = current_asociacion_id).first()
     
     if animal:
         return jsonify(animal.serialize()), 200
@@ -321,3 +332,39 @@ def login_asociacion():
     }
 
     return jsonify(response_body), 200
+
+# -------------------FAVORITE-------------------------
+
+# GET
+@api.route('/user/favorites', methods=['GET'])
+@jwt_required()
+def get_user_favorites():
+
+    # Obtengo el usuario al que pertenece el token JWT
+    current_user = get_jwt_identity()
+    current_user_id = current_user['id']
+
+    favorites = Favorite.query.filter_by(user_id=current_user_id).all()
+
+    result = [element.serialize() for element in favorites]
+            
+    return jsonify(result), 200
+
+# POST
+@api.route('/user/favorites', methods=['POST'])
+@jwt_required()
+def add_favorite():
+
+     # Obtengo el usuario al que pertenece el token JWT
+    current_user = get_jwt_identity()
+    current_user_id = current_user['id']
+
+    body= request.get_json()
+    animal_id = body['animal_id']
+
+    favorites = Favorite(user_id=current_user_id, animal_id=animal_id)
+
+    db.session.add(favorites)
+    db.session.commit()
+
+    return jsonify({'message':'Favorite added successfully'})
