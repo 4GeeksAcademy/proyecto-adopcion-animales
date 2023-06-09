@@ -88,7 +88,7 @@ export default function SingUpUsuario() {
                 <div className="row justify-content-center">
                   <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                     <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
-                      Registro de Usuarios
+                      Registro de Usuario
                     </p>
                     <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                       <div className="d-flex flex-row align-items-center mb-4">
@@ -182,11 +182,11 @@ export default function SingUpUsuario() {
                       </label> */}
                         </div>
                       </div>
-                      <p className="text-center text-muted mb-5">Have already an account? <a href="/loginUsuario"
-                        className="fw-bold text-body"><u>Login here</u></a></p>
+                      <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
+                        className="fw-bold text-body">Inicia sesión</a></p>
 
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" className="btn btn-primary btn-lg">
+                        <button type="submit" className="btn btn-dark btn-lg btn-block">
                           Registrarse
                         </button>
                       </div>

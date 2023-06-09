@@ -266,7 +266,7 @@ export default function SignUpAsociacion() {
                                                 className={`${handleColor()} fw-bold text-body`}><u>Login here</u></a></p>
 
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button type="submit" className="btn btn-primary btn-lg">
+                                                <button type="submit" className="btn btn-dark btn-lg btn-block">
                                                     Registrarse
                                                 </button>
                                             </div>
