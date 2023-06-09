@@ -43,7 +43,7 @@ export const Navbar = () => {
 		<nav className="navbar navbar-expand-lg navbar-light" id="navbar">
 			<div className="container-fluid" >
 				<Link to='/' className="navbar-brand">
-					<span className="navbar-brand mb-0 h1">No Tenemos Nombre Muchachos</span>
+					<span className="navbar-brand mb-0 h1">Appatitas</span>
 				</Link>
 				<button
 					className="navbar-toggler"
