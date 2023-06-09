@@ -5,6 +5,7 @@ import Card from "./cardUsuario";
 
 export default function FilterAnimal({ animals, filtros }) {
     const animalsFiltered = animals.filter((animal) => {
+
         if (filtros.provincia && filtros.genero && filtros.tipo_animal) {
             return (
                 animal.asociacion_provincia === filtros.provincia &&
@@ -18,7 +19,7 @@ export default function FilterAnimal({ animals, filtros }) {
         } else if (filtros.tipo_animal) {
             return animal.tipo_animal === filtros.tipo_animal;
         } else
-            return animals;
+            return true;
     });
 
     return (

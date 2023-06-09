@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Context } from "../store/appContext";
+import { useNavigate } from "react-router-dom";
 
 export default function SignUpAsociacion() {
     const initialForm = {
@@ -12,6 +14,10 @@ export default function SignUpAsociacion() {
 
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState({});
+
+    const navigate = useNavigate();
+
+    const { store, actions } = useContext(Context);
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -71,6 +77,8 @@ export default function SignUpAsociacion() {
 
         setErrors(newError);
         setForm({ ...initialForm });
+        navigate("/");
+        alert("Registro realizado con éxito");
     };
 
     let styles = {
@@ -78,16 +86,24 @@ export default function SignUpAsociacion() {
         color: "#dc3545",
     };
 
+    const handleColor = () => {
+        if (store.darkMode) {
+            return "dark"
+        } else {
+            return "light"
+        }
+    }
+
     return (
         <div className="container">
             <div className="container h-100">
                 <div className="row d-flex justify-content-center align-items-center h-100">
                     <div className="col-lg-12 col-xl-11">
-                        <div className="card text-black shadow" style={{ borderRadius: 25 }}>
+                        <div className={`${handleColor()} card text-black shadow`} style={{ borderRadius: 25 }}>
                             <div className="card-body p-md-5">
                                 <div className="row justify-content-center">
                                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                        <p className="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">
+                                        <p className={`${handleColor()} text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4`}>
                                             Registro de Asociacion
                                         </p>
                                         <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
@@ -246,8 +262,9 @@ export default function SignUpAsociacion() {
                 </label> */}
                                                 </div>
                                             </div>
-                                            <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginAsociacion"
-                                                className="fw-bold text-body">Inicia sesión</a></p>
+                                            <p className={`${handleColor()} text-center  mb-5`}>Have already an account? <a href="/loginAsociacion"
+                                                className={`${handleColor()} fw-bold text-body`}><u>Login here</u></a></p>
+
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button type="submit" className="btn btn-dark btn-lg btn-block">
                                                     Registrarse
@@ -268,7 +285,7 @@ export default function SignUpAsociacion() {
                     </div>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
