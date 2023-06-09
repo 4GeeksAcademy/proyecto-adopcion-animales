@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Navigate, useNavigate } from "react-router-dom";
 
 export default function SingUpUsuario() {
   const initialForm = {
@@ -11,6 +12,7 @@ export default function SingUpUsuario() {
 
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -66,6 +68,9 @@ export default function SingUpUsuario() {
 
     setErrors(newError);
     setForm({ ...initialForm });
+    navigate("/");
+    alert("Registro realizado con éxito");
+
   };
 
   let styles = {

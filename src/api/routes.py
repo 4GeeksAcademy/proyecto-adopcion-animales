@@ -61,24 +61,38 @@ def get_animals_public():
 
 
 
-#GET ID
+##############################################################################################################
+
 @api.route('/animal/<int:id>', methods=['GET'])
 @jwt_required()
-def get_animal_id(animal_id):
+def get_animal_id(id):
+    current_user = get_jwt_identity()
+    animal = Animal.query.get(id)
 
-# Obtengo el usuario al que pertenece el token JWT
-    current_asociacion = get_jwt_identity()
-
-# ID de usuario
-    current_asociacion_id = current_asociacion['id']
-    
-# Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
-    animal = Animal.query.filter_by(id=animal_id, asociacion_id = current_asociacion_id).first()
-    
     if animal:
         return jsonify(animal.serialize()), 200
     else:
         return jsonify({"message": "Animal not found"}), 404
+
+
+#GET ID
+# @api.route('/animal/<int:id>', methods=['GET'])
+# @jwt_required()
+# def get_animal_id(animal_id):
+
+# # Obtengo el usuario al que pertenece el token JWT
+#     current_asociacion = get_jwt_identity()
+
+# # ID de usuario
+#     current_asociacion_id = current_asociacion['id']
+    
+# # Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
+#     animal = Animal.query.filter_by(id=animal_id, asociacion_id = current_asociacion_id).first()
+    
+#     if animal:
+#         return jsonify(animal.serialize()), 200
+#     else:
+#         return jsonify({"message": "Animal not found"}), 404
 
 #POST
 @api.route('/animal', methods=['POST'])
