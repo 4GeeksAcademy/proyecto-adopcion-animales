@@ -1,3 +1,36 @@
+.dark-mode {
+  background-color: #1e1e1e;
+  color: #ffffff;
+}
+
+.dark-card {
+  background-color: #656565;
+  color: #ffffff;
+  max-width: 55rem;
+  margin: 2rem auto;
+}
+
+
+.ligth-card{
+  background-color: #ffffff;
+  color: #000000;
+  max-width: 55rem;
+  margin: 2rem auto;
+}
+.dark {
+  background-color: #656565;
+  color: #ffffff;
+}
+
+
+.ligth{
+  background-color: #ffffff;
+  color: #000000;
+}
+
+.navbar{
+  background-color: #ffffff;
+}
 /* 
     General Styles used on every website (Don't Repeat Yourself)
 */

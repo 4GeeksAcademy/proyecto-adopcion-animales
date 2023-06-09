@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import FilterAnimalHome from '../component/filterAnimalHome';
 
 export const SearchBar = () => {
+  
+
   const [animals, setAnimals] = useState([]);
   const [filtros, setFiltros] = useState({
     provincia: '',

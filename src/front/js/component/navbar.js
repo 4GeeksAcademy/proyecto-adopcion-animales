@@ -2,11 +2,18 @@
 
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 import "../../styles/component.css"
 
 export const Navbar = () => {
 	const [tokenExists, setTokenExists] = useState(false);
 	const navigate = useNavigate();
+
+	const { store, actions } = React.useContext(Context);
+
+	const handleToggleDarkMode = () => {
+		actions.toggleDarkMode();
+	};
 
 	useEffect(() => {
 		const token = localStorage.getItem("token");
@@ -22,6 +29,15 @@ export const Navbar = () => {
 		navigate("/");
 		setTokenExists(false);
 	};
+
+	const handleColor = () => {
+		if (store.darkMode) {
+			return "navbar"
+		} else {
+			return "navbar-light"
+		}
+	}
+
 
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light" id="navbar">
@@ -39,6 +55,9 @@ export const Navbar = () => {
 					aria-label="Toggle navigation"
 				>
 					<span className="navbar-toggler-icon" />
+				</button>
+				<button onClick={handleToggleDarkMode}>
+					{store.darkMode ? "Modo Claro" : "Modo Oscuro"}
 				</button>
 				<div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
 					{!tokenExists && (
