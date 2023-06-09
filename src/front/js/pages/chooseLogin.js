@@ -35,7 +35,7 @@ export default function ChooseSignUp() {
                 </div>
                 <div className="col-sm-6">
                     <div className="card">
-                        <div className="card-body">
+                        <div className={`${handleColor()} card-body`}>
                             <h2 className="card-title">Asociación</h2>
                             <p className="card-text">
                                 With supporting text below as a natural lead-in to additional content.
