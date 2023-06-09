@@ -3,6 +3,7 @@ import React, { useState } from "react";
 export default function AnimalForm() {
   const initialForm = {
     nombre: "",
+    tipo_animal: "",
     raza: "",
     edad: "",
     genero: "",
@@ -10,6 +11,9 @@ export default function AnimalForm() {
   };
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
+
+  const token = localStorage.getItem("token");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +25,12 @@ export default function AnimalForm() {
     } else if (!regexName.test(form.nombre.trim())) {
       newError.nombre =
         "El campo 'Nombre' sólo acepta letras y espacios en blanco";
+    }
+    if (!form.tipo_animal.trim()) {
+      newError.tipo_animal = "El campo tipo de animal es requerido";
+    } else if (!regexName.test(form.tipo_animal.trim())) {
+      newError.tipo_animal =
+        "El campo tipo de animal sólo acepta letras y espacios en blanco";
     }
     if (!form.raza.trim()) {
       newError.raza = "El campo raza es requerido";
@@ -39,7 +49,7 @@ export default function AnimalForm() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(form),
         });
@@ -71,6 +81,18 @@ export default function AnimalForm() {
           {errors.nombre && <p className="danger">{errors.nombre}</p>}
         </div>
         <div>
+          <label htmlFor="tipo_animal">Tipo de Animal:</label>
+          <input
+            type="text"
+            id="tipo_animal"
+            value={form.tipo_animal}
+            onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+            required
+          />
+          {errors.tipo_animal && <p className="danger">{errors.tipo_animal}</p>}
+        </div>
+
+        <div>
           <label htmlFor="raza">Raza:</label>
           <input
             type="text"
@@ -99,8 +121,8 @@ export default function AnimalForm() {
               <input
                 type="radio"
                 name="genero"
-                value="macho"
-                checked={form.genero === "macho"}
+                value="Macho"
+                checked={form.genero === "Macho"}
                 onChange={(e) => setForm({ ...form, genero: e.target.value })}
               />
               Macho
@@ -111,8 +133,8 @@ export default function AnimalForm() {
               <input
                 type="radio"
                 name="genero"
-                value="hembra"
-                checked={form.genero === "hembra"}
+                value="Hembra"
+                checked={form.genero === "Hembra"}
                 onChange={(e) => setForm({ ...form, genero: e.target.value })}
               />
               Hembra
@@ -135,3 +157,8 @@ export default function AnimalForm() {
     </div>
   );
 }
+
+
+
+
+//////////////////////////////////

@@ -20,6 +20,7 @@ import LoginUsuario from "./pages/loginUsuario";
 import LoginAsociacion from "./pages/loginAsociacion";
 import Asociacion from "./pages/asociacion";
 import Usuario from "./pages/usuario";
+import AnimalForm from "./pages/animalForm";
 
 //create your first component
 const Layout = () => {
@@ -47,6 +48,7 @@ const Layout = () => {
                         <Route element={<LoginAsociacion />} path="/loginAsociacion" />
                         <Route element={<Asociacion />} path="/asociacion" />
                         <Route element={<Usuario />} path="/usuario" />
+                        <Route element={<AnimalForm />} path="/animalForm" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
