@@ -63,6 +63,18 @@ def get_animals_public():
 
 ##############################################################################################################
 
+@api.route('/animal_public/<int:id>', methods=['GET'])
+def get_animal_public_id(id):
+    
+    animal = Animal.query.get(id)
+
+    if animal:
+        return jsonify(animal.serialize()), 200
+    else:
+        return jsonify({"message": "Animal not found"}), 404
+
+
+
 @api.route('/animal/<int:id>', methods=['GET'])
 @jwt_required()
 def get_animal_id(id):

@@ -1,4 +1,6 @@
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AnimalForm() {
   const initialForm = {
@@ -55,14 +57,18 @@ export default function AnimalForm() {
         });
         const data = await response.json();
         console.log(data);
-        if (data.success) {
-          setForm(initialForm);
-          setErrors(newError);
-        }
+
       } catch (error) {
         console.log(error);
       }
     }
+    setErrors(newError);
+    setForm({ ...initialForm });
+
+  };
+  let styles = {
+    fontWeight: "bold",
+    color: "#dc3545",
   };
 
   return (
@@ -78,7 +84,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, nombre: e.target.value })}
             required
           />
-          {errors.nombre && <p className="danger">{errors.nombre}</p>}
+          {errors.nombre && <p style={styles}>{errors.nombre}</p>}
         </div>
         <div>
           <label htmlFor="tipo_animal">Tipo de Animal:</label>
@@ -89,7 +95,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
             required
           />
-          {errors.tipo_animal && <p className="danger">{errors.tipo_animal}</p>}
+          {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
         </div>
 
         <div>
@@ -101,7 +107,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, raza: e.target.value })}
             required
           />
-          {errors.raza && <p className="danger">{errors.raza}</p>}
+          {errors.raza && <p style={styles}>{errors.raza}</p>}
         </div>
         <div>
           <label htmlFor="edad">Edad:</label>
@@ -112,7 +118,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, edad: e.target.value })}
             required
           />
-          {errors.edad && <p className="danger">{errors.edad}</p>}
+          {errors.edad && <p style={styles}>{errors.edad}</p>}
         </div>
         <div>
           <span>Género</span>
@@ -154,6 +160,7 @@ export default function AnimalForm() {
           <button type="submit">Enviar</button>
         </div>
       </form>
+      <Link to="/asociacion">Volver Atras</Link>
     </div>
   );
 }
@@ -161,4 +168,4 @@ export default function AnimalForm() {
 
 
 
-//////////////////////////////////
+

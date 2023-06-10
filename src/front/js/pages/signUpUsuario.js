@@ -58,7 +58,6 @@ export default function SingUpUsuario() {
             password: form.password,
           }),
         });
-
         const data = await response.json();
         console.log(data);
       } catch (error) {
