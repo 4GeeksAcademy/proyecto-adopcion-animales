@@ -1,22 +1,22 @@
 import React, { useContext } from "react";
-import { Context } from "../store/appContext";
 import "../../styles/home.css";
-// import SignUp from "./signUp";
-// import Login from "./login";
-// import AnimalForm from "./animalForm";
-// import Favorite from "./favorite";
 
 import "../../styles/home.css";
 import { Carousel } from "../component/carousel";
+import InfoAdoption from "../component/infoAdoption";
+import { SearchBar } from "../component/searchBar";
 
 export const Home = () => {
-  const { store, actions } = useContext(Context);
+
+
+
 
   return (
-    <div className="text-center mt-5">
-
+    <div className={"text-center"}>
       <Carousel />
-      {/* <AnimalForm /> */}
+      <SearchBar />
+      <InfoAdoption></InfoAdoption>
+
     </div>
   );
 

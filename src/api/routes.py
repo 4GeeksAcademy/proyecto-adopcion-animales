@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 from api.models import db, User, Animal, Adoption, Asociacion, Favorite
+from api.models import db, User, Animal, Adoption, Asociacion, Favorite
 
 from api.utils import generate_sitemap, APIException
 
@@ -28,6 +29,8 @@ def handle_hello():
 
 #ANIMAL ENDPOINT -------------------------------------------------------------------
 #GET
+
+
 @api.route('/animal', methods=['GET'])
 @jwt_required()
 def get_animals():
@@ -36,7 +39,7 @@ def get_animals():
     current_user = get_jwt_identity()
 
   # Verificar el tipo de usuario
-    if 'last_name' in current_user:
+    if 'apellido' in current_user:
         # Si es un USER (tiene la propiedad last_name)
         allAnimals = Animal.query.all() 
     elif 'CIF' in current_user:
@@ -50,30 +53,49 @@ def get_animals():
     result = [element.serialize() for element in allAnimals]
     return jsonify(result), 200
 
-#GET ID
+# Ruta pública para obtener todos los animales en la Home
+
+@api.route('/animal_public', methods=['GET'])
+def get_animals_public():
+    
+        allAnimals = Animal.query.all()
+        result = [element.serialize() for element in allAnimals]
+        return jsonify(result), 200
+
+
+
+##############################################################################################################
+
 @api.route('/animal/<int:id>', methods=['GET'])
 @jwt_required()
-def get_animal_id(animal_id):
-
-# Obtengo el usuario al que pertenece el token JWT
+def get_animal_id(id):
     current_user = get_jwt_identity()
-
-# Verificar el tipo de usuario
-    if 'last_name' in current_user:
-        # Si es un USER (tiene la propiedad last_name)
-        animal = Animal.query.get(animal_id)
-    elif 'CIF' in current_user:
-        # Asociación (tiene la propiedad CIF)
-        asociacion_id = current_user['CIF']
-        animal = Animal.query.filter_by(asociacion_id=asociacion_id, animal_id=animal_id ).first()    
-    else:
-        # Tipo de usuario no reconocido
-        return jsonify({'message': 'Unrecognized user type'}), 400
+    animal = Animal.query.get(id)
 
     if animal:
         return jsonify(animal.serialize()), 200
     else:
         return jsonify({"message": "Animal not found"}), 404
+
+
+#GET ID
+# @api.route('/animal/<int:id>', methods=['GET'])
+# @jwt_required()
+# def get_animal_id(animal_id):
+
+# # Obtengo el usuario al que pertenece el token JWT
+#     current_asociacion = get_jwt_identity()
+
+# # ID de usuario
+#     current_asociacion_id = current_asociacion['id']
+    
+# # Filtramos por el user ya autentificado y añadimos id=id para buscar al animal en concreto.
+#     animal = Animal.query.filter_by(id=animal_id, asociacion_id = current_asociacion_id).first()
+    
+#     if animal:
+#         return jsonify(animal.serialize()), 200
+#     else:
+#         return jsonify({"message": "Animal not found"}), 404
 
 #POST
 @api.route('/animal', methods=['POST'])
@@ -137,12 +159,12 @@ def post_user():
     body = request.get_json()
     print("AQUÍ ESTÁ EL BODY: ", body)
 
-    name = body['name']
-    last_name = body['last_name']
+    nombre = body['nombre']
+    apellido = body['apellido']
     email = body['email']
     password = body['password']
 
-    new_user = User(name=name, last_name=last_name, email=email, password=password)
+    new_user = User(nombre=nombre, apellido=apellido, email=email, password=password)
 
     db.session.add(new_user)
     db.session.commit()
@@ -201,7 +223,7 @@ def delete_user(user_id):
         return jsonify({'message': f'User: {user_id} not found'}), 404
     
     
-#ADOPTION
+#ADOPTION--------------------------------------------------------
 
 @api.route('/adoption', methods=['GET'])
 def get_adoptions():
@@ -343,7 +365,6 @@ def login_asociacion():
 
     return jsonify(response_body), 200
 
-
 # -------------------FAVORITE-------------------------
 
 # GET
@@ -379,7 +400,3 @@ def add_favorite():
     db.session.commit()
 
     return jsonify({'message':'Favorite added successfully'})
-
-    
-
-

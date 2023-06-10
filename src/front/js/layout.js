@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "./store/appContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -17,17 +18,20 @@ import SingUpUsuario from "./pages/signUpUsuario";
 import ChooseLogin from "./pages/chooseLogin";
 import LoginUsuario from "./pages/loginUsuario";
 import LoginAsociacion from "./pages/loginAsociacion";
+import Asociacion from "./pages/asociacion";
+import Usuario from "./pages/usuario";
 
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+    const { store, actions } = useContext(Context);
     const basename = process.env.BASENAME || "";
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
-        <div>
+        <div className={store.darkMode ? "dark-mode" : ""}>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
@@ -41,6 +45,9 @@ const Layout = () => {
                         <Route element={<SingUpAsociacion />} path="/signup2" />
                         <Route element={<LoginUsuario />} path="/loginUsuario" />
                         <Route element={<LoginAsociacion />} path="/loginAsociacion" />
+                        <Route element={<Asociacion />} path="/asociacion" />
+                        <Route element={<Usuario />} path="/usuario" />
+                        <Route element={<Favorite />} path="/favorite" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
