@@ -1,4 +1,4 @@
-// Card para la vista de los animales en la home
+// Card para la vista de los animales en la home, al hacer click en la card se redirige al componente animalHomeDetail
 
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
@@ -16,7 +16,7 @@ export default function CardHome({ animal }) {
         }
     }
     return (
-        <Link to={`animal${animal.id}`}>
+        <Link to={`animalHome${animal.id}`}>
             <div className={handleColor()}>
                 <img src={animal.image_url} alt={animal.nombre} />
                 <h2>Nombre: {animal.nombre}</h2>

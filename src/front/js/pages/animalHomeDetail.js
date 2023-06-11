@@ -6,14 +6,11 @@ export default function AnimalHomeDetail() {
     const { id } = useParams();
     const [animal, setAnimal] = useState([]);
 
-    const token = localStorage.getItem("token");
-
     const fetchAnimal = async () => {
-        const response = await fetch(process.env.BACKEND_URL + `/api/animal/${id}`, {
+        const response = await fetch(process.env.BACKEND_URL + `/api/animal_public/${id}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json',
-                Authorization: `Bearer ${token}`,
             },
         })
         const data = await response.json();
@@ -26,9 +23,8 @@ export default function AnimalHomeDetail() {
 
     return (
         <>
-            <Link to="/usuario">Volver Atrás</Link>
+            <Link to="/">Volver Atrás</Link>
             <div>
-                <h1>Card Usuario</h1>
                 <h2>Nombre: {animal.nombre}</h2>
                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
                 <img src={animal.image_url} alt={animal.nombre} />
