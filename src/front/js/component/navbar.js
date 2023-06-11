@@ -82,3 +82,10 @@ export const Navbar = () => {
 		</nav>
 	);
 };
+
+
+// Botón favorites
+{/* <div className="ml-auto">
+<Link to="/favorites">
+	<button className="btn btn-primary">FAVORITOS</button>
+</Link> */}

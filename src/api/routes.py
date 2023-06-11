@@ -226,15 +226,29 @@ def delete_user(user_id):
 #ADOPTION--------------------------------------------------------
 
 @api.route('/adoption', methods=['GET'])
+@jwt_required()
 def get_adoptions():
-     all_adoptions = Adoption.query.all()
+     current_user = get_jwt_identity()
+     if 'apellido' in 'current_user':
+         user_id = current_user['id']
+         all_adoptions = Adoption.query.filter_by(user_id = user_id).all()
+     elif 'CIF' in 'current_user':
+         asociacion_id = current_user['id']
+         all_adoptions = Adoption.query.filter_by(asociacion_id = asociacion_id).all()
+     else:
+         return jsonify({'message': 'Adoption not found'})
+             
+     
      result = [element.serialize() for element in all_adoptions]
      print(result)
      return jsonify(result), 200
 
 
 @api.route('/adoption/<int:id>', methods=['GET'])
+@jwt_required()
 def get_one_adoption(id):
+     
+     current_user = get_jwt_identity()
 
      adoption = Adoption.query.get(id)
      if adoption:
@@ -244,7 +258,11 @@ def get_one_adoption(id):
     
 
 @api.route('/adoption/user/<int:user_id>/animal/<int:animal_id>', methods=['POST'])
+@jwt_required()
 def post_adoption(user_id, animal_id):
+
+    current_user=get_jwt_identity()
+    
 
     body = request.get_json()
     user_id = body['user_id']
