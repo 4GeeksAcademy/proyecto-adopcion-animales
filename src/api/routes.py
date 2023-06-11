@@ -261,8 +261,8 @@ def get_one_adoption(id):
 @jwt_required()
 def post_adoption(user_id, animal_id):
 
-    current_user=get_jwt_identity()
-    
+    current_user = get_jwt_identity()
+
 
     body = request.get_json()
     user_id = body['user_id']
@@ -288,8 +288,10 @@ def post_adoption(user_id, animal_id):
 
 
 @api.route('/adoption/<int:adoption_id>', methods=['DELETE'])
+@jwt_required()
 def delete_adoption(adoption_id):
-    
+
+    current_user = get_jwt_identity()
     adoption = Adoption.query.get(adoption_id)
 
     if adoption:
