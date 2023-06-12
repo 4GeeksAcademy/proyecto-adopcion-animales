@@ -16,6 +16,7 @@ export default function CardHome({ animal }) {
         }
     }
     return (
+        
         <Link to={`animalHome${animal.id}`}>
             <div className={handleColor()}>
                 <img src={animal.image_url} alt={animal.nombre} />
