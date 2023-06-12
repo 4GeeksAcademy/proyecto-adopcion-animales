@@ -120,9 +120,6 @@ export default function SignUpAsociacion() {
                                                         required
                                                     />
                                                     {errors.nombre && <p style={styles}>{errors.nombre}</p>}
-                                                    {/* <label className="form-label" htmlFor="name">
-                  Nombre
-                </label> */}
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
@@ -138,12 +135,8 @@ export default function SignUpAsociacion() {
                                                         required
                                                     />
                                                     {errors.email && <p style={styles}>{errors.email}</p>}
-                                                    {/* <label className="form-label" htmlFor="form3Example3c">
-                  Email
-                </label> */}
                                                 </div>
                                             </div>
-
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fa-solid fa-location-dot fa-lg me-3 fa-fw" />
                                                 <div className="form-input flex-fill mb-0">
@@ -201,12 +194,8 @@ export default function SignUpAsociacion() {
                                                         <option value="Zamora">Zamora</option>
                                                         <option value="Zaragoza">Zaragoza</option>
                                                     </select>
-                                                    {/* <label className="form-label" htmlFor="form3Example3c">
-                  Provincia
-                </label> */}
                                                 </div>
                                             </div>
-
                                             <div className="d-flex flex-row align-items-center mb-4">
                                                 <i className="fas fa-user fa-lg me-3 fa-fw" />
                                                 <div className="form-outline flex-fill mb-0">
@@ -220,9 +209,6 @@ export default function SignUpAsociacion() {
                                                         required
                                                     />
                                                     {errors.CIF && <p style={styles}>{errors.CIF}</p>}
-                                                    {/* <label className="form-label" htmlFor="name">
-                  CIF
-                </label> */}
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
@@ -237,9 +223,6 @@ export default function SignUpAsociacion() {
                                                         onChange={(e) => setForm({ ...form, password: e.target.value })}
                                                         required
                                                     />
-                                                    {/* <label className="form-label" htmlFor="form3Example4c">
-                  Contraseña
-                </label> */}
                                                 </div>
                                             </div>
                                             <div className="d-flex flex-row align-items-center mb-4">
@@ -257,14 +240,10 @@ export default function SignUpAsociacion() {
                                                         required
                                                     />
                                                     {errors.password && <p style={styles}>{errors.password}</p>}
-                                                    {/* <label className="form-label" htmlFor="form3Example4cd">
-                Confirmar Contraseña
-                </label> */}
                                                 </div>
                                             </div>
                                             <p className="text-center  mb-5">¿Ya tienes cuenta?<a href="/loginAsociacion"
                                                 className="fw-bold text-body"><u>Iniciar sesión</u></a></p>
-
                                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                 <button type="submit" className="btn btn-primary btn-lg">
                                                     Registrarse
