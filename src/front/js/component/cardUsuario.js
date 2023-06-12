@@ -1,6 +1,6 @@
 
 
-// // // Card para la vista de usuario
+// // // Card para la vista de usuario, al hacer click en el animal te redirige al componente animalDetail
 
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
