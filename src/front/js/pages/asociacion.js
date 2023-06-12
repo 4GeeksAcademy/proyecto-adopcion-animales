@@ -1,5 +1,6 @@
 
 import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 
 export default function Asociacion() {
     const [animals, setAnimals] = useState([])
@@ -26,6 +27,9 @@ export default function Asociacion() {
         <>
             <div>
                 <h1>Recuperando todos los animales de la Asociación que hizo login</h1>
+                <Link to="/animalForm">
+                    <button className="btn btn-primary">Añadir animal</button>
+                </Link>
                 {animals.map((animal, index) => {
                     return (
                         <div key={index}>

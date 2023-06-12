@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext } from 'react';
 import FilterAnimalHome from '../component/filterAnimalHome';
 
 export const SearchBar = () => {
-  
+
 
   const [animals, setAnimals] = useState([]);
   const [filtros, setFiltros] = useState({
@@ -97,6 +97,7 @@ export const SearchBar = () => {
         </select>
       </form>
       <div>
+        <h2>Estos son los últimos animeles añadidos a la plataforma:</h2>
         <FilterAnimalHome animals={animals} filtros={filtros} />
       </div>
     </>

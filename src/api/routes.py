@@ -63,6 +63,18 @@ def get_animals_public():
 
 ##############################################################################################################
 
+@api.route('/animal_public/<int:id>', methods=['GET'])
+def get_animal_public_id(id):
+    
+    animal = Animal.query.get(id)
+
+    if animal:
+        return jsonify(animal.serialize()), 200
+    else:
+        return jsonify({"message": "Animal not found"}), 404
+
+
+
 @api.route('/animal/<int:id>', methods=['GET'])
 @jwt_required()
 def get_animal_id(id):
@@ -96,11 +108,15 @@ def get_animal_id(id):
 
 #POST
 @api.route('/animal', methods=['POST'])
+@jwt_required()
 def post_animal():
+
+    current_asociacion = get_jwt_identity()
+    current_asociacion_id = current_asociacion['id']
 
     data = request.get_json()
 
-    animal = Animal(nombre=data['nombre'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'])
+    animal = Animal(nombre=data['nombre'], tipo_animal = data['tipo_animal'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'], asociacion_id = current_asociacion_id)
 
     db.session.add(animal)
     db.session.commit()

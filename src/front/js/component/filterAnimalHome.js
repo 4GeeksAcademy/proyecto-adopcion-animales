@@ -1,6 +1,6 @@
 
 import React from "react";
-import Card from "./cardUsuario";
+import CardHome from "./cardHome";
 
 export default function FilterAnimalHome({ animals, filtros }) {
     const animalsFiltered = animals.filter((animal) => {
@@ -20,7 +20,7 @@ export default function FilterAnimalHome({ animals, filtros }) {
         <div>
             {animalsFiltered.length > 0 ? (
                 animalsFiltered.map((animal) => (
-                    <Card key={animal.id} animal={animal} />
+                    <CardHome key={animal.id} animal={animal} />
                 ))
             ) : (
                 <h2>No hay resultados</h2>
