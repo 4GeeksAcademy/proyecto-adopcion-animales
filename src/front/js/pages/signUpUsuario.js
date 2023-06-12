@@ -191,11 +191,8 @@ export default function SingUpUsuario() {
                       </label> */}
                           </div>
                         </div>
-
-                      </div>
                       <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
-                        className="fw-bold text-body">Inicia sesión</a></p>
-
+                        className="fw-bold text-body"><u>Inicia sesión</u></a></p>
                       <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                         <button type="submit" className="btn btn-dark btn-lg btn-block">
                           Registrarse
@@ -215,6 +212,7 @@ export default function SingUpUsuario() {
             </div>
           </div>
         </div>
+      </div>
       </div>
     </>
   );

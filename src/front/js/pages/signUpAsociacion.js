@@ -296,6 +296,7 @@ export default function SignUpAsociacion() {
                     </div>
                 </div>
             </div >
+            </div>
         </>
     )
 }
