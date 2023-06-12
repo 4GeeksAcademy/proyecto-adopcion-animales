@@ -191,23 +191,24 @@ export default function SingUpUsuario() {
                       </label> */}
                           </div>
                         </div>
-                        <p className="text-center text-muted mb-5">Have already an account? <a href="/loginUsuario"
-                          className="fw-bold text-body"><u>Login here</u></a></p>
 
-                        <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button type="submit" className="btn btn-primary btn-lg">
-                            Registrarse
-                          </button>
-                        </div>
-                      </form>
-                    </div>
-                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                      <img
-                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                        className="img-fluid"
-                        alt="Sample image"
-                      />
-                    </div>
+                      </div>
+                      <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
+                        className="fw-bold text-body">Inicia sesión</a></p>
+
+                      <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                        <button type="submit" className="btn btn-dark btn-lg btn-block">
+                          Registrarse
+                        </button>
+                      </div>
+                    </form>
+                  </div>
+                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                    <img
+                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                      className="img-fluid"
+                      alt="Sample image"
+                    />
                   </div>
                 </div>
               </div>
