@@ -30,9 +30,9 @@ export default function Asociacion() {
                 <Link to="/animalForm">
                     <button className="btn btn-primary">Añadir animal</button>
                 </Link>
-                {animals.map((animal, index) => {
+                {animals.map((animal) => {
                     return (
-                        <div key={index}>
+                        <div key={animal.id}>
                             <h2>Nombre: {animal.nombre}</h2>
                             <h3>Nombre de la asociación: {animal.asociacion_nombre
                             }</h3>
