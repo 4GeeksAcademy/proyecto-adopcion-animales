@@ -71,11 +71,19 @@ export const Navbar = () => {
 						</div>
 					)}
 					{tokenExists && (
-						<div className="navbar-nav">
-							<Link to="/">
-								<button onClick={handleLogout} className="btn btn-light m-1">Cerrar Sesión</button>
-							</Link>
+						<div>
+							<div className="navbar-nav">
+								<Link to="/">
+									<button onClick={handleLogout} className="btn btn-light m-1">Cerrar Sesión</button>
+								</Link>
+							</div>
+							<div className="ml-auto">
+								<Link to="/favorite">
+									<button className="btn btn-primary">FAVORITOS</button>
+								</Link>
+							</div>
 						</div>
+
 					)}
 				</div>
 			</div>
@@ -84,8 +92,3 @@ export const Navbar = () => {
 };
 
 
-// Botón favorites
-{/* <div className="ml-auto">
-<Link to="/favorites">
-	<button className="btn btn-primary">FAVORITOS</button>
-</Link> */}

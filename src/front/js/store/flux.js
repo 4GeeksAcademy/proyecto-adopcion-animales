@@ -75,6 +75,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(getStore().idAnimal);
 			},
 			addFavorite:() => {
+				
 				const store = getStore();
 				const newFavorite = store.idAnimal;
 				setStore({favorites:[...store.favorites, newFavorite]});
@@ -84,6 +85,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				const updatedArray = store.favorites.filter((favorite)=> favorite !== fav);
 				setStore({favorites: updatedArray});
+
+				console.log(getStore().favorites);
 
 			}
 		}
