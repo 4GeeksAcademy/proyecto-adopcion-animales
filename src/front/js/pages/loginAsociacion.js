@@ -62,7 +62,7 @@ export default function LoginAsociacion() {
                               className="fas fa-cubes fa-2x me-3"
                               style={{ color: "#ff6219" }}
                             />
-                            <span className="h1 fw-bold mb-0">Asociacion</span>
+                            <span className="h1 fw-bold mb-3">Asociación</span>
                           </div>
                           {loginError && (
                             <p style={styles}>Usuario o contraseña incorrectos</p>
@@ -102,7 +102,7 @@ export default function LoginAsociacion() {
                             </button>
                           </div>
                           <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
-                            ¿No tienes cuenta?{" "}
+                          ¿No tienes cuenta?{" "}
                             <a href="/signup2" style={{ color: "#393f81" }}>
                               Registrate
                             </a>
