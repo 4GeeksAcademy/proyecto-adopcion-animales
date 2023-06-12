@@ -124,6 +124,32 @@ def post_animal():
     response_body = {"msg": "El animal fué añadido exitosamente"}
     return jsonify(response_body), 200
 
+#PUT
+@api.route('/animal/<int:animal_id>', methods=['PUT'])
+@jwt_required()
+def put_animal(animal_id):
+    
+        current_user = get_jwt_identity()
+        current_user_id = current_user['id']
+    
+        animal = Animal.query.filter_by(id=animal_id, user_id=current_user_id).first()
+    
+        if(animal):
+            data = request.get_json()
+            animal.nombre = data['nombre']
+            animal.raza = data['raza']
+            animal.edad = data['edad']
+            animal.genero = data['genero']
+            animal.descripcion = data['descripcion']
+            animal.tipo_animal = data['tipo_animal']
+            db.session.commit()
+            return jsonify(animal.serialize()), 200
+        else:
+            return jsonify({'message': f'Animal: {animal_id} not found'}), 404
+
+
+
+
 #DELETE
 @api.route('/animal/<int:animal_id>', methods=['DELETE'])
 @jwt_required()
@@ -203,7 +229,8 @@ def login_user():
     response_body = {
         "msg": "Token create successfully",
         "token": access_token,
-        "email": email
+        "email": email,
+        "user_id": user.id 
     }
 
     return jsonify(response_body), 200

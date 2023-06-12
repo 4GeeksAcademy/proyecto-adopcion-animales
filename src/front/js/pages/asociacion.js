@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import CardAsociacion from "../component/cardAsociacion";
 
 export default function Asociacion() {
     const [animals, setAnimals] = useState([])
@@ -32,20 +33,7 @@ export default function Asociacion() {
                 </Link>
                 {animals.map((animal) => {
                     return (
-                        <div key={animal.id}>
-                            <h2>Nombre: {animal.nombre}</h2>
-                            <h3>Nombre de la asociación: {animal.asociacion_nombre
-                            }</h3>
-                            <img src={animal.image_url} alt={animal.nombre} />
-                            <ul>
-                                <li>Animal: {animal.tipo_animal}</li>
-                                <li>Raza: {animal.raza}</li>
-                                <li>Edad: {animal.edad}</li>
-                                <li>Género: {animal.genero}</li>
-                                <li>Descripción: {animal.descripcion}</li>
-                            </ul>
-                            <hr ></hr>
-                        </div>
+                        <CardAsociacion key={animal.id} animal={animal} />
                     )
                 })}
             </div>
