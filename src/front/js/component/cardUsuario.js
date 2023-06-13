@@ -28,6 +28,10 @@ export default function Card({ animal }) {
                 <li>Provincia: {animal.asociacion_provincia}</li>
                 <li>Descripción: {animal.descripcion}</li>
             </ul>
+            <button onClick={()=>{
+                actions.selectId(animal);
+                actions.addFavorite()
+            }}>Adoptar</button>
         </div>
     );
 }

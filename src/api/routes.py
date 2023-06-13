@@ -414,9 +414,14 @@ def add_favorite():
     body= request.get_json()
     animal_id = body['animal_id']
 
-    favorites = Favorite(user_id=current_user_id, animal_id=animal_id)
+    user = User.query.get(current_user_id)
+    animal = Animal.query.get(animal_id)
+
+
+    favorites = Favorite(user=user, animal=animal)
 
     db.session.add(favorites)
     db.session.commit()
 
     return jsonify({'message':'Favorite added successfully'})
+
