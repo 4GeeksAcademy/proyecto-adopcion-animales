@@ -6,6 +6,8 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 
 export default function Card({ animal }) {
+    console.log(process.env.BACKEND_URL, 'COMPROBAR VARIABLE DE ENTORNO');
+
     const { store, actions } = useContext(Context);
 
     const handleColor = () => {
