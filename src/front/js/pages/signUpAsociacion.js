@@ -106,7 +106,7 @@ export default function SignUpAsociacion() {
                     Usuario registrado con exito
                 </div>
             )}
-            <divo className="container">
+            <div className="container">
                 <div className="container h-100">
                     <div className="row d-flex justify-content-center align-items-center h-100">
                         <div className="col-lg-12 col-xl-11">
@@ -296,7 +296,7 @@ export default function SignUpAsociacion() {
                         </div>
                     </div>
                 </div >
-            </divo >
+            </div >
         </>
     )
 }
