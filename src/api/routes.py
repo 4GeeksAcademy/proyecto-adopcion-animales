@@ -425,3 +425,20 @@ def add_favorite():
 
     return jsonify({'message':'Favorite added successfully'})
 
+
+# DELETE
+
+@api.route('/user/favorites/<int:favorite_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorite(favorite_id):
+
+    current_user = get_jwt_identity()
+    favorite = Favorite.query.get(favorite_id)
+
+    if favorite:
+        db.session.delete(favorite)
+        db.session.commit()
+        return jsonify({'message': f'Favorite: {favorite_id} deleted successfully'})
+    else:
+        return jsonify({'message': f'Favorite: {favorite_id} not found'})
+

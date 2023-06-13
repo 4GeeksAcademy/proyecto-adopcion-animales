@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			addFavorite: () => {
 
-				
+
 				const store = getStore();
 				console.log(store.idAnimal.id);
 				fetch(process.env.BACKEND_URL + "/api/user/favorites", {
@@ -37,24 +37,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((response) => response.json())
 					.then((result) => {
 						console.log(result);
-								
+
 					})
 					.catch((error) => console.log("error", error));
 
 
-
+				// ***HACER EL POST DE MANERA LOCAL	
 				// const store = getStore();
 				// const newFavorite = store.idAnimal;
 				// setStore({favorites:[...store.favorites, newFavorite]});
 				// console.log(getStore().favorites);
 			},
 			removeFavorite: (fav) => {
-				const store = getStore();
-				const updatedArray = store.favorites.filter((favorite) => favorite !== fav);
-				setStore({ favorites: updatedArray });
 
-				console.log(getStore().favorites);
-			},
+					
+
+				
+					fetch(process.env.BACKEND_URL + "/api/user/favorites/" + fav, {
+					  method: "DELETE",
+					  headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + localStorage.getItem("token"),
+					  },
+					})
+					  .then((response) => response.json())
+					  .then((result) => {
+						console.log(result);
+					  })
+					  .catch((error) => console.log("error", error));
+				  },
+
+			// ***HACER EL DELETE DE MANERA LOCAL   
+			// const store = getStore();
+			// const updatedArray = store.favorites.filter((favorite) => favorite !== fav);
+			// setStore({ favorites: updatedArray });
+
+			// console.log(getStore().favorites);
+
 			fetchUserFavorite: () => {
 				fetch(process.env.BACKEND_URL + "/api/user/favorites", {
 					method: "GET",
@@ -67,12 +86,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((result) => {
 						setStore({ favorites: result });
 						console.log(result, 'GET del Flux');
-
+	
 					})
 					.catch((error) => console.log("error", error));
 			},
-		}
-	};
+
+
+		},
+		
+	}
 };
+
 
 export default getState;
