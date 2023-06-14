@@ -43,7 +43,7 @@ class Animal(db.Model):
     asociacion = db.relationship('Asociacion', backref='animals')
 
     def __repr__(self):
-        return f'<Animal {self.nombre}>'
+        return f'{self.nombre} - {self.asociacion.nombre}'
 
     def serialize(self):
         return {
@@ -67,11 +67,12 @@ class Adoption(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
     animal_id = db.Column(db.Integer, db.ForeignKey('animal.id'), nullable=False)
+    asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), nullable=False)
     date = db.Column(db.Date, default=datetime.datetime.now(), nullable=False)
     status = db.Column(db.String(80), unique=False, nullable=False)
-
     user = db.relationship('User', backref='adoptions')
     animal = db.relationship('Animal', backref='adoptions')
+    asociacion = db.relationship('Asociacion', backref='adoptions')
 
     def __repr__(self):
         return f'{self.user.nombre} - {self.animal.nombre} - {self.date} '
@@ -116,7 +117,9 @@ class Favorite(db.Model):
 
     def serialize(self):
         return {
-            'user_id': self.user_id,
-            'animal_id': self.animal_id,
-            'date': self.date.strftime('%Y-%m-%d')  # Convierte la fecha a formato string
+            'id':self.id,
+            'date': self.date.strftime('%Y-%m-%d'),  # Convierte la fecha a formato string
+            'user': self.user.nombre,
+            'animal': self.animal.serialize() if self.animal else None
+            
         }
