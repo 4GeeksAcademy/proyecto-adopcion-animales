@@ -1,7 +1,8 @@
+
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 
-export default function SingUpUsuario() {
+export default function SignUpUsuario() {
   const initialForm = {
     nombre: "",
     apellido: "",
@@ -29,7 +30,7 @@ export default function SingUpUsuario() {
         "El campo 'Nombre' sólo acepta letras y espacios en blanco";
     }
     if (!form.apellido.trim()) {
-      newError.apellido = "El campo nombre es requerido";
+      newError.apellido = "El campo apellidos es requerido";
     } else if (!regexNombre.test(form.apellido.trim())) {
       newError.apellido =
         "El campo 'Apellidos' sólo acepta letras y espacios en blanco";
@@ -66,14 +67,13 @@ export default function SingUpUsuario() {
       }
     }
 
-
     setErrors(newError);
     setForm({ ...initialForm });
     setIsSubmitted(true);
 
     setTimeout(() => {
       navigate("/");
-    }, 2000); // Retraso de 2 segundos para redirigir a la home
+    }, 2000); // Retraso de 2 segundos para redirigir a la página de inicio
   };
 
   let styles = {
@@ -85,7 +85,7 @@ export default function SingUpUsuario() {
     <>
       {isSubmitted && (
         <div className="alert alert-success" role="alert">
-          Usuario registrado con exito
+          Usuario registrado con éxito
         </div>
       )}
       <div className="container">
@@ -113,9 +113,6 @@ export default function SingUpUsuario() {
                               required
                             />
                             {errors.nombre && <p style={styles}>{errors.nombre}</p>}
-                            {/* <label className="form-label" htmlFor="nombre">
-                        Nombre
-                      </label> */}
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -123,7 +120,7 @@ export default function SingUpUsuario() {
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="text"
-                              id="lastnombre"
+                              id="apellidos"
                               placeholder="Apellidos"
                               className="form-control"
                               value={form.apellido}
@@ -131,9 +128,6 @@ export default function SingUpUsuario() {
                               required
                             />
                             {errors.apellido && <p style={styles}>{errors.apellido}</p>}
-                            {/* <label className="form-label" htmlFor="nombre">
-                        Apellidos
-                      </label> */}
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -149,9 +143,6 @@ export default function SingUpUsuario() {
                               required
                             />
                             {errors.email && <p style={styles}>{errors.email}</p>}
-                            {/* <label className="form-label" htmlFor="form3Example3c">
-                        Email
-                      </label> */}
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -166,9 +157,6 @@ export default function SingUpUsuario() {
                               onChange={(e) => setForm({ ...form, password: e.target.value })}
                               required
                             />
-                            {/* <label className="form-label" htmlFor="form3Example4c">
-                        Contraseña
-                      </label> */}
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
@@ -186,33 +174,30 @@ export default function SingUpUsuario() {
                               required
                             />
                             {errors.password && <p style={styles}>{errors.password}</p>}
-                            {/* <label className="form-label" htmlFor="form3Example4cd">
-                      Confirmar Contraseña
-                      </label> */}
                           </div>
                         </div>
-                      <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
-                        className="fw-bold text-body"><u>Inicia sesión</u></a></p>
-                      <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                        <button type="submit" className="btn btn-dark btn-lg btn-block">
-                          Registrarse
-                        </button>
-                      </div>
-                    </form>
-                  </div>
-                  <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
-                    <img
-                      src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
-                      className="img-fluid"
-                      alt="Sample image"
-                    />
+                        <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
+                          className="fw-bold text-body"><u>Inicia sesión</u></a></p>
+                        <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                          <button type="submit" className="btn btn-dark btn-lg btn-block">
+                            Registrarse
+                          </button>
+                        </div>
+                      </form>
+                    </div>
+                    <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                      <img
+                        src="https://mdbcdn.b-cdn.net/img/Photos/new-templates/bootstrap-registration/draw1.webp"
+                        className="img-fluid"
+                        alt="Sample image"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
       </div>
     </>
   );

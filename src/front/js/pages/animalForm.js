@@ -13,6 +13,7 @@ export default function AnimalForm() {
   };
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
+  const [successMessage, setSuccessMessage] = useState(false);
 
   const token = localStorage.getItem("token");
 
@@ -64,6 +65,7 @@ export default function AnimalForm() {
     }
     setErrors(newError);
     setForm({ ...initialForm });
+    setSuccessMessage(true);
 
   };
   let styles = {
@@ -72,96 +74,103 @@ export default function AnimalForm() {
   };
 
   return (
-    <div>
-      <h1>Formulario de registro de mascotas</h1>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label htmlFor="nombre">Nombre:</label>
-          <input
-            type="text"
-            id="nombre"
-            value={form.nombre}
-            onChange={(e) => setForm({ ...form, nombre: e.target.value })}
-            required
-          />
-          {errors.nombre && <p style={styles}>{errors.nombre}</p>}
+    <>
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          El animal ha sido registrado exitosamente
         </div>
-        <div>
-          <label htmlFor="tipo_animal">Tipo de Animal:</label>
-          <input
-            type="text"
-            id="tipo_animal"
-            value={form.tipo_animal}
-            onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
-            required
-          />
-          {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
-        </div>
+      )}
+      <div>
+        <h1>Formulario de registro de mascotas</h1>
+        <form onSubmit={handleSubmit}>
+          <div>
+            <label htmlFor="nombre">Nombre:</label>
+            <input
+              type="text"
+              id="nombre"
+              value={form.nombre}
+              onChange={(e) => setForm({ ...form, nombre: e.target.value })}
+              required
+            />
+            {errors.nombre && <p style={styles}>{errors.nombre}</p>}
+          </div>
+          <div>
+            <label htmlFor="tipo_animal">Tipo de Animal:</label>
+            <input
+              type="text"
+              id="tipo_animal"
+              value={form.tipo_animal}
+              onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+              required
+            />
+            {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
+          </div>
 
-        <div>
-          <label htmlFor="raza">Raza:</label>
-          <input
-            type="text"
-            id="raza"
-            value={form.raza}
-            onChange={(e) => setForm({ ...form, raza: e.target.value })}
-            required
-          />
-          {errors.raza && <p style={styles}>{errors.raza}</p>}
-        </div>
-        <div>
-          <label htmlFor="edad">Edad:</label>
-          <input
-            type="number"
-            id="edad"
-            value={form.edad}
-            onChange={(e) => setForm({ ...form, edad: e.target.value })}
-            required
-          />
-          {errors.edad && <p style={styles}>{errors.edad}</p>}
-        </div>
-        <div>
-          <span>Género</span>
           <div>
-            <label>
-              <input
-                type="radio"
-                name="genero"
-                value="Macho"
-                checked={form.genero === "Macho"}
-                onChange={(e) => setForm({ ...form, genero: e.target.value })}
-              />
-              Macho
-            </label>
+            <label htmlFor="raza">Raza:</label>
+            <input
+              type="text"
+              id="raza"
+              value={form.raza}
+              onChange={(e) => setForm({ ...form, raza: e.target.value })}
+              required
+            />
+            {errors.raza && <p style={styles}>{errors.raza}</p>}
           </div>
           <div>
-            <label>
-              <input
-                type="radio"
-                name="genero"
-                value="Hembra"
-                checked={form.genero === "Hembra"}
-                onChange={(e) => setForm({ ...form, genero: e.target.value })}
-              />
-              Hembra
-            </label>
+            <label htmlFor="edad">Edad:</label>
+            <input
+              type="number"
+              id="edad"
+              value={form.edad}
+              onChange={(e) => setForm({ ...form, edad: e.target.value })}
+              required
+            />
+            {errors.edad && <p style={styles}>{errors.edad}</p>}
           </div>
-          {errors.genero && <p className="danger">{errors.genero}</p>}
-        </div>
-        <div>
-          <label htmlFor="descripcion">Descripción:</label>
-          <textarea
-            id="descripcion"
-            value={form.descripcion}
-            onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
-          />
-        </div>
-        <div>
-          <button type="submit">Enviar</button>
-        </div>
-      </form>
-      <Link to="/asociacion">Volver Atras</Link>
-    </div>
+          <div>
+            <span>Género</span>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="genero"
+                  value="Macho"
+                  checked={form.genero === "Macho"}
+                  onChange={(e) => setForm({ ...form, genero: e.target.value })}
+                />
+                Macho
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="genero"
+                  value="Hembra"
+                  checked={form.genero === "Hembra"}
+                  onChange={(e) => setForm({ ...form, genero: e.target.value })}
+                />
+                Hembra
+              </label>
+            </div>
+            {errors.genero && <p className="danger">{errors.genero}</p>}
+          </div>
+          <div>
+            <label htmlFor="descripcion">Descripción:</label>
+            <textarea
+              id="descripcion"
+              value={form.descripcion}
+              onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
+            />
+          </div>
+          <div>
+            <button type="submit">Enviar</button>
+          </div>
+        </form>
+        <Link to="/asociacion">Volver Atras</Link>
+      </div>
+    </>
   );
 }
 

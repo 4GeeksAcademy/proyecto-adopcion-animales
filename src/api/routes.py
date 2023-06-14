@@ -127,22 +127,81 @@ def post_animal():
     response_body = {"message": "The animal was added successfully"}
     return jsonify(response_body), 200
 
+#PUT
+# @api.route('/animal/<int:animal_id>', methods=['PUT'])
+# @jwt_required()
+# def put_animal(animal_id):
+    
+#         current_user = get_jwt_identity()
+#         current_user_id = current_user['id']
+    
+#         animal = Animal.query.filter_by(id=animal_id, user_id=current_user_id).first()
+    
+#         if(animal):
+#             data = request.get_json()
+#             animal.nombre = data['nombre']
+#             animal.raza = data['raza']
+#             animal.edad = data['edad']
+#             animal.genero = data['genero']
+#             animal.descripcion = data['descripcion']
+#             animal.tipo_animal = data['tipo_animal']
+#             db.session.commit()
+#             return jsonify(animal.serialize()), 200
+#         else:
+#             return jsonify({'message': f'Animal: {animal_id} not found'}), 404
+
+
+@api.route('/animal/<int:animal_id>', methods=['PUT'])
+@jwt_required()
+def put_animal(animal_id):
+    animal = Animal.query.get(animal_id)
+
+    if animal:
+        data = request.get_json()
+        animal.nombre = data.get('nombre', animal.nombre)
+        animal.raza = data.get('raza', animal.raza)
+        animal.edad = data.get('edad', animal.edad)
+        animal.genero = data.get('genero', animal.genero)
+        animal.descripcion = data.get('descripcion', animal.descripcion)
+        animal.tipo_animal = data.get('tipo_animal', animal.tipo_animal)
+        db.session.commit()
+        return jsonify(animal.serialize()), 200
+    else:
+        return jsonify({'message': f'Animal: {animal_id} not found'}), 404
+
+
+
 #DELETE
+
 @api.route('/animal/<int:animal_id>', methods=['DELETE'])
 @jwt_required()
 def delete_animal(animal_id):
+    animal = Animal.query.get(animal_id)
 
-    asociacion = get_jwt_identity()
-    asociacion_id = asociacion['id']
-    
-    animal = Animal.query.filter_by(id=animal_id, asociacion_id=asociacion_id).first()
-
-    if(animal):
+    if animal:
         db.session.delete(animal)
         db.session.commit()
         return jsonify({'message': f'Animal: {animal_id} deleted successfully'})
     else:
-        return jsonify({'message': f'Animal: {animal_id} not found'})
+        return jsonify({'message': f'Animal: {animal_id} not found'}), 404
+
+
+# @api.route('/animal/<int:animal_id>', methods=['DELETE'])
+# @jwt_required()
+# def delete_animal(animal_id):
+
+#     current_user = get_jwt_identity()
+#     current_user_id = current_user['id']
+    
+#     # animal = Animal.query.filter_by(id=animal_id, user_id=current_user_id).first()
+#     animal = Animal.query.filter_by(id=animal_id).first()
+
+#     if(animal):
+#         db.session.delete(animal)
+#         db.session.commit()
+#         return jsonify({'message': f'Animal: {animal_id} deleted successfully'})
+#     else:
+#         return jsonify({'message': f'Animal: {animal_id} not found'})
 
 # USER----------------------------------------------------------
 
@@ -206,7 +265,9 @@ def login_user():
     response_body = {
         "msg": "Token create successfully",
         "token": access_token,
-        "email": email
+        "email": email,
+        "user_id": user.id,
+        "nombre": user.nombre,
     }
 
     return jsonify(response_body), 200
