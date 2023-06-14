@@ -1,8 +1,11 @@
+
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 
 export default function AnimalForm() {
   const initialForm = {
     nombre: "",
+    tipo_animal: "",
     raza: "",
     edad: "",
     genero: "",
@@ -10,6 +13,9 @@ export default function AnimalForm() {
   };
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
+
+  const token = localStorage.getItem("token");
+
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -21,6 +27,12 @@ export default function AnimalForm() {
     } else if (!regexName.test(form.nombre.trim())) {
       newError.nombre =
         "El campo 'Nombre' sólo acepta letras y espacios en blanco";
+    }
+    if (!form.tipo_animal.trim()) {
+      newError.tipo_animal = "El campo tipo de animal es requerido";
+    } else if (!regexName.test(form.tipo_animal.trim())) {
+      newError.tipo_animal =
+        "El campo tipo de animal sólo acepta letras y espacios en blanco";
     }
     if (!form.raza.trim()) {
       newError.raza = "El campo raza es requerido";
@@ -39,20 +51,24 @@ export default function AnimalForm() {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
-            Accept: "application/json",
+            Authorization: `Bearer ${token}`,
           },
           body: JSON.stringify(form),
         });
         const data = await response.json();
         console.log(data);
-        if (data.success) {
-          setForm(initialForm);
-          setErrors(newError);
-        }
+
       } catch (error) {
         console.log(error);
       }
     }
+    setErrors(newError);
+    setForm({ ...initialForm });
+
+  };
+  let styles = {
+    fontWeight: "bold",
+    color: "#dc3545",
   };
 
   return (
@@ -68,8 +84,20 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, nombre: e.target.value })}
             required
           />
-          {errors.nombre && <p className="danger">{errors.nombre}</p>}
+          {errors.nombre && <p style={styles}>{errors.nombre}</p>}
         </div>
+        <div>
+          <label htmlFor="tipo_animal">Tipo de Animal:</label>
+          <input
+            type="text"
+            id="tipo_animal"
+            value={form.tipo_animal}
+            onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+            required
+          />
+          {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
+        </div>
+
         <div>
           <label htmlFor="raza">Raza:</label>
           <input
@@ -79,7 +107,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, raza: e.target.value })}
             required
           />
-          {errors.raza && <p className="danger">{errors.raza}</p>}
+          {errors.raza && <p style={styles}>{errors.raza}</p>}
         </div>
         <div>
           <label htmlFor="edad">Edad:</label>
@@ -90,7 +118,7 @@ export default function AnimalForm() {
             onChange={(e) => setForm({ ...form, edad: e.target.value })}
             required
           />
-          {errors.edad && <p className="danger">{errors.edad}</p>}
+          {errors.edad && <p style={styles}>{errors.edad}</p>}
         </div>
         <div>
           <span>Género</span>
@@ -99,8 +127,8 @@ export default function AnimalForm() {
               <input
                 type="radio"
                 name="genero"
-                value="macho"
-                checked={form.genero === "macho"}
+                value="Macho"
+                checked={form.genero === "Macho"}
                 onChange={(e) => setForm({ ...form, genero: e.target.value })}
               />
               Macho
@@ -111,8 +139,8 @@ export default function AnimalForm() {
               <input
                 type="radio"
                 name="genero"
-                value="hembra"
-                checked={form.genero === "hembra"}
+                value="Hembra"
+                checked={form.genero === "Hembra"}
                 onChange={(e) => setForm({ ...form, genero: e.target.value })}
               />
               Hembra
@@ -132,6 +160,12 @@ export default function AnimalForm() {
           <button type="submit">Enviar</button>
         </div>
       </form>
+      <Link to="/asociacion">Volver Atras</Link>
     </div>
   );
 }
+
+
+
+
+

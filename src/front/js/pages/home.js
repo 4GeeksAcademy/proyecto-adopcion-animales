@@ -6,6 +6,7 @@ import { Carousel } from "../component/carousel";
 import InfoAdoption from "../component/infoAdoption";
 import { SearchBar } from "../component/searchBar";
 
+
 export const Home = () => {
 
 
@@ -15,8 +16,7 @@ export const Home = () => {
     <div className={"text-center"}>
       <Carousel />
       <SearchBar />
-      <InfoAdoption></InfoAdoption>
-
+      <InfoAdoption />
     </div>
   );
 

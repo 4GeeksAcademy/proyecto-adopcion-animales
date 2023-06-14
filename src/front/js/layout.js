@@ -22,6 +22,9 @@ import Asociacion from "./pages/asociacion";
 import Usuario from "./pages/usuario";
 import Favorite from "./pages/favorite";
 
+import AnimalForm from "./pages/animalForm";
+import AnimalHomeDetail from "./pages/animalHomeDetail";
+import AnimalDetail from "./pages/animalDetail";
 
 //create your first component
 const Layout = () => {
@@ -51,6 +54,9 @@ const Layout = () => {
                         <Route element={<Usuario />} path="/usuario" />
                         <Route element={<Favorite />} path="/favorite" />
 
+                        <Route element={<AnimalForm />} path="/animalForm" h />
+                        <Route element={<AnimalHomeDetail />} path="/animalHome:id" />
+                        <Route element={<AnimalDetail />} path="/usuario/animal:id" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
