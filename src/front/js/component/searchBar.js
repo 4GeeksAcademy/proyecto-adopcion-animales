@@ -97,7 +97,7 @@ export const SearchBar = () => {
         </select>
       </form>
       <div>
-        <h2>Estos son los últimos animeles añadidos a la plataforma:</h2>
+        <h2>Estos son los últimos animales añadidos a la plataforma:</h2>
         <FilterAnimalHome animals={animals} filtros={filtros} />
       </div>
     </>

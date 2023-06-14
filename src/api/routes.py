@@ -263,7 +263,8 @@ def login_user():
         "msg": "Token create successfully",
         "token": access_token,
         "email": email,
-        "user_id": user.id 
+        "user_id": user.id,
+        "nombre": user.nombre,
     }
 
     return jsonify(response_body), 200

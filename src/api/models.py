@@ -57,7 +57,8 @@ class Animal(db.Model):
             "image_url": self.image_url,
             "asociacion_id": self.asociacion_id,
             "asociacion_nombre": self.asociacion.nombre,
-            "asociacion_provincia": self.asociacion.provincia, 
+            "asociacion_provincia": self.asociacion.provincia,
+            "asociacion_email": self.asociacion.email,
             # do not serialize the password, it's a security breach
         }
 
