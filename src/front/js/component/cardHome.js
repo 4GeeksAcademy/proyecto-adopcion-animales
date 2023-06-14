@@ -17,29 +17,29 @@ export default function CardHome({ animal }) {
     }
     const cardStyle = {
         maxWidth: "300px",
-        maxHeight: "350px",
+        maxHeight: "400px",
         fontSize: "1px",
         margin: "1px",
-        padding: "10px",
-        border:"1px"
+        padding: "0px",
         
+
     };
 
     const imageStyle = {
-        maxWidth: "80%",
-        maxHeight: "80%",
-        marginBottom: "10px"
+        maxWidth: "100%",
+        maxHeight: "100%",
+        marginBottom: "10px",
     };
 
     return (
-        
-        <Link to={`animalHome${animal.id}`}>
-            <div className={`${handleColor()}`} style={cardStyle}>
+
+        <Link to={`animalHome${animal.id}`} style={{ textDecoration: "none" }}>
+            <div className={` border border-1 mt-4 rounded-3 shadow border-2`} style={cardStyle}>
                 <img src={animal.image_url} alt={animal.nombre} style={imageStyle} />
-                <h5 style={{ fontSize: "18px" }}>Nombre: {animal.nombre}</h5>
-                <p style={{ fontSize: "14px" }}>Provincia: {animal.asociacion_provincia}</p>
+                <h2 style={{ fontSize: "20px", textDecoration: "none" }}>Nombre: {animal.nombre}</h2>
+                <p style={{ fontSize: "12px", textDecoration: "none" }}><i className="fa-solid fa-location-dot fa-lg fa-fw" />{animal.asociacion_provincia}</p>
             </div>
         </Link>
-        
+
     );
 }
