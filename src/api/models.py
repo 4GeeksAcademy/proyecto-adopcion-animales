@@ -117,9 +117,9 @@ class Favorite(db.Model):
 
     def serialize(self):
         return {
-            'user_id': self.user_id,
-            'animal_id': self.animal_id,
+            'id':self.id,
             'date': self.date.strftime('%Y-%m-%d'),  # Convierte la fecha a formato string
             'user': self.user.nombre,
             'animal': self.animal.serialize() if self.animal else None
+            
         }

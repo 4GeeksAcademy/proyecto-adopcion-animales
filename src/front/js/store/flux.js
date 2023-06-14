@@ -61,11 +61,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((result) => {
 						console.log(result);
 
-						// // ***HACER EL DELETE DE MANERA LOCAL   
-						// const store = getStore();
-						// const updatedArray = store.favorites.filter((favorite) => favorite.id !== favoriteID);
-						// setStore({ favorites: updatedArray });
-						// console.log(getStore().favorites);
+						// ***HACER EL DELETE DE MANERA LOCAL   
+						const store = getStore();
+						const updatedArray = store.favorites.filter((favorite) => favorite.id !== favoriteID);
+						setStore({ favorites: updatedArray });
+						console.log(getStore().favorites);
 					})
 					.catch((error) => console.log("error", error));
 			},

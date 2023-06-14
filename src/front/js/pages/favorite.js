@@ -32,7 +32,7 @@ const Favorite = () => {
                     </ul>
 
                     <button onClick={()=>actions.selectId(fav)}>Agregar</button>
-                    <button className='btn btn-danger' onClick={() => actions.removeFavorite(fav.animal.id)}>Delete fav: <BsFillTrash3Fill />
+                    <button className='btn btn-danger' onClick={() => actions.removeFavorite(fav.id)}>Delete fav: <BsFillTrash3Fill />
                     </button>
                 </div>
 
