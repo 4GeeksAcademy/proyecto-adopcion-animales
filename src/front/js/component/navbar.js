@@ -32,7 +32,7 @@ export const Navbar = () => {
 
 	const handleColor = () => {
 		if (store.darkMode) {
-			return "navbar"
+			return "navbar-dark bg-dark"
 		} else {
 			return "navbar-light"
 		}
@@ -40,7 +40,7 @@ export const Navbar = () => {
 
 
 	return (
-		<nav className="navbar navbar-expand-lg navbar-light" id="navbar">
+		<nav className={`navbar navbar-expand-lg ${handleColor()}`} id="navbar">
 			<div className="container-fluid" >
 				<Link to='/' className="navbar-brand">
 					<span className="navbar-brand mb-0 h1">Appatitas</span>
@@ -56,9 +56,6 @@ export const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon" />
 				</button>
-				<button onClick={handleToggleDarkMode}>
-					{store.darkMode ? "Modo Claro" : "Modo Oscuro"}
-				</button>
 				<div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
 					{!tokenExists && (
 						<div className="navbar-nav">
@@ -71,12 +68,23 @@ export const Navbar = () => {
 						</div>
 					)}
 					{tokenExists && (
-						<div className="navbar-nav">
-							<Link to="/">
-								<button onClick={handleLogout} className="btn btn-light m-1">Cerrar Sesión</button>
-							</Link>
+						<div>
+							<div className="navbar-nav">
+								<Link to="/">
+									<button onClick={handleLogout} className="btn btn-light m-1">Cerrar Sesión</button>
+								</Link>
+							</div>
+							<div className="ml-auto">
+								<Link to="/favorite">
+									<button className="btn btn-primary">FAVORITOS</button>
+								</Link>
+							</div>
 						</div>
+
 					)}
+				<button onClick={handleToggleDarkMode}className="btn btn-light m-1">
+					{store.darkMode ? "Modo Claro" : "Modo Oscuro"}
+				</button>
 				</div>
 			</div>
 		</nav>

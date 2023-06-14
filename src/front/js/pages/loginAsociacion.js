@@ -98,7 +98,7 @@ export default function LoginAsociacion() {
                           </div>
                           <div className="pt-1 mb-4">
                             <button className="btn btn-dark btn-lg btn-block" type="submit">
-                              Login
+                              Iniciar Sesión
                             </button>
                           </div>
                           <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>

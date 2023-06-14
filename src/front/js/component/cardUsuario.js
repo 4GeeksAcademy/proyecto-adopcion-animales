@@ -7,6 +7,8 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
 export default function Card({ animal }) {
+    console.log(process.env.BACKEND_URL, 'COMPROBAR VARIABLE DE ENTORNO');
+
     const { store, actions } = useContext(Context);
 
     const handleColor = () => {
@@ -18,6 +20,7 @@ export default function Card({ animal }) {
     }
 
     return (
+  
         <Link to={`animal${animal.id}`}>
             <div className={handleColor()}>
                 <h2>Nombre: {animal.nombre}</h2>
@@ -30,6 +33,10 @@ export default function Card({ animal }) {
                     <li>Provincia: {animal.asociacion_provincia}</li>
                     <li>Descripción: {animal.descripcion}</li>
                 </ul>
+                <button onClick={()=>{
+                actions.selectId(animal);
+                actions.addFavorite()
+            }}>Adoptar</button>
             </div>
         </Link >
     );

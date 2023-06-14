@@ -4,6 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 
 from api.models import db, User, Animal, Adoption, Asociacion, Favorite
+from api.models import db, User, Animal, Adoption, Asociacion, Favorite
 
 from api.utils import generate_sitemap, APIException
 
@@ -11,6 +12,8 @@ from flask_jwt_extended import create_access_token
 from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
+
+
 
 api = Blueprint('api', __name__)
 
@@ -121,7 +124,7 @@ def post_animal():
     db.session.add(animal)
     db.session.commit()
 
-    response_body = {"msg": "El animal fué añadido exitosamente"}
+    response_body = {"message": "The animal was added successfully"}
     return jsonify(response_body), 200
 
 #PUT
@@ -295,15 +298,29 @@ def delete_user(user_id):
 #ADOPTION--------------------------------------------------------
 
 @api.route('/adoption', methods=['GET'])
+@jwt_required()
 def get_adoptions():
-     all_adoptions = Adoption.query.all()
+     current_user = get_jwt_identity()
+     if 'apellido' in 'current_user':
+         user_id = current_user['id']
+         all_adoptions = Adoption.query.filter_by(user_id = user_id).all()
+     elif 'CIF' in 'current_user':
+         asociacion_id = current_user['id']
+         all_adoptions = Adoption.query.filter_by(asociacion_id = asociacion_id).all()
+     else:
+         return jsonify({'message': 'Adoption not found'})
+             
+     
      result = [element.serialize() for element in all_adoptions]
      print(result)
      return jsonify(result), 200
 
 
 @api.route('/adoption/<int:id>', methods=['GET'])
+@jwt_required()
 def get_one_adoption(id):
+     
+     current_user = get_jwt_identity()
 
      adoption = Adoption.query.get(id)
      if adoption:
@@ -313,7 +330,11 @@ def get_one_adoption(id):
     
 
 @api.route('/adoption/user/<int:user_id>/animal/<int:animal_id>', methods=['POST'])
+@jwt_required()
 def post_adoption(user_id, animal_id):
+
+    current_user = get_jwt_identity()
+
 
     body = request.get_json()
     user_id = body['user_id']
@@ -339,8 +360,10 @@ def post_adoption(user_id, animal_id):
 
 
 @api.route('/adoption/<int:adoption_id>', methods=['DELETE'])
+@jwt_required()
 def delete_adoption(adoption_id):
-    
+
+    current_user = get_jwt_identity()
     adoption = Adoption.query.get(adoption_id)
 
     if adoption:
@@ -463,9 +486,38 @@ def add_favorite():
     body= request.get_json()
     animal_id = body['animal_id']
 
-    favorites = Favorite(user_id=current_user_id, animal_id=animal_id)
+    user = User.query.get(current_user_id)
+    animal = Animal.query.get(animal_id)
+
+    # Verificar si el animal ya está marcado como favorito por el usuario
+    existing_favorite = Favorite.query.filter_by(user=user, animal=animal).first()
+    if existing_favorite:
+        return jsonify({'message': 'Animal already in favorites'}), 400
+
+
+    favorites = Favorite(user=user, animal=animal)
 
     db.session.add(favorites)
     db.session.commit()
 
     return jsonify({'message':'Favorite added successfully'})
+
+
+# DELETE
+
+@api.route('/user/favorites/<int:favorite_id>', methods=['DELETE'])
+@jwt_required()
+def delete_favorite(favorite_id):
+
+    print("Favorite ID:", favorite_id)
+
+    current_user = get_jwt_identity()
+    favorite = Favorite.query.get(favorite_id)
+
+    if favorite:
+        db.session.delete(favorite)
+        db.session.commit()
+        return jsonify({'message': f'Favorite: {favorite_id} deleted successfully'})
+    else:
+        return jsonify({'message': f'Favorite: {favorite_id} not found'})
+

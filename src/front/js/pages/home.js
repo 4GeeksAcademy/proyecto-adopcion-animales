@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "../../styles/home.css";
 
-
 import "../../styles/home.css";
 import { Carousel } from "../component/carousel";
 import InfoAdoption from "../component/infoAdoption";
