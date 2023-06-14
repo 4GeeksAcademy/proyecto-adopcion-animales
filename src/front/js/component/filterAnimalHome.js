@@ -16,15 +16,20 @@ export default function FilterAnimalHome({ animals, filtros }) {
             return animals;
     });
 
+    const latestThreeResults = animalsFiltered.slice(-3);
+
     return (
-        <div>
-            {animalsFiltered.length > 0 ? (
-                animalsFiltered.map((animal) => (
-                    <CardHome key={animal.id} animal={animal} />
-                ))
-            ) : (
-                <h2>No hay resultados</h2>
-            )}
-        </div>
+        <div className="container-fluid d-flex justify-content-center">
+                {latestThreeResults.length > 0 ? (
+                    latestThreeResults.map((animal) => (
+                        <div className="container-fluid d-flex justify-content-center" key={animal.id}>
+                            <CardHome animal={animal} />
+                        </div>
+                    ))
+                ) : (
+                    <h5>No results found</h5>
+                )}
+            </div>
+
     );
 }
