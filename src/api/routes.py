@@ -417,6 +417,11 @@ def add_favorite():
     user = User.query.get(current_user_id)
     animal = Animal.query.get(animal_id)
 
+    # Verificar si el animal ya está marcado como favorito por el usuario
+    existing_favorite = Favorite.query.filter_by(user=user, animal=animal).first()
+    if existing_favorite:
+        return jsonify({'message': 'Animal already in favorites'}), 400
+
 
     favorites = Favorite(user=user, animal=animal)
 
@@ -431,6 +436,8 @@ def add_favorite():
 @api.route('/user/favorites/<int:favorite_id>', methods=['DELETE'])
 @jwt_required()
 def delete_favorite(favorite_id):
+
+    print("Favorite ID:", favorite_id)
 
     current_user = get_jwt_identity()
     favorite = Favorite.query.get(favorite_id)

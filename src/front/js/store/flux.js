@@ -48,31 +48,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// setStore({favorites:[...store.favorites, newFavorite]});
 				// console.log(getStore().favorites);
 			},
-			removeFavorite: (fav) => {
-
-					
-
-				
-					fetch(process.env.BACKEND_URL + "/api/user/favorites/" + fav, {
-					  method: "DELETE",
-					  headers: {
+			removeFavorite: (favoriteID) => {
+				console.log('ID del favorito:', favoriteID);
+				fetch(process.env.BACKEND_URL + "/api/user/favorites/" + favoriteID, {
+					method: "DELETE",
+					headers: {
 						"Content-Type": "application/json",
 						Authorization: "Bearer " + localStorage.getItem("token"),
-					  },
-					})
-					  .then((response) => response.json())
-					  .then((result) => {
+					},
+				})
+					.then((response) => response.json())
+					.then((result) => {
 						console.log(result);
-					  })
-					  .catch((error) => console.log("error", error));
-				  },
 
-			// ***HACER EL DELETE DE MANERA LOCAL   
-			// const store = getStore();
-			// const updatedArray = store.favorites.filter((favorite) => favorite !== fav);
-			// setStore({ favorites: updatedArray });
+						// // ***HACER EL DELETE DE MANERA LOCAL   
+						// const store = getStore();
+						// const updatedArray = store.favorites.filter((favorite) => favorite.id !== favoriteID);
+						// setStore({ favorites: updatedArray });
+						// console.log(getStore().favorites);
+					})
+					.catch((error) => console.log("error", error));
+			},
 
-			// console.log(getStore().favorites);
 
 			fetchUserFavorite: () => {
 				fetch(process.env.BACKEND_URL + "/api/user/favorites", {
@@ -86,14 +83,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then((result) => {
 						setStore({ favorites: result });
 						console.log(result, 'GET del Flux');
-	
+
 					})
 					.catch((error) => console.log("error", error));
 			},
 
 
 		},
-		
+
 	}
 };
 
