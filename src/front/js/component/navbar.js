@@ -4,6 +4,9 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import "../../styles/component.css"
+import logoImg from '../../../front/img/Appatitas-Logo.png';
+
+
 
 export const Navbar = () => {
 	const [tokenExists, setTokenExists] = useState(false);
@@ -43,7 +46,7 @@ export const Navbar = () => {
 		<nav className={`navbar navbar-expand-lg ${handleColor()}`} id="navbar">
 			<div className="container-fluid" >
 				<Link to='/' className="navbar-brand">
-					<span className="navbar-brand mb-0 h1">Appatitas</span>
+					<span className="navbar-brand mb-0 h1"><img src={logoImg} className="navbar-logo roudend" alt="Logo"></img></span>
 				</Link>
 				<button
 					className="navbar-toggler"
@@ -56,7 +59,7 @@ export const Navbar = () => {
 				>
 					<span className="navbar-toggler-icon" />
 				</button>
-				<div className="collapse navbar-collapse justify-content-end" id="navbarNavAltMarkup">
+				<div className="collapse navbar-collapse justify-content-end text-center" id="navbarNavAltMarkup">
 					{!tokenExists && (
 						<div className="navbar-nav">
 							<Link to="/chooselogin">
@@ -82,9 +85,17 @@ export const Navbar = () => {
 						</div>
 
 					)}
-				<button onClick={handleToggleDarkMode}className="btn btn-light m-1">
-					{store.darkMode ? "Modo Claro" : "Modo Oscuro"}
-				</button>
+					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" >
+						{store.darkMode ? (
+							<>
+								<i className="fas fa-sun" alt="Modo claro"></i>
+							</>
+						) : (
+							<>
+								<i className="fas fa-moon"></i>
+							</>
+						)}
+					</button>
 				</div>
 			</div>
 		</nav>
