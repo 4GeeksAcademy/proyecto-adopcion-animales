@@ -132,7 +132,7 @@ export const SearchBar = () => {
         </div>
       </div>
       <div className='container-fluid justify-content-center mt-4 mb-2'>
-        <h2>Últimos animales en adopción</h2>
+        <h1>Últimos animales en adopción</h1>
         <div className='container justify-content-center'>
         <FilterAnimalHome animals={animals} filtros={filtros} />
         </div>
