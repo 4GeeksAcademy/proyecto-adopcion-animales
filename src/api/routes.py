@@ -13,6 +13,9 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
+import cloudinary
+import cloudinary.uploader
+
 
 
 api = Blueprint('api', __name__)
@@ -521,3 +524,18 @@ def delete_favorite(favorite_id):
     else:
         return jsonify({'message': f'Favorite: {favorite_id} not found'})
 
+#UPLOAD -----------------------------------------------------------------------------------------
+@api.route('/upload', methods=['POST'])
+def handle_upload():
+
+    #print(request.files)
+    animal1 = Animal.query.get(2)
+    result = cloudinary.uploader.upload(request.files["animal_image"])
+    print(result['secure_url'])
+
+    animal1.animal_image_url = result['secure_url']
+
+    db.session.add(animal1)
+    db.session.commit()
+
+    return jsonify("Todo bien bro"), 200

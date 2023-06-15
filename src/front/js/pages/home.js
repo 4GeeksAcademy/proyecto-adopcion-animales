@@ -14,6 +14,7 @@ export const Home = () => {
       <Carousel />
       <SearchBar />
       <InfoAdoption />
+      
     </div>
   );
 

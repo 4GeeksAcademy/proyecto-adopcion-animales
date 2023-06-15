@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: b428858369a2
+Revision ID: b4e963a5b817
 Revises: 
-Create Date: 2023-06-14 07:46:07.770984
+Create Date: 2023-06-15 18:19:51.193253
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'b428858369a2'
+revision = 'b4e963a5b817'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -45,18 +45,21 @@ def upgrade():
     sa.Column('edad', sa.String(length=50), nullable=False),
     sa.Column('genero', sa.String(length=50), nullable=False),
     sa.Column('descripcion', sa.String(length=500), nullable=False),
-    sa.Column('image_url', sa.String(length=500), nullable=False),
     sa.Column('asociacion_id', sa.Integer(), nullable=False),
+    sa.Column('animal_image', sa.String(length=550), nullable=False),
     sa.ForeignKeyConstraint(['asociacion_id'], ['asociacion.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('animal_image')
     )
     op.create_table('adoption',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('animal_id', sa.Integer(), nullable=False),
+    sa.Column('asociacion_id', sa.Integer(), nullable=False),
     sa.Column('date', sa.Date(), nullable=False),
     sa.Column('status', sa.String(length=80), nullable=False),
     sa.ForeignKeyConstraint(['animal_id'], ['animal.id'], ),
+    sa.ForeignKeyConstraint(['asociacion_id'], ['asociacion.id'], ),
     sa.ForeignKeyConstraint(['user_id'], ['user.id'], ),
     sa.PrimaryKeyConstraint('id')
     )
