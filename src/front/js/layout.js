@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useContext } from "react";
+import { Context } from "./store/appContext";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 import { BackendURL } from "./component/backendURL";
@@ -17,17 +18,27 @@ import SingUpUsuario from "./pages/signUpUsuario";
 import ChooseLogin from "./pages/chooseLogin";
 import LoginUsuario from "./pages/loginUsuario";
 import LoginAsociacion from "./pages/loginAsociacion";
+import Asociacion from "./pages/asociacion";
+import Usuario from "./pages/usuario";
+import Favorite from "./pages/favorite";
+
+import AnimalForm from "./pages/animalForm";
+import AnimalHomeDetail from "./pages/animalHomeDetail";
+import AnimalDetail from "./pages/animalDetail";
+import AnimalData from "./pages/animalData";
+import ContactForm from "./pages/contactForm";
 
 //create your first component
 const Layout = () => {
     //the basename is used when your project is published in a subdirectory and not in the root of the domain
     // you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
+    const { store, actions } = useContext(Context);
     const basename = process.env.BASENAME || "";
 
     if (!process.env.BACKEND_URL || process.env.BACKEND_URL == "") return <BackendURL />;
 
     return (
-        <div>
+        <div className={store.darkMode ? "dark-mode" : ""}>
             <BrowserRouter basename={basename}>
                 <ScrollToTop>
                     <Navbar />
@@ -41,6 +52,14 @@ const Layout = () => {
                         <Route element={<SingUpAsociacion />} path="/signup2" />
                         <Route element={<LoginUsuario />} path="/loginUsuario" />
                         <Route element={<LoginAsociacion />} path="/loginAsociacion" />
+                        <Route element={<Asociacion />} path="/asociacion" />
+                        <Route element={<Usuario />} path="/usuario" />
+                        <Route element={<Favorite />} path="/favorite" />
+                        <Route element={<AnimalForm />} path="/animalForm" h />
+                        <Route element={<AnimalHomeDetail />} path="/animalHome:id" />
+                        <Route element={<AnimalDetail />} path="/usuario/animal:id" />
+                        <Route element={<AnimalData />} path="/asociacion/animalData:id" />
+                        <Route element={<ContactForm />} path="/usuario/animal:id/contacto" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
