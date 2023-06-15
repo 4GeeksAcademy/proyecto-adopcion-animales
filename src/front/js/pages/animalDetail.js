@@ -8,6 +8,13 @@ export default function AnimalHomeDetail() {
 
     const token = localStorage.getItem("token");
 
+    const user = {
+        nombre: localStorage.getItem("nombre"),
+        id: localStorage.getItem("id"),
+        email: localStorage.getItem("email"),
+    }
+    console.log(user);
+
     const fetchAnimal = async () => {
         const response = await fetch(process.env.BACKEND_URL + `/api/animal/${id}`, {
             method: 'GET',
@@ -39,6 +46,9 @@ export default function AnimalHomeDetail() {
                     <li>Provincia: {animal.asociacion_provincia}</li>
                     <li>Descripción: {animal.descripcion}</li>
                 </ul>
+                <Link to={`contacto`}>
+                    <button>Contactar con la Asociación</button>
+                </Link>
             </div>
         </>
     );

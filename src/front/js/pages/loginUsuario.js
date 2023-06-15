@@ -28,6 +28,12 @@ export default function LoginUsuario() {
         const data = await response.json();
         console.log(data);
         const token = data.token;
+        const nombre = data.nombre;
+        const id = data.user_id;
+        const email = data.email;
+        localStorage.setItem("nombre", nombre);
+        localStorage.setItem("id", id);
+        localStorage.setItem("email", email);
         localStorage.setItem("token", token);
         setForm(initialForm);
         setLoginError(false);

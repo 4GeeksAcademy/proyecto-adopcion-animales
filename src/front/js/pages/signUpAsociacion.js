@@ -255,6 +255,10 @@ export default function SignUpAsociacion() {
                                                 </div>
                                                 <p className={`${handleColor()} text-center  mb-5`}>Have already an account? <a href="/loginAsociacion"
                                                     className={`${handleColor()} fw-bold text-body`}><u>Login here</u></a></p>
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                                                     <button type="submit" className="btn btn-dark btn-lg btn-block">
                                                         Registrarse
@@ -275,7 +279,11 @@ export default function SignUpAsociacion() {
                         </div>
                     </div>
                 </div >
+<<<<<<< HEAD
             </div>
+=======
+            </div >
+>>>>>>> main
         </>
     )
 }
