@@ -26,13 +26,33 @@ export const SearchBar = () => {
     fetchAnimals();
   }, []);
 
+
+  const [colWidth, setColWidth] = useState('col-4');
+
+  useEffect(() => {
+    const handleResize = () => {
+      if (window.innerWidth <= 576) {
+        setColWidth('col-10');
+      } else {
+        setColWidth('col-4');
+      }
+    };
+
+    window.addEventListener('resize', handleResize);
+    handleResize();
+
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, []);
+
   return (
     <>
       <div className='container mt-1 py-2'>
         <div className='container border border-3 p-1 rounded-pill shadow' id='containersearch'>
           <div className='row'>
             <form>
-              <div className='col-4 d-inline-flex p-2 align-items-center'>
+              <div className={`d-inline-flex p-2 align-items-center ${colWidth}`}>
                 <i className="fa-solid fa-location-dot fa-lg me-3 fa-fw" />
                 {/* <label htmlFor='provincia'>Provincia: </label> */}
                 <select
@@ -95,7 +115,7 @@ export const SearchBar = () => {
                 </select>
               </div>
               {/* <label htmlFor='tipo_animal'>Tipo de Animal: </label> */}
-              <div className='col-4 d-inline-flex p-2 align-items-center'>
+              <div className={`d-inline-flex p-2 align-items-center ${colWidth}`}>
                 <i className="fa-solid fa-paw fa-lg me-3 fa-fw"></i>
                 <select
                   onChange={(e) => setFiltros({ ...filtros, tipo_animal: e.target.value })}
@@ -113,7 +133,9 @@ export const SearchBar = () => {
       </div>
       <div className='container-fluid justify-content-center mt-4 mb-2'>
         <h2>Últimos animales en adopción</h2>
+        <div className='container justify-content-center'>
         <FilterAnimalHome animals={animals} filtros={filtros} />
+        </div>
       </div>
     </>
   );

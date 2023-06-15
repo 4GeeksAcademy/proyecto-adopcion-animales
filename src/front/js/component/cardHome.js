@@ -16,8 +16,8 @@ export default function CardHome({ animal }) {
         }
     }
     const cardStyle = {
-        maxWidth: "300px",
-        maxHeight: "400px",
+        maxWidth: "350px",
+        maxHeight: "450px",
         fontSize: "1px",
         margin: "1px",
         padding: "0px",
