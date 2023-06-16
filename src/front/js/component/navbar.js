@@ -85,6 +85,11 @@ export const Navbar = () => {
 						</div>
 
 					)}
+					<div className="navbar-nav">
+							<Link to="/donacion">
+								<button className="btn btn-light m-1">Haz una donacion</button>
+							</Link>
+						</div>
 					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" >
 						{store.darkMode ? (
 							<>
