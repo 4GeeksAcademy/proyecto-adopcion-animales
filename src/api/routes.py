@@ -400,7 +400,7 @@ def post_asociacion():
  
         body = request.get_json()
  
-        asociacion = Asociacion(nombre=body['nombre'], email=body['email'], provincia = body['provincia'], CIF = body['CIF'], password = body['password'])
+        asociacion = Asociacion(nombre=body['nombre'], email=body['email'], provincia = body['provincia'], CIF = body['CIF'], descripcion = body['descripcion'], password = body['password'])
  
         db.session.add(asociacion)
         db.session.commit()

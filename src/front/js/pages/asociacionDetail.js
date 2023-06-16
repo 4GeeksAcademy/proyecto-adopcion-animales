@@ -35,12 +35,14 @@ const AsociacionDetail = () => {
     if (!asociacion) {
         return <div>Loading...</div>;
     }
-
+    console.log(asociacion)
     return (
         <div className={handleColor()}>
             <h2>Nombre de la Asociación: {asociacion.nombre}</h2>
             <img src={asociacion.image_url} alt={asociacion.nombre} />
             <ul>
+                {/* <li>Descripción: {asociacion.descripcion}</li> */}
+                <li>Descripción: {asociacion['descripcion']}</li>
                 <li>Email: {asociacion.email}</li>
                 <li>Provincia: {asociacion.provincia}</li>
             </ul>
