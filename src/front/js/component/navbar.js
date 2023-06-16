@@ -82,7 +82,12 @@ export const Navbar = () => {
 							</div>
 						</div>
 					)}
-					<button onClick={handleToggleDarkMode} className="btn m-1 "style={{ backgroundColor: "#a96d60"}} >
+					<div className="navbar-nav">
+							<Link to="/donacion">
+								<button className="btn btn-light m-1">Haz una donacion</button>
+							</Link>
+						</div>
+					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" style={{backgroundColor:"#A96D60"}}>
 						{store.darkMode ? (
 							<>
 								<i className="fas fa-sun" alt="Modo claro" style={{ color:"white"}} ></i>

@@ -49,7 +49,7 @@ export default function Asociacion() {
                         return (
                             <div key={animal.id}>
                                 <h2>{animal.nombre}</h2>
-                                <img src={animal.image_url} alt={animal.nombre} />
+                                <img src={animal.animal_image} alt={animal.nombre} />
                                 <ul>
                                     <li>Animal: {animal.tipo_animal}</li>
                                     <li>Raza: {animal.raza}</li>

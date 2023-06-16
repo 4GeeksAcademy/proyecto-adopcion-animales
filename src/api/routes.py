@@ -13,6 +13,9 @@ from flask_jwt_extended import get_jwt_identity
 from flask_jwt_extended import jwt_required
 from flask_jwt_extended import JWTManager
 
+import cloudinary
+import cloudinary.uploader
+
 
 
 api = Blueprint('api', __name__)
@@ -113,19 +116,31 @@ def get_animal_id(id):
 @api.route('/animal', methods=['POST'])
 @jwt_required()
 def post_animal():
-
     current_asociacion = get_jwt_identity()
     current_asociacion_id = current_asociacion['id']
 
-    data = request.get_json()
+    animal_data = request.form
 
-    animal = Animal(nombre=data['nombre'], tipo_animal = data['tipo_animal'], raza=data['raza'], edad=data['edad'], genero=data['genero'], descripcion=data['descripcion'], asociacion_id = current_asociacion_id)
+    animal = Animal(
+        nombre=animal_data['nombre'],
+        tipo_animal=animal_data['tipo_animal'],
+        raza=animal_data['raza'],
+        edad=animal_data['edad'],
+        genero=animal_data['genero'],
+        descripcion=animal_data['descripcion'],
+        asociacion_id=current_asociacion_id
+    )
+
+    image_file = request.files['imagen']
+    result = cloudinary.uploader.upload(image_file)
+    animal.animal_image = result['secure_url']
 
     db.session.add(animal)
     db.session.commit()
 
     response_body = {"message": "The animal was added successfully"}
     return jsonify(response_body), 200
+
 
 #PUT
 # @api.route('/animal/<int:animal_id>', methods=['PUT'])
@@ -450,7 +465,7 @@ def login_asociacion():
 # Devolvemos el token (string) al cliente para que en futuras peticiones a nuestros endpoints protegidos se pueda autentificar
     
     response_body = {
-        "msg": "Token create successfully",
+        "msg": "Token create successfully", 
         "token": access_token,
         "email": email
     }
@@ -521,3 +536,18 @@ def delete_favorite(favorite_id):
     else:
         return jsonify({'message': f'Favorite: {favorite_id} not found'})
 
+#UPLOAD -----------------------------------------------------------------------------------------
+@api.route('/upload', methods=['POST'])
+def handle_upload():
+
+    #print(request.files)
+    animal1 = Animal.query.get(1)
+    result = cloudinary.uploader.upload(request.files["animal_image"])
+    print(result['secure_url'])
+
+    animal1.animal_image = result['secure_url']
+
+    db.session.add(animal1)
+    db.session.commit()
+
+    return jsonify("Todo bien bro"), 200
