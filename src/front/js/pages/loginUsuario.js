@@ -1,8 +1,17 @@
-import React, { useState } from "react";
+import React, { useState, useContext} from "react";
+import { Context } from "../store/appContext";
 import { useNavigate } from "react-router-dom";
 import userImg from '../../../front/img/usuario.png';
 
 export default function LoginUsuario() {
+  const { store, actions } = useContext(Context);
+
+  const handleColor = () => {
+      if (store.darkMode) {
+          return "dark"
+      } else
+          return "light"
+  }
   const initialForm = {
     email: "",
     password: "",
@@ -59,7 +68,7 @@ export default function LoginUsuario() {
     <div className="container py-2 h-100">
       <div className="row d-flex justify-content-center align-items-center h-100">
         <div className="col col-xl-10">
-          <div className="card shadow" style={{ borderRadius: "1rem" }}>
+          <div className="card shadow" style={{ borderRadius: "1rem",backgroundColor: "transparent"  }}>
             <div className="row g-0">
               <div className="col-md-6 col-lg-5 d-none d-md-block">
                 <img
@@ -69,14 +78,14 @@ export default function LoginUsuario() {
                 />
               </div>
               <div className="col-md-6 col-lg-7 d-flex align-items-center">
-                <div className="card-body p-4 p-lg-5 text-black">
+                <div className="card-body p-4 p-lg-5">
                   <form onSubmit={handleSubmit}>
                     <div className="d-flex align-items-center mb-3 pb-1">
                       <i
-                        className="fas fa-cubes fa-2x me-3"
-                        style={{ color: "#ff6219" }}
+                        className="fa-solid fa-paw  fa-2x me-3"
+                        style={{ color: "#FF914D" }}
                       />
-                      <span className="h1 fw-bold mb-0">Usuario</span>
+                      <h1 className="mb-0">Usuario</h1>
                     </div>
                     {loginError && (
                       <p style={styles}>Usuario o contraseña incorrectos</p>
@@ -104,13 +113,13 @@ export default function LoginUsuario() {
                       />
                     </div>
                     <div className="pt-1 mb-4">
-                      <button className="btn btn-dark btn-lg btn-block" type="submit">
+                      <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{backgroundColor: "#ff914d"}}>
                         Iniciar Sesión
                       </button>
                     </div>
-                    <p className="mb-5 pb-lg-2" style={{ color: "#393f81" }}>
+                    <p className="mb-5 pb-lg-2 text-muted">
                       ¿No tienes cuenta?{" "}
-                      <a href="/signup" style={{ color: "#393f81" }}>
+                      <a href="/signup" style={{ textDecoration: "none" }}>
                         Registrate
                       </a>
                     </p>
@@ -122,7 +131,6 @@ export default function LoginUsuario() {
         </div>
       </div>
     </div>
-
   );
 
 }
