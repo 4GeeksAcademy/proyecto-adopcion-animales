@@ -6,7 +6,6 @@ import { Context } from "../store/appContext";
 
 export const UploadView = props => {
 	const { store, actions } = useContext(Context);
-    const animalId = store.animalId; // Asegúrate de reemplazar "animalId" con la propiedad correcta que almacena el ID del animal en el contexto
     const [ files, setFiles ] = useState(null);
 	
     const uploadImage = (evt) => {
@@ -29,7 +28,6 @@ export const UploadView = props => {
 		<div className="jumbotron">
 			<form onSubmit={uploadImage} >
                 <input type="file" onChange={(e) => setFiles(e.target.files)}/>
-                <input type="hidden" name="animal_id" value={animalId} />
                 <button>Upload</button>
             </form>
 		</div>
