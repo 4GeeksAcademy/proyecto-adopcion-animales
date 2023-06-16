@@ -134,8 +134,9 @@ export const SearchBar = () => {
       <div className='container-fluid justify-content-center mt-4 mb-2'>
         <h2>Últimos animales en adopción</h2>
         <div className='container justify-content-center'>
-        <FilterAnimalHome animals={animals} filtros={filtros} />
+          <FilterAnimalHome animals={animals} filtros={filtros} />
         </div>
+        <button type="button" className="btn btn-lg shadow col-4 mt-5 rounded-pill" style={{ backgroundColor: "#a96d60" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "white" }}>Ver más</a></button>
       </div>
     </>
   );
