@@ -24,15 +24,15 @@ export default function Card({ animal }) {
             <Link to={`/animal/${animal.id}`}>
                 <h2>Nombre: {animal.nombre}</h2>
             </Link>
-            <Link to={`/asociacion/asociacionDetail/${animal.asociacion.id}`}>
-                <h3>Nombre de la Asociación: {animal.asociacion.nombre}</h3>
+            <Link to={`/asociacion/asociacionDetail/${animal.asociacion_id}`}>
+                <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
             </Link>
             <img src={animal.image_url} alt={animal.nombre} />
             <ul>
                 <li>Raza: {animal.raza}</li>
                 <li>Edad: {animal.edad}</li>
                 <li>Género: {animal.genero}</li>
-                <li>Provincia: {animal.asociacion.provincia}</li>
+                <li>Provincia: {animal.asociacion_provincia}</li>
                 <li>Descripción: {animal.descripcion}</li>
             </ul>
             <button onClick={() => {
