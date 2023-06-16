@@ -1,6 +1,6 @@
 
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 export default function AnimalForm() {
   const initialForm = {
@@ -15,6 +15,7 @@ export default function AnimalForm() {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
 
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
 
@@ -66,6 +67,10 @@ export default function AnimalForm() {
     setErrors(newError);
     setForm({ ...initialForm });
     setSuccessMessage(true);
+
+    setTimeout(() => {
+      navigate("/asociacion");
+    }, 2000); // Retraso de 2 segundos para redirigir a la página de inicio
 
   };
   let styles = {
