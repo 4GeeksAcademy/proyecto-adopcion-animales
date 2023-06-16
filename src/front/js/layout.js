@@ -27,6 +27,7 @@ import AnimalHomeDetail from "./pages/animalHomeDetail";
 import AnimalDetail from "./pages/animalDetail";
 import AnimalData from "./pages/animalData";
 import ContactForm from "./pages/contactForm";
+import AsociacionDetail from "./pages/asociacionDetail";
 
 //create your first component
 const Layout = () => {
@@ -60,6 +61,7 @@ const Layout = () => {
                         <Route element={<AnimalDetail />} path="/usuario/animal:id" />
                         <Route element={<AnimalData />} path="/asociacion/animalData:id" />
                         <Route element={<ContactForm />} path="/usuario/animal:id/contacto" />
+                        <Route element={<AsociacionDetail />} path="/asociacion/asociacionDetail/:id" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />
