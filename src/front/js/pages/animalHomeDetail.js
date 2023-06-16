@@ -54,7 +54,6 @@ export default function AnimalHomeDetail() {
                     </div>
                 </div>
             </div>
-
         </>
     );
 }
