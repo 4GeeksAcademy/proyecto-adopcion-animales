@@ -20,12 +20,12 @@ export default function Card({ animal }) {
     }
 
     return (
-  
-        <Link to={`animal${animal.id}`}>
-            <div className={handleColor()}>
+
+        <Link className="col" to={`animal${animal.id}`}>
+            <div className="card " style={{ width: " 18rem" }}>
                 <h2>Nombre: {animal.nombre}</h2>
                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
-                <img src={animal.image_url} alt={animal.nombre} />
+                <img className="img" src={animal.image_url} alt={animal.nombre} />
                 <ul>
                     <li>Raza: {animal.raza}</li>
                     <li>Edad: {animal.edad}</li>
@@ -33,10 +33,10 @@ export default function Card({ animal }) {
                     <li>Provincia: {animal.asociacion_provincia}</li>
                     <li>Descripción: {animal.descripcion}</li>
                 </ul>
-                <button onClick={()=>{
-                actions.selectId(animal);
-                actions.addFavorite()
-            }}>Adoptar</button>
+                <button onClick={() => {
+                    actions.selectId(animal);
+                    actions.addFavorite()
+                }}>Me gusta</button>
             </div>
         </Link >
     );

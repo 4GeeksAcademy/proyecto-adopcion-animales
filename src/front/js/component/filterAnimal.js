@@ -23,7 +23,7 @@ export default function FilterAnimal({ animals, filtros }) {
     });
 
     return (
-        <div className="animales">
+        <div className="row">
             {animalsFiltered.length > 0 ? (
                 animalsFiltered.map((animal) => (
                     <Card key={animal.id} animal={animal} />

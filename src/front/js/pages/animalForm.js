@@ -2,7 +2,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-export default function AnimalForm() {
+export default function AnimalForm({ onAnimalCreated }) {
   const initialForm = {
     nombre: "",
     tipo_animal: "",
@@ -67,6 +67,7 @@ export default function AnimalForm() {
     setErrors(newError);
     setForm({ ...initialForm });
     setSuccessMessage(true);
+    onAnimalCreated();
 
     setTimeout(() => {
       navigate("/asociacion");

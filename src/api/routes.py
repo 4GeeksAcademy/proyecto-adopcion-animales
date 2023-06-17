@@ -34,24 +34,34 @@ def handle_hello():
 @api.route('/animal', methods=['GET'])
 @jwt_required()
 def get_animals():
-
-# Obtengo el usuario al que pertenece el token JWT
     current_user = get_jwt_identity()
-
-  # Verificar el tipo de usuario
+    
+    # Verificar el tipo de usuario
     if 'apellido' in current_user:
         # Si es un USER (tiene la propiedad last_name)
-        allAnimals = Animal.query.all() 
+        allAnimals = Animal.query
     elif 'CIF' in current_user:
         # Asociación (tiene la propiedad CIF)
         asociacion_id = current_user['id']
-        allAnimals = Animal.query.filter_by(asociacion_id = asociacion_id).all()   
+        allAnimals = Animal.query.filter_by(asociacion_id=asociacion_id)
     else:
         # Tipo de usuario no reconocido
         return jsonify({'message': 'Unrecognized user type'}), 400
+    
+    # Obtener los parámetros de paginación
+    page = request.args.get('page', default=1, type=int)
+    size = request.args.get('size', default=8, type=int)
 
-    result = [element.serialize() for element in allAnimals]
+    # Calcular los índices de inicio y fin para la paginación
+    start_index = (page - 1) * size
+    end_index = start_index + size
+
+    # Aplicar la paginación a los resultados
+    paginated_animals = allAnimals[start_index:end_index]
+
+    result = [element.serialize() for element in paginated_animals]
     return jsonify(result), 200
+
 
 # Ruta pública para obtener todos los animales en la Home
 
