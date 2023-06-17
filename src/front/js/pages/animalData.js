@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useNavigate } from "react-router-dom";
 
 export default function AnimalData() {
     const { id } = useParams();
@@ -12,7 +12,9 @@ export default function AnimalData() {
         descripcion: "",
     });
 
+    const [successMessage, setSuccessMessage] = useState(false);
     const token = localStorage.getItem("token");
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchAnimal = async () => {
@@ -53,10 +55,19 @@ export default function AnimalData() {
         });
         const data = await response.json();
         console.log(data);
+        setSuccessMessage(true);
+        setTimeout(() => {
+            navigate("/asociacion");
+          }, 2000);
     };
 
     return (
         <>
+            {successMessage && (
+                <div className="alert alert-success" role="alert">
+                    El animal ha sido modificado exitosamente
+                </div>
+            )}
             {animal.nombre ? (
                 <div>
                     <h1>Modificar los datos del Animal</h1>
