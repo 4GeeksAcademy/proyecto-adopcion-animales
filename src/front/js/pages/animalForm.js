@@ -67,7 +67,6 @@ export default function AnimalForm({ onAnimalCreated }) {
     setErrors(newError);
     setForm({ ...initialForm });
     setSuccessMessage(true);
-    onAnimalCreated();
 
     setTimeout(() => {
       navigate("/asociacion");
