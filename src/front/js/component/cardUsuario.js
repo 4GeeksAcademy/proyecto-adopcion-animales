@@ -25,7 +25,9 @@ export default function Card({ animal }) {
             <Link className="col" to={`animal${animal.id}`}>
                 <h2>Nombre: {animal.nombre}</h2>
             </Link >
-            <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
+            <Link to={`/asociacion/asociacionDetail/${animal.asociacion_id}`}>
+                <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
+            </Link>
             <img className="img" src={animal.image_url} alt={animal.nombre} />
             <ul>
                 <li>Raza: {animal.raza}</li>
@@ -41,4 +43,3 @@ export default function Card({ animal }) {
         </div>
     );
 }
-

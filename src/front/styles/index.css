@@ -12,13 +12,13 @@
 
 
 .ligth-card{
-  background-color: #ffffff;
+  background-color: #f9e4df;
   color: #000000;
   max-width: 55rem;
   margin: 2rem auto;
 }
 .dark {
-  background-color: #656565;
+  background-color: #000000;
   color: #ffffff;
 }
 

@@ -1,8 +1,9 @@
-
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import { Context } from "../store/appContext";
 
-export default function AnimalForm({ onAnimalCreated }) {
+const AnimalForm = () => {
+  const { store, actions } = useContext(Context);
   const initialForm = {
     nombre: "",
     tipo_animal: "",
@@ -10,6 +11,7 @@ export default function AnimalForm({ onAnimalCreated }) {
     edad: "",
     genero: "",
     descripcion: "",
+    imagen: null,
   };
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
@@ -17,7 +19,6 @@ export default function AnimalForm({ onAnimalCreated }) {
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
-
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -49,17 +50,24 @@ export default function AnimalForm({ onAnimalCreated }) {
     }
     if (Object.keys(newError).length === 0) {
       try {
+        const formData = new FormData();
+        formData.append("nombre", form.nombre);
+        formData.append("tipo_animal", form.tipo_animal);
+        formData.append("raza", form.raza);
+        formData.append("edad", form.edad);
+        formData.append("genero", form.genero);
+        formData.append("descripcion", form.descripcion);
+        formData.append("imagen", form.imagen);
+
         const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
           method: "POST",
           headers: {
-            "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
           },
-          body: JSON.stringify(form),
+          body: formData,
         });
         const data = await response.json();
         console.log(data);
-
       } catch (error) {
         console.log(error);
       }
@@ -73,6 +81,11 @@ export default function AnimalForm({ onAnimalCreated }) {
     }, 2000); // Retraso de 2 segundos para redirigir a la página de inicio
 
   };
+
+  const handleImageChange = (e) => {
+    setForm({ ...form, imagen: e.target.files[0] });
+  };
+
   let styles = {
     fontWeight: "bold",
     color: "#dc3545",
@@ -105,7 +118,9 @@ export default function AnimalForm({ onAnimalCreated }) {
               type="text"
               id="tipo_animal"
               value={form.tipo_animal}
-              onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, tipo_animal: e.target.value })
+              }
               required
             />
             {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
@@ -166,20 +181,29 @@ export default function AnimalForm({ onAnimalCreated }) {
             <textarea
               id="descripcion"
               value={form.descripcion}
-              onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
+              onChange={(e) =>
+                setForm({ ...form, descripcion: e.target.value })
+              }
+            />
+          </div>
+          <div>
+            <label htmlFor="imagen">Imagen:</label>
+            <input
+              type="file"
+              id="imagen"
+              onChange={handleImageChange}
+              accept="image/*"
+              required
             />
           </div>
           <div>
             <button type="submit">Enviar</button>
           </div>
         </form>
-        <Link to="/asociacion">Volver Atras</Link>
+        <Link to="/asociacion">Volver Atrás</Link>
       </div>
     </>
   );
-}
+};
 
-
-
-
-
+export default AnimalForm;

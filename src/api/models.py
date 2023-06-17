@@ -37,8 +37,8 @@ class Animal(db.Model):
     edad = db.Column(db.String(50), unique=False, nullable=False)
     genero = db.Column(db.String(50), unique=False, nullable=False)
     descripcion = db.Column(db.String(500), unique=False, nullable=False)
-    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/ilustracion-dibujos-animados-lindo-perro-gato-lindo_138676-3238.jpg?w=826&t=st=1685726659~exp=1685727259~hmac=a431aa59abb1642efdeb6cfc2deca33296a142d07ce35860158892c6d5ef97e1', nullable=False)  
     asociacion_id = db.Column(db.Integer, db.ForeignKey('asociacion.id'), unique=False, nullable=False)
+    animal_image = db.Column(db.String(550), unique=True, nullable=False)
 
     asociacion = db.relationship('Asociacion', backref='animals')
 
@@ -54,7 +54,7 @@ class Animal(db.Model):
             "genero": self.genero,
             "descripcion": self.descripcion,
             "edad": self.edad,
-            "image_url": self.image_url,
+            "animal_image": self.animal_image,
             "asociacion_id": self.asociacion_id,
             "asociacion_nombre": self.asociacion.nombre,
             "asociacion_provincia": self.asociacion.provincia,
@@ -85,6 +85,7 @@ class Asociacion(db.Model):
     email = db.Column(db.String(80), unique=False, nullable=False)
     provincia = db.Column(db.String(80), unique=False, nullable=False)
     CIF = db.Column(db.String(80), unique=False, nullable=False)
+    descripcion = db.Column(db.String(180), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/agrega-amigos-red-social-internet-comunidad-ilustracion-amistad-web_1284-47694.jpg?w=826&t=st=1685727734~exp=1685728334~hmac=73ee31dafe900f83498edb4195355135f4937c2f55c68ab40aa53561b45cf832', nullable=False)  
     
@@ -99,6 +100,7 @@ class Asociacion(db.Model):
             "email": self.email,
             "provincia": self.provincia,
             "CIF": self.CIF,
+            "descripcion": self.descripcion,
             "image_url": self.image_url
             # do not serialize the password, its a security breach
         }    

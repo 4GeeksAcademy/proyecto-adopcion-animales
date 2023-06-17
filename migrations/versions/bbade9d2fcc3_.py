@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: 87f0d679710b
+Revision ID: bbade9d2fcc3
 Revises: 
-Create Date: 2023-06-15 15:03:05.753795
+Create Date: 2023-06-17 17:10:31.438819
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = '87f0d679710b'
+revision = 'bbade9d2fcc3'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -24,6 +24,7 @@ def upgrade():
     sa.Column('email', sa.String(length=80), nullable=False),
     sa.Column('provincia', sa.String(length=80), nullable=False),
     sa.Column('CIF', sa.String(length=80), nullable=False),
+    sa.Column('descripcion', sa.String(length=180), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
     sa.Column('image_url', sa.String(length=500), nullable=False),
     sa.PrimaryKeyConstraint('id')
@@ -45,10 +46,11 @@ def upgrade():
     sa.Column('edad', sa.String(length=50), nullable=False),
     sa.Column('genero', sa.String(length=50), nullable=False),
     sa.Column('descripcion', sa.String(length=500), nullable=False),
-    sa.Column('image_url', sa.String(length=500), nullable=False),
     sa.Column('asociacion_id', sa.Integer(), nullable=False),
+    sa.Column('animal_image', sa.String(length=550), nullable=False),
     sa.ForeignKeyConstraint(['asociacion_id'], ['asociacion.id'], ),
-    sa.PrimaryKeyConstraint('id')
+    sa.PrimaryKeyConstraint('id'),
+    sa.UniqueConstraint('animal_image')
     )
     op.create_table('adoption',
     sa.Column('id', sa.Integer(), nullable=False),

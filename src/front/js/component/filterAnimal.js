@@ -22,10 +22,12 @@ export default function FilterAnimal({ animals, filtros }) {
             return true;
     });
 
+    const latestThreeResults = animalsFiltered.slice(-3);
+
     return (
-        <div className="row">
+        <div className="container justify-content-center">
             {animalsFiltered.length > 0 ? (
-                animalsFiltered.map((animal) => (
+                latestThreeResults.map((animal) => (
                     <Card key={animal.id} animal={animal} />
                 ))
             ) : (
