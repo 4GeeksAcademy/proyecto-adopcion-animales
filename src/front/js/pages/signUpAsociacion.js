@@ -8,7 +8,7 @@ export default function SignUpAsociacion() {
         email: "",
         provincia: "",
         CIF: "",
-        descripcion: "", 
+        descripcion: "",
         password: "",
         passwordConfirmation: "",
     };
@@ -69,8 +69,8 @@ export default function SignUpAsociacion() {
                         CIF: form.CIF,
                         descripcion: form.descripcion,
                         password: form.password,
-                        // Cambiar los nombres según el back
                     }),
+
                 });
 
                 const data = await response.json();
@@ -231,10 +231,11 @@ export default function SignUpAsociacion() {
                                                     <div className="form-outline flex-fill mb-0">
                                                         <textarea
                                                             id="descripcion"
+                                                            name="descripcion"
                                                             placeholder="Descripción"
                                                             className="form-control"
-                                                            value={descripcion}
-                                                            onChange={(e) => setDescripcion(e.target.value)}
+                                                            value={form.descripcion}
+                                                            onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
                                                         />
                                                     </div>
                                                 </div>
