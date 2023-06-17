@@ -38,7 +38,7 @@ export default function AnimalHomeDetail() {
                 <h1>Card Usuario</h1>
                 <h2>Nombre: {animal.nombre}</h2>
                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
-                <img src={animal.image_url} alt={animal.nombre} />
+                <img src={animal.animal_image} alt={animal.nombre} />
                 <ul>
                     <li>Raza: {animal.raza}</li>
                     <li>Edad: {animal.edad}</li>

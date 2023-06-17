@@ -63,32 +63,34 @@ export const Navbar = () => {
 					{!tokenExists && (
 						<div className="navbar-nav">
 							<Link to="/chooselogin">
-								<button className="btn btn-light m-1">Iniciar Sesión</button>
+								<button className="btn m-1" style={{backgroundColor:"#f9e4df"}} >Iniciar Sesión</button>
 							</Link>
 							<Link to="/choosesignup">
-								<button className="btn btn-light m-1">Registrarse</button>
+								<button className="btn m-1" style={{backgroundColor:"#f9e4df"}}>Registrarse</button>
 							</Link>
 						</div>
 					)}
 					{tokenExists && (
 						<div>
 							<div className="navbar-nav">
-								<Link to="/">
-									<button onClick={handleLogout} className="btn btn-light m-1">Cerrar Sesión</button>
+							<Link to="/favorite">
+									<button className="btn m-1" style={{backgroundColor:"#f9e4df"}}>Mis Favoritos</button>
 								</Link>
-							</div>
-							<div className="ml-auto">
-								<Link to="/favorite">
-									<button className="btn btn-primary">FAVORITOS</button>
+								<Link to="/">
+									<button onClick={handleLogout} className="btn m-1" style={{backgroundColor:"#f9e4df"}}>Cerrar Sesión</button>
 								</Link>
 							</div>
 						</div>
-
 					)}
-					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" >
+					<div className="navbar-nav">
+							<Link to="/donacion">
+								<button className="btn btn-light m-1">Haz una donacion</button>
+							</Link>
+						</div>
+					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" style={{backgroundColor:"#A96D60"}}>
 						{store.darkMode ? (
 							<>
-								<i className="fas fa-sun" alt="Modo claro"></i>
+								<i className="fas fa-sun" alt="Modo claro" style={{ color:"white"}} ></i>
 							</>
 						) : (
 							<>
