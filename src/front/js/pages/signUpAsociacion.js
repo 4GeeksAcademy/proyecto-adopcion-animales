@@ -8,6 +8,7 @@ export default function SignUpAsociacion() {
         email: "",
         provincia: "",
         CIF: "",
+        descripcion: "",
         password: "",
         passwordConfirmation: "",
     };
@@ -15,6 +16,8 @@ export default function SignUpAsociacion() {
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [descripcion, setDescripcion] = useState("");
+
 
     const navigate = useNavigate();
 
@@ -64,9 +67,10 @@ export default function SignUpAsociacion() {
                         email: form.email,
                         provincia: form.provincia,
                         CIF: form.CIF,
+                        descripcion: form.descripcion,
                         password: form.password,
-                        // Cambiar los nombres según el back
                     }),
+
                 });
 
                 const data = await response.json();
@@ -222,6 +226,20 @@ export default function SignUpAsociacion() {
                                                         {errors.CIF && <p style={styles}>{errors.CIF}</p>}
                                                     </div>
                                                 </div>
+                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="fas fa-info fa-lg me-3 fa-fw" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                        <textarea
+                                                            id="descripcion"
+                                                            name="descripcion"
+                                                            placeholder="Descripción"
+                                                            className="form-control"
+                                                            value={form.descripcion}
+                                                            onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
+                                                        />
+                                                    </div>
+                                                </div>
+
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-lock fa-lg me-3 fa-fw" />
                                                     <div className="form-outline flex-fill mb-0">
