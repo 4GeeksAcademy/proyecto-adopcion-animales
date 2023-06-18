@@ -53,25 +53,27 @@ export default function SignUpAsociacion() {
 
         if (Object.keys(newError).length === 0) {
             try {
+                const formData = new FormData();
+                formData.append("nombre", form.nombre);
+                formData.append("email", form.email);
+                formData.append("provincia", form.provincia);
+                formData.append("CIF", form.CIF);
+                formData.append("password", form.password);
+                formData.append("imagen", form.imagen);
+
                 const response = await fetch(process.env.BACKEND_URL + "/api/asociacion", {
                     method: "POST",
                     headers: {
                         "Content-Type": "application/json",
                         Accept: "application/json",
                     },
-                    body: JSON.stringify({
-                        nombre: form.nombre,
-                        email: form.email,
-                        provincia: form.provincia,
-                        CIF: form.CIF,
-                        password: form.password,
-                        // Cambiar los nombres según el back
+                    body: formData,
                     }),
-                });
+                };
 
                 const data = await response.json();
                 console.log(data);
-            } catch (error) {
+            }   catch (error) {
                 console.log(error);
             }
         }

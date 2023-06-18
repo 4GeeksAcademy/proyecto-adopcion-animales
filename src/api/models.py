@@ -86,7 +86,7 @@ class Asociacion(db.Model):
     provincia = db.Column(db.String(80), unique=False, nullable=False)
     CIF = db.Column(db.String(80), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    image_url = db.Column(db.String(500), default='https://img.freepik.com/vector-gratis/agrega-amigos-red-social-internet-comunidad-ilustracion-amistad-web_1284-47694.jpg?w=826&t=st=1685727734~exp=1685728334~hmac=73ee31dafe900f83498edb4195355135f4937c2f55c68ab40aa53561b45cf832', nullable=False)  
+    asociacion_image = db.Column(db.String(550), unique=True, nullable=False)
     
  
     def __repr__(self):
@@ -99,7 +99,7 @@ class Asociacion(db.Model):
             "email": self.email,
             "provincia": self.provincia,
             "CIF": self.CIF,
-            "image_url": self.image_url
+            "asociacion_image": self.asociacion_image
             # do not serialize the password, its a security breach
         }    
     

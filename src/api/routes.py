@@ -413,10 +413,20 @@ def get_asociation_id(id):
 @api.route('/asociacion', methods=['POST'])
 def post_asociacion():
  
-        body = request.get_json()
+        body = request.form
  
-        asociacion = Asociacion(nombre=body['nombre'], email=body['email'], provincia = body['provincia'], CIF = body['CIF'], password = body['password'])
- 
+        asociacion = Asociacion(
+            nombre=body['nombre'], 
+            email=body['email'], 
+            provincia = body['provincia'], 
+            CIF = body['CIF'], 
+            password = body['password']
+        )
+
+        image_file = request.files['imagen']
+        result = cloudinary.uploader.upload(image_file)
+        animal.animal_image = result['secure_url']
+
         db.session.add(asociacion)
         db.session.commit()
  
