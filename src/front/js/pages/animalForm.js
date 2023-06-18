@@ -85,12 +85,7 @@ const AnimalForm = () => {
   const handleImageChange = (e) => {
     setForm({ ...form, imagen: e.target.files[0] });
   };
-
-  let styles = {
-    fontWeight: "bold",
-    color: "#dc3545",
-  };
-
+  
   return (
     <>
       {successMessage && (

@@ -82,7 +82,7 @@ export default function Asociacion() {
                                 <div className="col" key={animal.id}>
                                     <div className="card" style={{ width: " 18rem" }}>
                                         <h2>{animal.nombre}</h2>
-                                        <img src={animal.image_url} alt={animal.nombre} />
+                                        <img src={animal.animal_image} alt={animal.nombre} />
                                         <ul>
                                             <li>Animal: {animal.tipo_animal}</li>
                                             <li>Raza: {animal.raza}</li>
