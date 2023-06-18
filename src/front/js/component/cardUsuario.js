@@ -28,7 +28,7 @@ export default function Card({ animal }) {
             <Link to={`/asociacion/asociacionDetail/${animal.asociacion_id}`}>
                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
             </Link>
-            <img className="img" src={animal.image_url} alt={animal.nombre} />
+            <img className="img" src={animal.animal_image} alt={animal.nombre} />
             <ul>
                 <li>Raza: {animal.raza}</li>
                 <li>Edad: {animal.edad}</li>
@@ -41,6 +41,5 @@ export default function Card({ animal }) {
                 actions.addFavorite()
             }}>Me gusta</button>
         </div>
- 
     );
 }
