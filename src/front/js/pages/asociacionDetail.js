@@ -37,16 +37,21 @@ const AsociacionDetail = () => {
     }
     console.log(asociacion)
     return (
-        <div className={handleColor()}>
-            <h2>Nombre de la Asociación: {asociacion.nombre}</h2>
-            <img src={asociacion.image_url} alt={asociacion.nombre} />
-            <ul>
-                {/* <li>Descripción: {asociacion.descripcion}</li> */}
-                <li>Descripción: {asociacion['descripcion']}</li>
-                <li>Email: {asociacion.email}</li>
-                <li>Provincia: {asociacion.provincia}</li>
-            </ul>
-        </div>
+        <>
+            <Link to="/asociacion">
+                <button className="btn btn-primary">Volver</button>
+            </Link>
+            <div className={handleColor()}>
+                <h2>Nombre de la Asociación: {asociacion.nombre}</h2>
+                <img src={asociacion.image_url} alt={asociacion.nombre} />
+                <ul>
+                    {/* <li>Descripción: {asociacion.descripcion}</li> */}
+                    <li>Descripción: {asociacion['descripcion']}</li>
+                    <li>Email: {asociacion.email}</li>
+                    <li>Provincia: {asociacion.provincia}</li>
+                </ul>
+            </div>
+        </>
     );
 };
 
