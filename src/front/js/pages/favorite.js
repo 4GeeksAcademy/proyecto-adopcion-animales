@@ -22,7 +22,7 @@ const Favorite = () => {
                 <div key={index} className='col-3'>
                     <h2>Nombre: {fav.animal.nombre}</h2>
                     <h3>Nombre de la Asociación: {fav.animal.asociacion_nombre}</h3>
-                    <img src={fav.animal.image_url} alt={fav.animal.nombre} />
+                    <img src={fav.animal.animal_image} alt={fav.animal.nombre} />
                     <ul>
                         <li>Raza: {fav.animal.raza}</li>
                         <li>Edad: {fav.animal.edad}</li>
@@ -31,7 +31,7 @@ const Favorite = () => {
                         <li>Descripción: {fav.animal.descripcion}</li>
                     </ul>
 
-                    <button onClick={()=>actions.selectId(fav)}>Agregar</button>
+                    <button onClick={() => actions.selectId(fav)}>Agregar</button>
                     <button className='btn btn-danger' onClick={() => actions.removeFavorite(fav.id)}>Delete fav: <BsFillTrash3Fill />
                     </button>
                 </div>
