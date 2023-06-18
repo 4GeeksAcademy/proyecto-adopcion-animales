@@ -2,7 +2,7 @@
 // //Componente para mandar el correo a la asociación
 // //Para poder usarlo hay que hacer un npm install emailjs-com
 import React, { useState, useRef, useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import emailjs from "emailjs-com";
 
 export default function ContactForm() {
@@ -17,6 +17,8 @@ export default function ContactForm() {
     mensaje: "",
     imagen: "",
   });
+  const [successMessage, setSuccessMessage] = useState(false);
+  const navigate = useNavigate();
 
   const fetchAnimal = async () => {
     const response = await fetch(process.env.BACKEND_URL + `/api/animal/${id}`, {
@@ -83,46 +85,57 @@ export default function ContactForm() {
       ...prevValues,
       mensaje: "",
     }));
+    setSuccessMessage(true);
+    setTimeout(() => {
+      navigate('/usuario');
+    }, 2000);
   };
 
   return (
-    <form ref={formRef} onSubmit={handleSubmit}>
-      <label className="none">
-        Nombre del remitente:
-        <input
-          type="text"
-          name="nombreUsuario"
-          value={formValues.nombreUsuario}
-          onChange={handleChange}
-        />
-      </label>
-      <label className="none">
-        Email del remitente:
-        <input
-          type="email"
-          name="emailUsuario"
-          value={formValues.emailUsuario}
-          onChange={handleChange}
-        />
-      </label>
-      <label className="none">
-        Email del destinatario:
-        <input
-          type="email"
-          name="emailAsociacion"
-          value={formValues.emailAsociacion}
-          onChange={handleChange}
-        />
-      </label>
-      <label>
-        Mensaje:
-        <textarea
-          name="mensaje"
-          value={formValues.mensaje}
-          onChange={handleChange}
-        />
-      </label>
-      <button type="submit">Enviar correo electrónico</button>
-    </form>
+    <>
+      {successMessage && (
+        <div className="alert alert-success" role="alert">
+          El mensaje se ha enviado correctamente.
+        </div>
+      )}
+      <form ref={formRef} onSubmit={handleSubmit}>
+        <label className="none">
+          Nombre del remitente:
+          <input
+            type="text"
+            name="nombreUsuario"
+            value={formValues.nombreUsuario}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="none">
+          Email del remitente:
+          <input
+            type="email"
+            name="emailUsuario"
+            value={formValues.emailUsuario}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="none">
+          Email del destinatario:
+          <input
+            type="email"
+            name="emailAsociacion"
+            value={formValues.emailAsociacion}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          Mensaje:
+          <textarea
+            name="mensaje"
+            value={formValues.mensaje}
+            onChange={handleChange}
+          />
+        </label>
+        <button type="submit">Enviar correo electrónico</button>
+      </form>
+    </>
   );
 }

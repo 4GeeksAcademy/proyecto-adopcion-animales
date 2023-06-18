@@ -10,11 +10,14 @@ export default function Usuario() {
         genero: "",
         tipo_animal: "",
     })
+    const [pageNumber, setPageNumber] = useState(1)
+    const pageSize = 8
 
     const token = localStorage.getItem("token");
 
     const fetchAnimal = async (e) => {
-        const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
+        const response = await fetch(
+            `${process.env.BACKEND_URL}/api/animal?page=${pageNumber}&size=${pageSize}`, {
             method: "GET",
             headers: {
                 "Content-Type": "application/json",
@@ -27,7 +30,7 @@ export default function Usuario() {
     };
     useEffect(() => {
         fetchAnimal()
-    }, [])
+    }, [pageNumber])
 
     return (
         <>
@@ -114,6 +117,10 @@ export default function Usuario() {
                 <div>
                     <FilterAnimal animals={animals} filtros={filtros} />
                 </div>
+            </div>
+            <div>
+                <button onClick={() => setPageNumber(pageNumber - 1)} disabled={pageNumber === 1}>Anterior</button>
+                <button onClick={() => setPageNumber(pageNumber + 1)} disabled={animals.length < pageSize}>Siguiente</button>
             </div>
         </>
     )

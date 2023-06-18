@@ -21,7 +21,7 @@ export default function CardHome({ animal }) {
         fontSize: "1px",
         margin: "1px",
         padding: "0px",
-        
+
 
     };
 
@@ -35,9 +35,9 @@ export default function CardHome({ animal }) {
 
         <Link to={`animalHome${animal.id}`} style={{ textDecoration: "none" }}>
             <div className={` border border-1 mt-4 rounded-3 shadow border-2`} style={cardStyle}>
-                <img src={animal.image_url} alt={animal.nombre} style={imageStyle} />
-                <h2 style={{ fontSize: "24px", textDecoration: "none",color:"#ff914d" }}> {animal.nombre}</h2>
-                <p style={{ fontSize: "14px", textDecoration: "none",color:"#ff914d" }}><i className="fa-solid fa-location-dot fa-lg fa-fw" />{animal.asociacion_provincia}</p>
+                <img src={animal.animal_image} alt={animal.nombre} style={imageStyle} />
+                <h2 style={{ fontSize: "24px", textDecoration: "none", color: "#ff914d" }}> {animal.nombre}</h2>
+                <p style={{ fontSize: "14px", textDecoration: "none", color: "#ff914d" }}><i className="fa-solid fa-location-dot fa-lg fa-fw" />{animal.asociacion_provincia}</p>
             </div>
         </Link>
 

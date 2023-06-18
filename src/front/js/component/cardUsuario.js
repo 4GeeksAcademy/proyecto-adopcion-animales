@@ -20,25 +20,26 @@ export default function Card({ animal }) {
     }
 
     return (
-  
-        <Link to={`animal${animal.id}`}>
-            <div className={handleColor()}>
+
+        <div className="card " style={{ width: " 18rem" }}>
+            <Link className="col" to={`animal${animal.id}`}>
                 <h2>Nombre: {animal.nombre}</h2>
+            </Link >
+            <Link to={`/asociacion/asociacionDetail/${animal.asociacion_id}`}>
                 <h3>Nombre de la Asociación: {animal.asociacion_nombre}</h3>
-                <img src={animal.image_url} alt={animal.nombre} />
-                <ul>
-                    <li>Raza: {animal.raza}</li>
-                    <li>Edad: {animal.edad}</li>
-                    <li>Género: {animal.genero}</li>
-                    <li>Provincia: {animal.asociacion_provincia}</li>
-                    <li>Descripción: {animal.descripcion}</li>
-                </ul>
-                <button onClick={()=>{
+            </Link>
+            <img className="img" src={animal.animal_image} alt={animal.nombre} />
+            <ul>
+                <li>Raza: {animal.raza}</li>
+                <li>Edad: {animal.edad}</li>
+                <li>Género: {animal.genero}</li>
+                <li>Provincia: {animal.asociacion_provincia}</li>
+                <li>Descripción: {animal.descripcion}</li>
+            </ul>
+            <button onClick={() => {
                 actions.selectId(animal);
                 actions.addFavorite()
-            }}>Adoptar</button>
-            </div>
-        </Link >
+            }}>Me gusta</button>
+        </div>
     );
 }
-
