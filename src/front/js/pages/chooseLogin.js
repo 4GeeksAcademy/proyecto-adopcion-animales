@@ -16,7 +16,7 @@ export default function ChooseSignUp() {
     }
 
     return (
-        <div className='container my-1 justify-content-center'>
+        <div className='container my-1 justify-content-center vh-100'>
             <div className="container justify-content-center mb-5">
                 <img src={loginImg} className="img shadow-sm" id="loginImagen" style={{ maxWidth: "600px", maxHeight: "200px", display: "block", margin: "0 auto" }} />
             </div>
