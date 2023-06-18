@@ -1,30 +1,29 @@
 import React from "react";
 import "../../styles/component.css"
-import loginImg from '../../../front/img/donarlogo.png';
+import donarImg from '../../../front/img/donarlogo.png';
+import hogarImg from '../../../front/img/hogarLogo.png';
 
 const InfoAdoption = () => {
   return (
     <div className="container marketing" id="infoAdoption" >
       <div className="row">
         <div className="col-lg-4">
-          <svg
-            className="bd-placeholder-img rounded-circle"
-            width="140"
-            height="140"
+        <svg
+            className="bd-placeholder-img rounded-circle shadow"
+            width="200"
+            height="200"
             xmlns="http://www.w3.org/2000/svg"
             role="img"
             aria-label="Placeholder: 140x140"
             preserveAspectRatio="xMidYMid slice"
             focusable="false"
           >
-            <title>Placeholder</title>
-            <rect width="100%" height="100%" fill="#777" />
-            <text x="50%" y="50%" fill="#777" dy=".3em">
-              140x140
-            </text>
+            <title>Asociación</title>
+            <circle cx="70" cy="70" r="70" fill="none" />
+            <image xlinkHref={hogarImg} width="200" height="200" x="0" y="0" />
           </svg>
 
-          <h2>Heading</h2>
+          <h2>Soy Asociación</h2>
           <p>
             Some representative placeholder content for the three columns of text below the carousel. This is the
             first column.
@@ -79,7 +78,7 @@ const InfoAdoption = () => {
           >
             <title>Donar</title>
             <circle cx="70" cy="70" r="70" fill="none" />
-            <image xlinkHref={loginImg} width="200" height="200" x="0" y="0" />
+            <image xlinkHref={donarImg} width="200" height="200" x="0" y="0" />
           </svg>
 
           <h2>¡Haz una donación!</h2>
