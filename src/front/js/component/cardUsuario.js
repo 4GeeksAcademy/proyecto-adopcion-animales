@@ -41,6 +41,5 @@ export default function Card({ animal }) {
                 actions.addFavorite()
             }}>Me gusta</button>
         </div>
-
     );
 }

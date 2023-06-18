@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 
 const AnimalForm = () => {
@@ -17,13 +17,14 @@ const AnimalForm = () => {
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
 
+  const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     let newError = {};
     let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  
+
     if (!form.nombre.trim()) {
       newError.nombre = "El campo nombre es requerido";
     } else if (!regexName.test(form.nombre.trim())) {
@@ -57,7 +58,7 @@ const AnimalForm = () => {
         formData.append("genero", form.genero);
         formData.append("descripcion", form.descripcion);
         formData.append("imagen", form.imagen);
-  
+
         const response = await fetch(process.env.BACKEND_URL + "/api/animal", {
           method: "POST",
           headers: {
@@ -74,17 +75,17 @@ const AnimalForm = () => {
     setErrors(newError);
     setForm({ ...initialForm });
     setSuccessMessage(true);
+
+    setTimeout(() => {
+      navigate("/asociacion");
+    }, 2000); // Retraso de 2 segundos para redirigir a la página de inicio
+
   };
-  
+
   const handleImageChange = (e) => {
     setForm({ ...form, imagen: e.target.files[0] });
   };
   
-  let styles = {
-    fontWeight: "bold",
-    color: "#dc3545",
-  };
-
   return (
     <>
       {successMessage && (
