@@ -124,7 +124,7 @@ export default function SignUpAsociacion() {
                                             </p>
                                             <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input
                                                             type="text"
@@ -139,7 +139,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-envelope fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-envelope fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input
                                                             type="email"
@@ -154,7 +154,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fa-solid fa-location-dot fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fa-solid fa-location-dot fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-input flex-fill mb-0">
                                                         <select
                                                             className="form-select" aria-label="Default select example"
@@ -213,7 +213,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input
                                                             type="text"
@@ -228,7 +228,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-info fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-info fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <textarea
                                                             id="descripcion"
@@ -242,7 +242,7 @@ export default function SignUpAsociacion() {
                                                 </div>
 
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-lock fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-lock fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input
                                                             type="password"
@@ -256,7 +256,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-key fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                                                    <i className="fas fa-key fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">
                                                         <input
                                                             type="password"
@@ -275,9 +275,9 @@ export default function SignUpAsociacion() {
                                                 <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginAsociacion"
                                                     style={{ textDecoration: "none" }}>Inicia sesión</a></p>
                                                 <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                                                <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{backgroundColor: "#ff914d"}}>
-                        Registrarse
-                      </button>
+                                                    <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>
+                                                        Registrarse
+                                                    </button>
                                                 </div>
                                             </form>
                                         </div>

@@ -71,46 +71,51 @@ export default function Asociacion() {
                 </div>
             )}
             <div>
-                <h1>Recuperando todos los animales de la Asociación que hizo login</h1>
+                <h1 className="text-center">Bienvenido Asociación</h1>
+                <div className="text-center">
                 <Link to="/animalForm">
-                    <button className="btn btn-primary">Añadir animal</button>
+                    <button type="button" className="btn btn-lg shadow col-4 mt-2 rounded-pill" style={{ backgroundColor: "#a96d60",textDecoration: "none", color: "white" }} >Añadir un nuevo animal</button>
                 </Link>
-                <div className="row">
-                    {animals !== null && animals.length > 0 ? (
-                        animals.map((animal) => {
-                            return (
-                                <div className="col" key={animal.id}>
-                                    <div className="card" style={{ width: " 18rem" }}>
-                                        <h2>{animal.nombre}</h2>
-                                        <img src={animal.animal_image} alt={animal.nombre} />
-                                        <ul>
-                                            <li>Animal: {animal.tipo_animal}</li>
-                                            <li>Raza: {animal.raza}</li>
-                                            <li>Edad: {animal.edad}</li>
-                                            <li>Género: {animal.genero}</li>
-                                            <li>Descripción: {animal.descripcion}</li>
-                                        </ul>
-                                        <Link to={`animalData${animal.id}`}>
-                                            <button className="btn btn-primary">Editar</button>
-                                        </Link>
-                                        <button
-                                            className="btn btn-danger"
-                                            onClick={() => deleteAnimal(animal)}
-                                        >
-                                            Eliminar
-                                        </button>
-                                    </div>
-                                </div>
-                            )
-                        })
-                    ) : (
-                        <h1>No hay animales</h1>
-                    )}
                 </div>
-            </div>
-            <div>
-                <button onClick={() => setPageNumber(pageNumber - 1)} disabled={pageNumber === 1}>Anterior</button>
-                <button onClick={() => setPageNumber(pageNumber + 1)} disabled={animals !== null && animals.length < pageSize}>Siguiente</button>
+                <div className='container mt-4'>
+                    <div className='row g-3'>
+                        {animals !== null && animals.length > 0 ? (
+                            animals.map((animal) => {
+                                return (
+                                    <div className="col-12 col-md-6 col-lg-4" key={animal.id}>
+                                        <div className='card border border-2 shadow' style={{ background: "transparent" }}>
+                                            <div className='text-center'>
+                                                <img src={animal.animal_image} className='card-img-top ' style={{ maxWidth: '250px', maxHeight: '250px' }} alt={animal.nombre} />
+                                            </div>
+                                            <div className='card-body'>
+                                                <h2 className='card-title' style={{ color: "#ff914d" }}>{animal.nombre}</h2>
+                                                <ul className="list-group list-group-flush">
+                                                    <li className="list-group-item">Animal: {animal.tipo_animal}</li>
+                                                    <li className="list-group-item">Raza: {animal.raza}</li>
+                                                    <li className="list-group-item">Edad: {animal.edad}</li>
+                                                    <li className="list-group-item">Género: {animal.genero}</li>
+                                                    <li className="list-group-item">Descripción: {animal.descripcion}</li>
+                                                </ul>
+                                                <div className='d-flex justify-content-between'>
+                                                    <Link to={`animalData${animal.id}`}><button className='btn btn-lg' style={{ backgroundColor: "#ff914d" }}>Editar</button></Link>
+                                                    <button className='btn btn-lg' style={{ backgroundColor: "#a96d60", color: "white" }} onClick={() => deleteAnimal(animal)}>
+                                                        <i className="fa-solid fa-trash" ></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                )
+                            })
+                        ) : (
+                            <h1>No hay animales</h1>
+                        )}
+                    </div>
+                </div>
+                <div className="text-center mt-5">
+                    <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} onClick={() => setPageNumber(pageNumber - 1)} disabled={pageNumber === 1}>Anterior</button>
+                    <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }}onClick={() => setPageNumber(pageNumber + 1)} disabled={animals !== null && animals.length < pageSize}>Siguiente</button>
+                </div>
             </div>
         </>
     )
