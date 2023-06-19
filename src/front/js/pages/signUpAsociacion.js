@@ -63,16 +63,12 @@ export default function SignUpAsociacion() {
 
                 const response = await fetch(process.env.BACKEND_URL + "/api/asociacion", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                    },
                     body: formData,
-                    })
-                const data = await response.json();
-                console.log(data);
-            }   catch (error) {
-                console.log(error);
+                  });
+                  const data = await response.json();
+                  console.log(data);
+                } catch (error) {
+                  console.log(error);
             }
         };
         setErrors(newError);
@@ -229,11 +225,11 @@ export default function SignUpAsociacion() {
                                                     <div className="form-outline flex-fill mb-0">
                                                     <label htmlFor="imagen">Logo:</label>
                                                         <input
-                                                        type="file"
-                                                        id="logo_asociacion"
-                                                        onChange={handleImageChange}
-                                                        accept="image/*"
-                                                        required
+                                                            type="file"
+                                                            id="logo_asociacion"
+                                                            onChange={handleImageChange}
+                                                            accept="image/*"
+                                                            required
                                                         />
                                                     </div>
                                                 </div>
