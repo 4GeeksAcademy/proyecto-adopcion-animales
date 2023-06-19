@@ -22,9 +22,10 @@ export default function AnimalHomeDetail() {
     }, [id]);
 
     const imageStyle = {
-        maxWidth: "100%",
-        maxHeight: "100%",
+        maxWidth: "500px",
+        maxHeight: "500px",
         marginBottom: "10px",
+        
     };
 
     return (
@@ -32,7 +33,7 @@ export default function AnimalHomeDetail() {
             <div className="container py-5">
                 <div className="row d-flex justify-content-center align-items-center ">
                     <div className="card border border-3 rounded-3 shadow" style={{ width: "700px", backgroundColor: "transparent" }}>
-                        <img src={animal.image_url} className="card-img-top p-2 mt-2" style={imageStyle} alt={animal.nombre} />
+                        <img src={animal.animal_image} className="card-img-top p-2 mt-2 mx-auto" style={imageStyle} alt={animal.nombre} />
                         <div className="card-body">
                             <h3 className="card-title">{animal.nombre}</h3>
                             <h6 className="card-subtitle mb-2 text-muted">Asociación: {animal.asociacion_nombre}</h6>
