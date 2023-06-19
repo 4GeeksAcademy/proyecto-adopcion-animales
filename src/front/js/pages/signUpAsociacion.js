@@ -68,16 +68,13 @@ export default function SignUpAsociacion() {
                         Accept: "application/json",
                     },
                     body: formData,
-                    }),
-                };
-
+                    })
                 const data = await response.json();
                 console.log(data);
             }   catch (error) {
                 console.log(error);
             }
-        }
-
+        };
         setErrors(newError);
         setForm({ ...initialForm });
         setIsSubmitted(true);
@@ -87,6 +84,9 @@ export default function SignUpAsociacion() {
         }, 2000); // Retraso de 2 segundos para redirigir a la home
     };
 
+    const handleImageChange = (e) => {
+        setForm({ ...form, imagen: e.target.files[0] });
+      };
 
     let styles = {
         fontWeight: "bold",
@@ -222,6 +222,19 @@ export default function SignUpAsociacion() {
                                                             required
                                                         />
                                                         {errors.CIF && <p style={styles}>{errors.CIF}</p>}
+                                                    </div>
+                                                </div>
+                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="fas fa-user fa-lg me-3 fa-fw" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                    <label htmlFor="imagen">Logo:</label>
+                                                        <input
+                                                        type="file"
+                                                        id="logo_asociacion"
+                                                        onChange={handleImageChange}
+                                                        accept="image/*"
+                                                        required
+                                                        />
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
