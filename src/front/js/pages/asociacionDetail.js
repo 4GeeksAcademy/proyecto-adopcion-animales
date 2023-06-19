@@ -38,7 +38,7 @@ const AsociacionDetail = () => {
     console.log(asociacion)
     return (
         <>
-            <Link to="/asociacion">
+            <Link to="/usuario">
                 <button className="btn btn-primary">Volver</button>
             </Link>
             <div className={handleColor()}>

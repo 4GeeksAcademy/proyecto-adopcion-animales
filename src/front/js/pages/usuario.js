@@ -10,6 +10,9 @@ export default function Usuario() {
         genero: "",
         tipo_animal: "",
     })
+
+    const [showMessage, setShowMessage] = useState(false)
+    const [showDuration, setShowDuration] = useState(2000);
     const [pageNumber, setPageNumber] = useState(1)
     const pageSize = 8
 
@@ -27,6 +30,16 @@ export default function Usuario() {
         const data = await response.json();
         setAnimals(data);
         console.log(data);
+
+        if (e.target) {
+            const animalId = e.target.value;
+            // Lógica para agregar el animal a favoritos
+
+            setShowMessage(true);
+            setTimeout(() => {
+                setShowMessage(false);
+            }, showDuration);
+        }
     };
     useEffect(() => {
         fetchAnimal()
@@ -114,8 +127,13 @@ export default function Usuario() {
                         <option value='Gato'>Gato</option>
                     </select>
                 </form>
+                {showMessage && (
+                    <div className="alert alert-success" role="alert">
+                        Animal añadido a favoritos
+                    </div>
+                )}
                 <div>
-                    <FilterAnimal animals={animals} filtros={filtros} />
+                    <FilterAnimal animals={animals} filtros={filtros} showMessage={showMessage} setShowMessage={setShowMessage} />
                 </div>
             </div>
             <div>

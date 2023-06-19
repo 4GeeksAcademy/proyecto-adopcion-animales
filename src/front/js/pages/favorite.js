@@ -1,5 +1,5 @@
-import React, { useContext, useEffect } from 'react'
-import { Link } from 'react-router-dom';
+import React, { useState, useContext, useEffect } from 'react'
+import { Link, useNavigate } from 'react-router-dom';
 import { Context } from "../store/appContext";
 import { BsFillTrash3Fill } from 'react-icons/bs';
 import Card from "../component/cardUsuario";
@@ -8,7 +8,9 @@ import Card from "../component/cardUsuario";
 const Favorite = () => {
 
     const { store, actions } = useContext(Context);
+    const [showMessage, setShowMessage] = useState(false);
 
+    const navigate = useNavigate();
 
     useEffect(() => {
         actions.fetchUserFavorite();
@@ -20,6 +22,11 @@ const Favorite = () => {
     return (
         <>
             <Link to="/usuario">Volver Atras</Link>
+            {showMessage && (
+                <div className="alert alert-success" role="alert">
+                    Animal eliminado de favoritos
+                </div>
+            )}
             <div className='container-fav row'>
                 {store.favorites.map((fav, index) => (
                     <div key={index} className='col-3'>
@@ -28,14 +35,27 @@ const Favorite = () => {
                         <img src={fav.animal.animal_image} alt={fav.animal.nombre} />
                         <ul>
                             <li>Raza: {fav.animal.raza}</li>
-                            <li>Edad: {fav.animal.edad}</li>
+                            <li>Edad: {fav.animal.edad} años</li>
                             <li>Género: {fav.animal.genero}</li>
                             <li>Provincia: {fav.animal.asociacion_provincia}</li>
                             <li>Descripción: {fav.animal.descripcion}</li>
                         </ul>
 
                         <button onClick={() => actions.selectId(fav)}>Agregar</button>
-                        <button className='btn btn-danger' onClick={() => actions.removeFavorite(fav.id)}>Delete fav: <BsFillTrash3Fill />
+                        <button
+                            className='btn btn-danger'
+                            onClick={() => {
+                                const confirmDelete = window.confirm('¿Estás seguro de que quieres eliminar este animal de tus favoritos?');
+                                if (confirmDelete) {
+                                    actions.removeFavorite(fav.id);
+                                    setShowMessage(true);
+                                    setTimeout(() => {
+                                        navigate('/usuario')
+                                    }, 2000);
+                                }
+                            }}
+                        >
+                            Delete fav: <BsFillTrash3Fill />
                         </button>
                     </div>
                 ))}

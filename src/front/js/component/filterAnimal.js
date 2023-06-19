@@ -3,12 +3,27 @@
 import React from "react";
 import Card from "./cardUsuario";
 
-export default function FilterAnimal({ animals, filtros }) {
+export default function FilterAnimal({ animals, filtros, showMessage, setShowMessage }) {
     const animalsFiltered = animals.filter((animal) => {
 
         if (filtros.provincia && filtros.genero && filtros.tipo_animal) {
             return (
                 animal.asociacion_provincia === filtros.provincia &&
+                animal.genero === filtros.genero &&
+                animal.tipo_animal === filtros.tipo_animal
+            );
+        } else if (filtros.provincia && filtros.genero) {
+            return (
+                animal.asociacion_provincia === filtros.provincia &&
+                animal.genero === filtros.genero
+            );
+        } else if (filtros.provincia && filtros.tipo_animal) {
+            return (
+                animal.asociacion_provincia === filtros.provincia &&
+                animal.tipo_animal === filtros.tipo_animal
+            );
+        } else if (filtros.genero && filtros.tipo_animal) {
+            return (
                 animal.genero === filtros.genero &&
                 animal.tipo_animal === filtros.tipo_animal
             );
@@ -28,7 +43,7 @@ export default function FilterAnimal({ animals, filtros }) {
         <div className="row container justify-content-center">
             {animalsFiltered.length > 0 ? (
                 latestThreeResults.map((animal) => (
-                    <Card key={animal.id} animal={animal} />
+                    <Card key={animal.id} animal={animal} showMessage={showMessage} setShowMessage={setShowMessage} />
                 ))
             ) : (
                 <h2>No hay resultados</h2>

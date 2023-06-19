@@ -2,7 +2,7 @@
 // //Componente para mandar el correo a la asociación
 // //Para poder usarlo hay que hacer un npm install emailjs-com
 import React, { useState, useRef, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 
 export default function ContactForm() {
@@ -13,9 +13,11 @@ export default function ContactForm() {
   const [formValues, setFormValues] = useState({
     nombreUsuario: localStorage.getItem("nombre"),
     emailUsuario: localStorage.getItem("email"),
+    nombreAsociacion: "",
     emailAsociacion: "",
+    nombreAnimal: "",
     mensaje: "",
-    imagen: "",
+
   });
   const [successMessage, setSuccessMessage] = useState(false);
   const navigate = useNavigate();
@@ -37,6 +39,8 @@ export default function ContactForm() {
       setFormValues((prevValues) => ({
         ...prevValues,
         emailAsociacion: data.asociacion_email,
+        nombreAsociacion: data.asociacion_nombre,
+        nombreAnimal: data.nombre,
       }));
     }
   };
@@ -98,9 +102,10 @@ export default function ContactForm() {
           El mensaje se ha enviado correctamente.
         </div>
       )}
+      <Link to="/usuario">Volver Atrás</Link>
       <form ref={formRef} onSubmit={handleSubmit}>
         <label className="none">
-          Nombre del remitente:
+          Nombre del Usuario:
           <input
             type="text"
             name="nombreUsuario"
@@ -109,7 +114,7 @@ export default function ContactForm() {
           />
         </label>
         <label className="none">
-          Email del remitente:
+          Email de la Asociación:
           <input
             type="email"
             name="emailUsuario"
@@ -118,11 +123,29 @@ export default function ContactForm() {
           />
         </label>
         <label className="none">
-          Email del destinatario:
+          Email de la Asociación:
           <input
             type="email"
             name="emailAsociacion"
             value={formValues.emailAsociacion}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="none">
+          Nombre de la Asociación:
+          <input
+            type="text"
+            name="nombreAsociacion"
+            value={formValues.nombreAsociacion}
+            onChange={handleChange}
+          />
+        </label>
+        <label className="none">
+          Nombre del Animal:
+          <input
+            type="text"
+            name="nombreAnimal"
+            value={formValues.nombreAnimal}
             onChange={handleChange}
           />
         </label>

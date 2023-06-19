@@ -58,7 +58,7 @@ export default function AnimalData() {
         setSuccessMessage(true);
         setTimeout(() => {
             navigate("/asociacion");
-          }, 2000);
+        }, 2000);
     };
 
     return (
@@ -73,7 +73,7 @@ export default function AnimalData() {
                     <h1>Modificar los datos del Animal</h1>
                     <form onSubmit={updateAnimal}>
                         <div>
-                            <label htmlFor="nombre">Nombre</label>
+                            <label htmlFor="nombre">Nombre:</label>
                             <input
                                 type="text"
                                 id="nombre"
@@ -83,17 +83,34 @@ export default function AnimalData() {
                             />
                         </div>
                         <div>
-                            <label htmlFor="tipo_animal">Tipo de animal</label>
-                            <input
-                                type="text"
-                                id="tipo_animal"
-                                name="tipo_animal"
-                                value={animal.tipo_animal}
-                                onChange={handleInputChange}
-                            />
+                            <span htmlFor="tipo_animal">Tipo de Animal:</span>
+                            <div>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="tipo_animal"
+                                        value="Gato"
+                                        checked={animal.tipo_animal === "Gato"}
+                                        onChange={handleInputChange}
+                                    />
+                                    Gato
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="tipo_animal"
+                                        value="Perro"
+                                        checked={animal.tipo_animal === "Perro"}
+                                        onChange={handleInputChange}
+                                    />
+                                    Perro
+                                </label>
+                            </div>
                         </div>
                         <div>
-                            <label htmlFor="raza">Raza</label>
+                            <label htmlFor="raza">Raza:</label>
                             <input
                                 type="text"
                                 id="raza"
@@ -103,7 +120,7 @@ export default function AnimalData() {
                             />
                         </div>
                         <div>
-                            <label htmlFor="edad">Edad</label>
+                            <label htmlFor="edad">Edad:</label>
                             <input
                                 type="text"
                                 id="edad"
@@ -112,7 +129,7 @@ export default function AnimalData() {
                                 onChange={handleInputChange}
                             />
                         </div>
-                        <div>
+                        {/* <div>
                             <label htmlFor="genero">Género</label>
                             <input
                                 type="text"
@@ -121,9 +138,36 @@ export default function AnimalData() {
                                 value={animal.genero}
                                 onChange={handleInputChange}
                             />
+                        </div> */}
+                        <div>
+                            <span htmlFor="genero">Género:</span>
+                            <div>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="genero"
+                                        value="Macho"
+                                        checked={animal.genero === "Macho"}
+                                        onChange={handleInputChange}
+                                    />
+                                    Macho
+                                </label>
+                            </div>
+                            <div>
+                                <label>
+                                    <input
+                                        type="radio"
+                                        name="genero"
+                                        value="Hembra"
+                                        checked={animal.genero === "Hembra"}
+                                        onChange={handleInputChange}
+                                    />
+                                    Hembra
+                                </label>
+                            </div>
                         </div>
                         <div>
-                            <label htmlFor="descripcion">Descripción</label>
+                            <label htmlFor="descripcion">Descripción:</label>
                             <textarea
                                 type="text"
                                 id="descripcion"

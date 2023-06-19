@@ -6,7 +6,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
-export default function Card({ animal }) {
+export default function Card({ animal, showMessage, setShowMessage }) {
     console.log(process.env.BACKEND_URL, 'COMPROBAR VARIABLE DE ENTORNO');
 
     const { store, actions } = useContext(Context);
@@ -39,6 +39,7 @@ export default function Card({ animal }) {
             <button onClick={() => {
                 actions.selectId(animal);
                 actions.addFavorite()
+                setShowMessage(true);
             }}>Me gusta</button>
         </div>
     );

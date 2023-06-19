@@ -85,7 +85,7 @@ const AnimalForm = () => {
   const handleImageChange = (e) => {
     setForm({ ...form, imagen: e.target.files[0] });
   };
-  
+
   return (
     <>
       {successMessage && (
@@ -108,19 +108,32 @@ const AnimalForm = () => {
             {errors.nombre && <p style={styles}>{errors.nombre}</p>}
           </div>
           <div>
-            <label htmlFor="tipo_animal">Tipo de Animal:</label>
-            <input
-              type="text"
-              id="tipo_animal"
-              value={form.tipo_animal}
-              onChange={(e) =>
-                setForm({ ...form, tipo_animal: e.target.value })
-              }
-              required
-            />
-            {errors.tipo_animal && <p style={styles}>{errors.tipo_animal}</p>}
+            <span htmlFor="tipo_animal">Tipo de Animal:</span>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="tipo_animal"
+                  value="Gato"
+                  checked={form.tipo_animal === "Gato"}
+                  onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+                />
+                Gato
+              </label>
+            </div>
+            <div>
+              <label>
+                <input
+                  type="radio"
+                  name="tipo_animal"
+                  value="Perro"
+                  checked={form.tipo_animal === "Perro"}
+                  onChange={(e) => setForm({ ...form, tipo_animal: e.target.value })}
+                />
+                Perro
+              </label>
+            </div>
           </div>
-
           <div>
             <label htmlFor="raza">Raza:</label>
             <input
@@ -144,7 +157,7 @@ const AnimalForm = () => {
             {errors.edad && <p style={styles}>{errors.edad}</p>}
           </div>
           <div>
-            <span>Género</span>
+            <span>Género:</span>
             <div>
               <label>
                 <input

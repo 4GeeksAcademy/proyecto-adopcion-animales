@@ -5,7 +5,7 @@ export default function Donacion() {
   return (
     <div><h1>Haz una donacion</h1>
         <span>
-            Con solo 9.99$ puedes ayudar a mas de un animal
+            Con solo 9.99€ puedes ayudar a más de un animal
         </span>
         <PayPalScriptProvider options = {{
             "client-id": 

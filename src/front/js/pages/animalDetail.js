@@ -41,7 +41,7 @@ export default function AnimalHomeDetail() {
                 <img src={animal.animal_image} alt={animal.nombre} />
                 <ul>
                     <li>Raza: {animal.raza}</li>
-                    <li>Edad: {animal.edad}</li>
+                    <li>Edad: {animal.edad} años</li>
                     <li>Género: {animal.genero}</li>
                     <li>Provincia: {animal.asociacion_provincia}</li>
                     <li>Descripción: {animal.descripcion}</li>
