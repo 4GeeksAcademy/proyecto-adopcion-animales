@@ -85,6 +85,7 @@ class Asociacion(db.Model):
     email = db.Column(db.String(80), unique=False, nullable=False)
     provincia = db.Column(db.String(80), unique=False, nullable=False)
     CIF = db.Column(db.String(80), unique=False, nullable=False)
+    descripcion = db.Column(db.String(180), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
     asociacion_image = db.Column(db.String(550), unique=True, nullable=False)
     

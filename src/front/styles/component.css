@@ -20,3 +20,18 @@
   height: auto; 
   border-radius: 5%;
 }
+
+#loginImagen {
+  max-width: 600px;
+  max-height: 200px;
+  width: 100%;
+  height: auto;
+  
+}
+
+@media (max-width: 576px) {
+  #loginImagen {
+    max-width: 100%;
+    max-height: 200px;
+  }
+}

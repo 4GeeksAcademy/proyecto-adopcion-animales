@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
-
+import loginImg from '../../../front/img/Regístrate.png';
+import "../../styles/component.css"
 
 export default function ChooseSignUp() {
     const { store, actions } = useContext(Context);
@@ -14,32 +15,36 @@ export default function ChooseSignUp() {
     }
 
     return (
-        <div className={`${store.darkMode ? "dark-mode" : ""} container my-5`}>
-            <h1 className="text-center">Elige el tipo de registro</h1>
-            <div className="row">
-                <div className="col-sm-6">
-                    <div className="card">
-                        <div className={`${handleColor()} card-body`}>
-                            <h2 className="card-title">Usuario</h2>
-                            <p className="card-text">
-                                With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <Link to="/signup">
-                                <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
-                            </Link>
+        <div className='container my-1 justify-content-center vh-100'>
+            <div className="container justify-content-center mb-5">
+                <img src={loginImg} className="img shadow-sm" id="loginImagen" style={{ maxWidth: "600px", maxHeight: "200px", display: "block", margin: "0 auto" }} />
+            </div>
+            <div className="container">
+                <div className="row d-flex justify-content-center align-items-center">
+                    <div className="col-sm-6">
+                        <div className="card border border-3 rounded-3 shadow-lg rounded-pill" style={{ backgroundColor: "transparent" }}>
+                            <div className='card-body text-center'>
+                                <h2 className="card-title">¿Soy un Usuario?</h2>
+                                <p className="card-text">
+                                    ¡Regístrate como usuario y encuentra a tu compañero perfecto!
+                                </p>
+                                <Link to="/signup">
+                                    <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d", textDecoration: "none", color: "black" }}>Regístrate</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="col-sm-6">
-                    <div className="card">
-                        <div className={`${handleColor()} card-body`}>
-                            <h2 className="card-title">Asociación</h2>
-                            <p className="card-text">
-                                With supporting text below as a natural lead-in to additional content.
-                            </p>
-                            <Link to="/signup2">
-                                <button className="btn btn-dark btn-lg btn-block">Registrarse</button>
-                            </Link>
+                    <div className="col-sm-6">
+                        <div className="card border border-3 rounded-3 shadow-lg rounded-pill" style={{ backgroundColor: "transparent" }}>
+                            <div className='card-body text-center'>
+                                <h2 className="card-title">¿Soy una Asociación?</h2>
+                                <p className="card-text">
+                                    ¡Registra tu asociación y ayúdanos a cuidar a los animales!
+                                </p>
+                                <Link to="/signup2">
+                                    <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d", textDecoration: "none", color: "black" }}>Regístrate</button>
+                                </Link>
+                            </div>
                         </div>
                     </div>
                 </div>

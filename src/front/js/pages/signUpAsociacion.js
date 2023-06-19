@@ -8,6 +8,7 @@ export default function SignUpAsociacion() {
         email: "",
         provincia: "",
         CIF: "",
+        descripcion: "",
         password: "",
         passwordConfirmation: "",
     };
@@ -15,6 +16,8 @@ export default function SignUpAsociacion() {
     const [form, setForm] = useState(initialForm);
     const [errors, setErrors] = useState({});
     const [isSubmitted, setIsSubmitted] = useState(false);
+    const [descripcion, setDescripcion] = useState("");
+
 
     const navigate = useNavigate();
 
