@@ -1,6 +1,7 @@
 
 import React, { useState, useEffect } from "react";
 import { useParams, Link, useNavigate } from "react-router-dom";
+import editImg from '../../../front/img/editLogo.png';
 
 export default function AnimalData() {
     const { id } = useParams();
@@ -71,7 +72,7 @@ export default function AnimalData() {
             )}
             {animal.nombre ? (
                 <div>
-                    <h1>Modificar los datos del Animal</h1>
+                    
                     <div className="container">
                         <div className="container h-100">
                             <div className="row d-flex justify-content-center align-items-center h-100">
@@ -81,7 +82,7 @@ export default function AnimalData() {
                                             <div className="row justify-content-center">
                                                 <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
                                                     <p className="text-center h1 mb-5 mx-1 mx-md-4 mt-4">
-                                                        Registro de Usuarios
+                                                    Modificar los datos del Animal
                                                     </p>
                                                     <form className="mx-1 mx-md-4" onSubmit={updateAnimal}>
                                                         <div className="d-flex flex-row align-items-center mb-4">
@@ -145,32 +146,55 @@ export default function AnimalData() {
                                                             </div>
                                                         </div>
                                                         <div className="d-flex flex-row align-items-center mb-4">
-                                                            <i className="fas fa-calendar-days fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
+                                                            <i className="fas fa-venus-mars fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                             <div className="form-outline flex-fill mb-0">
-                                                            <label htmlFor="genero">Género</label>
-                                                            <input
-                                                                type="text"
-                                                                id="genero"
-                                                                name="genero"
-                                                                value={animal.genero}
-                                                                onChange={handleInputChange}
+                                                                <label htmlFor="genero">Género</label>
+                                                                <select
+                                                                    type="text"
+                                                                    id="genero"
+                                                                    name="genero"
+                                                                    className="form-select" aria-label="Default select example"
+                                                                    value={animal.genero}
+                                                                    onChange={handleInputChange}
 
-                                                            />
-                                                            
+                                                                >
+                                                                    <option value=''>Seleccione el género</option>
+                                                                    <option value='Macho'>Macho</option>
+                                                                    <option value='Hembra'>Hembra</option>
+                                                                </select>
+
+                                                            </div>
                                                         </div>
+                                                        <div className="d-flex flex-row align-items-center mb-4">
+                                                            <i className="fas fa-info fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
+                                                            <div className="form-outline flex-fill mb-0">
+                                                                <label htmlFor="descripcion">Descripción</label>
+                                                                <textarea
+                                                                    type="text"
+                                                                    id="descripcion"
+                                                                    name="descripcion"
+                                                                    className="form-control"
+                                                                    value={animal.descripcion}
+                                                                    onChange={handleInputChange}
+                                                                />
+                                                            </div>
                                                         </div>
-                                                        <div>
-                                                            <label htmlFor="descripcion">Descripción</label>
-                                                            <textarea
-                                                                type="text"
-                                                                id="descripcion"
-                                                                name="descripcion"
-                                                                value={animal.descripcion}
-                                                                onChange={handleInputChange}
-                                                            />
+
+                                                        <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                                                            <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>
+                                                                Guardar cambios
+                                                            </button>
                                                         </div>
-                                                        <button type="submit">Guardar cambios</button>
                                                     </form>
+
+                                                    <Link to="/asociacion" className="text-muted" style={{ textDecoration: "none" }}>Volver Atrás</Link>
+                                                </div>
+                                                <div className="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+                                                    <img
+                                                        src={editImg}
+                                                        className="img-fluid"
+                                                        alt="Sample image"
+                                                    />
                                                 </div>
                                             </div>
                                         </div>
@@ -185,7 +209,7 @@ export default function AnimalData() {
                     <h1>Cargando...</h1>
                 </div>
             )}
-            <Link to="/asociacion">Volver Atras</Link>
+
         </>
     );
 }
