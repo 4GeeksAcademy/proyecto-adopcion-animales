@@ -10,7 +10,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Footer from "./component/footer";
 
 import ChooseSignUp from "./pages/chooseSignUp";
 import SingUpAsociacion from "./pages/signUpAsociacion";

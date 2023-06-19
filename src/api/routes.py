@@ -444,6 +444,7 @@ def post_asociacion():
             email=body['email'], 
             provincia = body['provincia'], 
             CIF = body['CIF'], 
+            descripcion= ['descripcion'],
             password = body['password']
         )
 

@@ -224,7 +224,7 @@ export default function SignUpAsociacion() {
                                                     </div>
                                                 </div>
                                                 <div className="d-flex flex-row align-items-center mb-4">
-                                                    <i className="fas fa-user fa-lg me-3 fa-fw" />
+                                                    <i className="<fa-solid fa-imag fa-lg me-3 fa-fw" />
                                                     <div className="form-outline flex-fill mb-0">
                                                     <label htmlFor="imagen">Logo:</label>
                                                         <input
@@ -233,6 +233,19 @@ export default function SignUpAsociacion() {
                                                             onChange={handleImageChange}
                                                             accept="image/*"
                                                             required
+                                                        />
+                                                    </div>
+                                                </div>
+                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="fas fa-info fa-lg me-3 fa-fw" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                        <textarea
+                                                            id="descripcion"
+                                                            name="descripcion"
+                                                            placeholder="Descripción"
+                                                            className="form-control"
+                                                            value={form.descripcion}
+                                                            onChange={(e) => setForm({ ...form, descripcion: e.target.value })}
                                                         />
                                                     </div>
                                                 </div>
