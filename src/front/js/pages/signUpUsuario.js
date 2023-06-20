@@ -1,4 +1,5 @@
 
+
 import React, { useState } from "react";
 import { Navigate, useNavigate } from "react-router-dom";
 import usuarioImg from '../../../front/img/usuarioLogo.png';
@@ -63,18 +64,21 @@ export default function SignUpUsuario() {
         });
         const data = await response.json();
         console.log(data);
+
+        if (response.status === 200) {
+          setErrors(newError);
+          setForm({ ...initialForm });
+          setIsSubmitted(true);
+
+          setTimeout(() => {
+            navigate("/");
+          }, 2000);
+        }
       } catch (error) {
         console.log(error);
       }
     }
-
     setErrors(newError);
-    setForm({ ...initialForm });
-    setIsSubmitted(true);
-
-    setTimeout(() => {
-      navigate("/");
-    }, 2000); // Retraso de 2 segundos para redirigir a la página de inicio
   };
 
   let styles = {
@@ -93,7 +97,7 @@ export default function SignUpUsuario() {
         <div className="container h-100">
           <div className="row d-flex justify-content-center align-items-center h-100">
             <div className="col-lg-12 col-xl-11">
-              <div className="card shadow" style={{ borderRadius: 25 ,backgroundColor: "transparent"}}>
+              <div className="card shadow" style={{ borderRadius: 25, backgroundColor: "transparent" }}>
                 <div className="card-body p-md-5">
                   <div className="row justify-content-center">
                     <div className="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
@@ -102,7 +106,7 @@ export default function SignUpUsuario() {
                       </p>
                       <form className="mx-1 mx-md-4" onSubmit={handleSubmit}>
                         <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                          <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="text"
@@ -117,7 +121,7 @@ export default function SignUpUsuario() {
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                          <i className="fas fa-user fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="text"
@@ -132,7 +136,7 @@ export default function SignUpUsuario() {
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-envelope fa-lg me-3 fa-fw" style={{ color: "#a96d60"}} />
+                          <i className="fas fa-envelope fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="email"
@@ -147,7 +151,7 @@ export default function SignUpUsuario() {
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-lock fa-lg me-3 fa-fw" style={{ color: "#a96d60"}} />
+                          <i className="fas fa-lock fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="password"
@@ -161,7 +165,7 @@ export default function SignUpUsuario() {
                           </div>
                         </div>
                         <div className="d-flex flex-row align-items-center mb-4">
-                          <i className="fas fa-key fa-lg me-3 fa-fw" style={{ color: "#a96d60"}}/>
+                          <i className="fas fa-key fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                           <div className="form-outline flex-fill mb-0">
                             <input
                               type="password"
@@ -180,9 +184,9 @@ export default function SignUpUsuario() {
                         <p className="text-center text-muted mb-5">¿Ya tienes cuenta? <a href="/loginUsuario"
                           style={{ textDecoration: "none" }}>Inicia sesión</a></p>
                         <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                          <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{backgroundColor: "#ff914d"}}>
-                        Registrarse
-                      </button>
+                          <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>
+                            Registrarse
+                          </button>
                         </div>
                       </form>
                     </div>
@@ -203,6 +207,9 @@ export default function SignUpUsuario() {
     </>
   );
 }
+
+
+
 
 
 

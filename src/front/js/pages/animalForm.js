@@ -183,21 +183,21 @@ const AnimalForm = () => {
                                   checked={form.genero === "Macho"}
                                   onChange={(e) => setForm({ ...form, genero: e.target.value })}
                                 />
-                                Macho  
+                                Macho
                               </label>
                             </div>
                             <div className="form-check">
-                            <label>
-                              <input
-                                type="radio"
-                                name="genero"
-                                value="Hembra"
-                                className="form-check-input"
-                                checked={form.genero === "Hembra"}
-                                onChange={(e) => setForm({ ...form, genero: e.target.value })}
-                              />
-                              Hembra
-                            </label>
+                              <label>
+                                <input
+                                  type="radio"
+                                  name="genero"
+                                  value="Hembra"
+                                  className="form-check-input"
+                                  checked={form.genero === "Hembra"}
+                                  onChange={(e) => setForm({ ...form, genero: e.target.value })}
+                                />
+                                Hembra
+                              </label>
                             </div>
                             {errors.genero && <p className="danger">{errors.genero}</p>}
                           </div>

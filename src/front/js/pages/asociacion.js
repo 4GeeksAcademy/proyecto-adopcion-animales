@@ -47,7 +47,8 @@ export default function Asociacion() {
 
                 const data = await response.json();
                 console.log(data);
-                fetchAnimal();
+                const nombre_asociacion =
+                    fetchAnimal();
                 setSuccessMessage(true);
                 setTimeout(() => {
                     setSuccessMessage(false);
@@ -71,14 +72,14 @@ export default function Asociacion() {
                 </div>
             )}
             <div>
-                <h1 className="text-center">Bienvenido Asociación</h1>
+                <h1 className="text-center">Bienvenido </h1>
                 <div className="text-center">
-                <Link to="/animalForm">
-                    <button type="button" className="btn btn-lg shadow col-4 mt-2 rounded-pill" style={{ backgroundColor: "#a96d60",textDecoration: "none", color: "white" }} >Añadir un nuevo animal</button>
-                </Link>
+                    <Link to="/animalForm">
+                        <button type="button" className="btn btn-lg shadow col-4 mt-2 rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} >Añadir un nuevo animal</button>
+                    </Link>
                 </div>
                 <div className='container mt-4'>
-                    <div className='row g-3'>
+                    <div className='row g-3 container justify-content-center'>
                         {animals !== null && animals.length > 0 ? (
                             animals.map((animal) => {
                                 return (
@@ -108,13 +109,13 @@ export default function Asociacion() {
                                 )
                             })
                         ) : (
-                            <h1>No hay animales</h1>
+                            <h1>Cargando...</h1>
                         )}
                     </div>
                 </div>
                 <div className="text-center mt-5">
                     <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} onClick={() => setPageNumber(pageNumber - 1)} disabled={pageNumber === 1}>Anterior</button>
-                    <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }}onClick={() => setPageNumber(pageNumber + 1)} disabled={animals !== null && animals.length < pageSize}>Siguiente</button>
+                    <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} onClick={() => setPageNumber(pageNumber + 1)} disabled={animals !== null && animals.length < pageSize}>Siguiente</button>
                 </div>
             </div>
         </>

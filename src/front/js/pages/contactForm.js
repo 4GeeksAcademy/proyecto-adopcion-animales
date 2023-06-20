@@ -2,7 +2,7 @@
 // //Componente para mandar el correo a la asociación
 // //Para poder usarlo hay que hacer un npm install emailjs-com
 import React, { useState, useRef, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import emailjs from "emailjs-com";
 
 export default function ContactForm() {
@@ -13,9 +13,11 @@ export default function ContactForm() {
   const [formValues, setFormValues] = useState({
     nombreUsuario: localStorage.getItem("nombre"),
     emailUsuario: localStorage.getItem("email"),
+    nombreAsociacion: "",
     emailAsociacion: "",
+    nombreAnimal: "",
     mensaje: "",
-    imagen: "",
+
   });
   const [successMessage, setSuccessMessage] = useState(false);
   const navigate = useNavigate();
@@ -37,6 +39,8 @@ export default function ContactForm() {
       setFormValues((prevValues) => ({
         ...prevValues,
         emailAsociacion: data.asociacion_email,
+        nombreAsociacion: data.asociacion_nombre,
+        nombreAnimal: data.nombre,
       }));
     }
   };
@@ -98,44 +102,71 @@ export default function ContactForm() {
           El mensaje se ha enviado correctamente.
         </div>
       )}
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <label className="none">
-          Nombre del remitente:
-          <input
-            type="text"
-            name="nombreUsuario"
-            value={formValues.nombreUsuario}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Email del remitente:
-          <input
-            type="email"
-            name="emailUsuario"
-            value={formValues.emailUsuario}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Email del destinatario:
-          <input
-            type="email"
-            name="emailAsociacion"
-            value={formValues.emailAsociacion}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Mensaje:
-          <textarea
-            name="mensaje"
-            value={formValues.mensaje}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Enviar correo electrónico</button>
-      </form>
+      <div className="container py-2 vh-100">
+        <Link className="btn btn-lg btn-block shadow-sm" style={{ backgroundColor: "#ff914d" }} to="/usuario">Volver Atrás</Link>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          <label className="none">
+            Nombre del Usuario:
+            <input
+              type="text"
+              name="nombreUsuario"
+              value={formValues.nombreUsuario}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Email de la Asociación:
+            <input
+              type="email"
+              name="emailUsuario"
+              value={formValues.emailUsuario}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Email de la Asociación:
+            <input
+              type="email"
+              name="emailAsociacion"
+              value={formValues.emailAsociacion}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Nombre de la Asociación:
+            <input
+              type="text"
+              name="nombreAsociacion"
+              value={formValues.nombreAsociacion}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Nombre del Animal:
+            <input
+              type="text"
+              name="nombreAnimal"
+              value={formValues.nombreAnimal}
+              onChange={handleChange}
+            />
+          </label>
+          <div className="card shadow px-2 my-3" style={{ borderRadius: "1rem", backgroundColor: "transparent" }}>
+            <div className="d-flex flex-column justify-content-start align-items-center py-3">
+              <textarea className="form-control"
+                rows="3"
+                placeholder="Escribe aquí tu mensaje para hacérselo llegar a la Asociación:"
+                name="mensaje"
+                value={formValues.mensaje}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-center align-items-center">
+            <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#A96D60" }}>Enviar correo electrónico</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }
+
