@@ -11,8 +11,8 @@ export default function Usuario() {
         tipo_animal: "",
     })
 
-    const [showMessage, setShowMessage] = useState(false)
-    const [showDuration, setShowDuration] = useState(2000);
+    const [showMessage, setShowMessage] = useState(false);
+    const showDuration = 2000;
     const [pageNumber, setPageNumber] = useState(1)
     const pageSize = 8
 
@@ -152,7 +152,7 @@ export default function Usuario() {
                 </div>
                 <div className="row mt-4">
 
-                    <FilterAnimal animals={animals} filtros={filtros} />
+                    <FilterAnimal animals={animals} filtros={filtros} showMessage={showMessage} setShowMessage={setShowMessage} />
 
                 </div>
             </div>

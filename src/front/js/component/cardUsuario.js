@@ -2,7 +2,7 @@
 
 // // // Card para la vista de usuario, al hacer click en el animal te redirige al componente animalDetail
 
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 
@@ -10,6 +10,13 @@ export default function Card({ animal, showMessage, setShowMessage }) {
     console.log(process.env.BACKEND_URL, 'COMPROBAR VARIABLE DE ENTORNO');
 
     const { store, actions } = useContext(Context);
+
+
+    useEffect(() => {
+        if (showMessage) {
+            console.log("animal añadido a favoritos");
+        }
+    }, [showMessage])
 
     const handleColor = () => {
         if (store.darkMode) {

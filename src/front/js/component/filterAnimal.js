@@ -43,7 +43,7 @@ export default function FilterAnimal({ animals, filtros, showMessage, setShowMes
         <div className="row container justify-content-center">
             {animalsFiltered.length > 0 ? (
                 animalsFiltered.map((animal) => (
-                    <Card key={animal.id} animal={animal} />
+                    <Card key={animal.id} animal={animal} showMessage={showMessage} setShowMessage={setShowMessage} />
                 ))
             ) : (
                 <h2>No hay resultados</h2>

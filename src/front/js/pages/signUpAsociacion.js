@@ -49,11 +49,13 @@ export default function SignUpAsociacion() {
             } else if (!regexCIF.test(form.CIF.trim())) {
                 newError.CIF = "El campo 'CIF' es incorrecto";
             }
-            if (form.password !== form.passwordConfirmation) {
-                newError.password =
-                    "El campo 'Contraseña' y 'Confirmar contraseña' no coinciden";
-            }
         }
+        
+        if (form.password !== form.passwordConfirmation) {
+            newError.password =
+                "El campo 'Contraseña' y 'Confirmar contraseña' no coinciden";
+        }
+        
 
         if (Object.keys(newError).length === 0) {
             try {
@@ -76,18 +78,20 @@ export default function SignUpAsociacion() {
 
                 const data = await response.json();
                 console.log(data);
+                if (response.status === 200) {
+                    setForm({ ...initialForm });
+                    setIsSubmitted(true);
+
+                    setTimeout(() => {
+                        navigate("/");
+                    }, 2000);
+                    setIsSubmitted(true);
+                }
             } catch (error) {
                 console.log(error);
             }
         }
-
         setErrors(newError);
-        setForm({ ...initialForm });
-        setIsSubmitted(true);
-
-        setTimeout(() => {
-            navigate("/");
-        }, 2000); // Retraso de 2 segundos para redirigir a la home
     };
 
 
