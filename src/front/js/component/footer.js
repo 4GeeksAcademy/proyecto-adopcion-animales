@@ -13,25 +13,25 @@ const Footer = () => (
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link px-2 text-muted">
+          <a href="/signup" className="nav-link px-2 text-muted">
             <FontAwesomeIcon icon={faUserPlus} />
             &nbsp;Registro
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link px-2 text-muted">
+          <a href="/" className="nav-link px-2 text-muted">
             <FontAwesomeIcon icon={faDog} />
             &nbsp;Adoptar
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link px-2 text-muted">
+          <a href="/donacion" className="nav-link px-2 text-muted">
             <FontAwesomeIcon icon={faHandsHelping} />
             &nbsp;Quiero ayudar!
           </a>
         </li>
         <li className="nav-item">
-          <a href="#" className="nav-link px-2 text-muted">
+          <a href="/about" className="nav-link px-2 text-muted">
             <FontAwesomeIcon icon={faInfoCircle} />
             &nbsp;About
           </a>
