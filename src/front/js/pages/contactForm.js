@@ -102,63 +102,70 @@ export default function ContactForm() {
           El mensaje se ha enviado correctamente.
         </div>
       )}
-      <Link to="/usuario">Volver Atrás</Link>
-      <form ref={formRef} onSubmit={handleSubmit}>
-        <label className="none">
-          Nombre del Usuario:
-          <input
-            type="text"
-            name="nombreUsuario"
-            value={formValues.nombreUsuario}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Email de la Asociación:
-          <input
-            type="email"
-            name="emailUsuario"
-            value={formValues.emailUsuario}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Email de la Asociación:
-          <input
-            type="email"
-            name="emailAsociacion"
-            value={formValues.emailAsociacion}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Nombre de la Asociación:
-          <input
-            type="text"
-            name="nombreAsociacion"
-            value={formValues.nombreAsociacion}
-            onChange={handleChange}
-          />
-        </label>
-        <label className="none">
-          Nombre del Animal:
-          <input
-            type="text"
-            name="nombreAnimal"
-            value={formValues.nombreAnimal}
-            onChange={handleChange}
-          />
-        </label>
-        <label>
-          Mensaje:
-          <textarea
-            name="mensaje"
-            value={formValues.mensaje}
-            onChange={handleChange}
-          />
-        </label>
-        <button type="submit">Enviar correo electrónico</button>
-      </form>
+      <div className="container py-2 vh-100">
+        <Link className="btn btn-lg btn-block shadow-sm" style={{ backgroundColor: "#A96D60" }} to="/usuario">Volver Atrás</Link>
+        <form ref={formRef} onSubmit={handleSubmit}>
+          <label className="none">
+            Nombre del Usuario:
+            <input
+              type="text"
+              name="nombreUsuario"
+              value={formValues.nombreUsuario}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Email de la Asociación:
+            <input
+              type="email"
+              name="emailUsuario"
+              value={formValues.emailUsuario}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Email de la Asociación:
+            <input
+              type="email"
+              name="emailAsociacion"
+              value={formValues.emailAsociacion}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Nombre de la Asociación:
+            <input
+              type="text"
+              name="nombreAsociacion"
+              value={formValues.nombreAsociacion}
+              onChange={handleChange}
+            />
+          </label>
+          <label className="none">
+            Nombre del Animal:
+            <input
+              type="text"
+              name="nombreAnimal"
+              value={formValues.nombreAnimal}
+              onChange={handleChange}
+            />
+          </label>
+          <div className="card shadow px-2 my-3" style={{ borderRadius: "1rem", backgroundColor: "transparent" }}>
+            <div className="d-flex flex-column justify-content-start align-items-center py-3">
+              <textarea className="form-control"
+                rows="3"
+                placeholder="Escribe aquí tu mensaje para hacérselo llegar a la Asociación:"
+                name="mensaje"
+                value={formValues.mensaje}
+                onChange={handleChange}
+              />
+            </div>
+          </div>
+          <div className="d-flex justify-content-center align-items-center">
+            <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>Enviar correo electrónico</button>
+          </div>
+        </form>
+      </div>
     </>
   );
 }

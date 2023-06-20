@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+import { Link } from 'react-router-dom';
 import FilterAnimalHome from '../component/filterAnimalHome';
 import "../../styles/component.css"
 
@@ -45,6 +46,14 @@ export const SearchBar = () => {
       window.removeEventListener('resize', handleResize);
     };
   }, []);
+
+  const handleLoged = () => {
+    if (localStorage.getItem('token')) {
+      return true;
+    } else {
+      return false;
+    }
+  };
 
   return (
     <>
@@ -136,8 +145,16 @@ export const SearchBar = () => {
         <div className='container justify-content-center'>
           <FilterAnimalHome animals={animals} filtros={filtros} />
         </div>
-        <button type="button" className="btn btn-lg shadow col-4 mt-5 rounded-pill" style={{ backgroundColor: "#a96d60" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "white" }}>Ver más</a></button>
+        {
+          handleLoged() ? (
+            <Link to="/usuario" className="btn btn-lg shadow col-4 mt-5 rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }}>Ver más</Link>
+          ) : (
+            <Link to="/signup" className="btn btn-lg shadow col-4 mt-5 rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }}>Ver más</Link>
+          )
+        }
       </div>
     </>
   );
-};
+}
+
+

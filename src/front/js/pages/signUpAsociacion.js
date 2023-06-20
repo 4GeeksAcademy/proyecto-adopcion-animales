@@ -239,7 +239,6 @@ export default function SignUpAsociacion() {
                                                         />
                                                     </div>
                                                 </div>
-
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-lock fa-lg me-3 fa-fw" />
                                                     <div className="form-outline flex-fill mb-0">
