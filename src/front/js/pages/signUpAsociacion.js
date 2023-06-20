@@ -61,8 +61,9 @@ export default function SignUpAsociacion() {
                 formData.append("email", form.email);
                 formData.append("provincia", form.provincia);
                 formData.append("CIF", form.CIF);
+                formData.append("descripcion", form.descripcion);
                 formData.append("password", form.password);
-                formData.append("imagen", form.imagen);
+                {/*formData.append("imagen", form.imagen);*/}
 
                 const response = await fetch(process.env.BACKEND_URL + "/api/asociacion", {
                     method: "POST",
@@ -223,7 +224,7 @@ export default function SignUpAsociacion() {
                                                         {errors.CIF && <p style={styles}>{errors.CIF}</p>}
                                                     </div>
                                                 </div>
-                                                <div className="d-flex flex-row align-items-center mb-4">
+                                                {/*<div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="<fa-solid fa-imag fa-lg me-3 fa-fw" />
                                                     <div className="form-outline flex-fill mb-0">
                                                     <label htmlFor="imagen">Logo:</label>
@@ -235,7 +236,7 @@ export default function SignUpAsociacion() {
                                                             required
                                                         />
                                                     </div>
-                                                </div>
+                                                </div>*/}
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-info fa-lg me-3 fa-fw" />
                                                     <div className="form-outline flex-fill mb-0">

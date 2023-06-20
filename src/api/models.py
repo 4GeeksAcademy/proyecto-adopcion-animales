@@ -87,7 +87,7 @@ class Asociacion(db.Model):
     CIF = db.Column(db.String(80), unique=False, nullable=False)
     descripcion = db.Column(db.String(180), unique=False, nullable=False)
     password = db.Column(db.String(80), unique=False, nullable=False)
-    asociacion_image = db.Column(db.String(550), unique=True)
+    #asociacion_image = db.Column(db.String(550), unique=True)
     
  
     def __repr__(self):
@@ -101,7 +101,7 @@ class Asociacion(db.Model):
             "provincia": self.provincia,
             "CIF": self.CIF,
             "descripcion": self.descripcion,
-            "asociacion_image": self.asociacion_image
+            #"asociacion_image": self.asociacion_image
             # do not serialize the password, its a security breach
         }    
     

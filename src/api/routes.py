@@ -448,9 +448,9 @@ def post_asociacion():
             password = body['password']
         )
 
-        image_file = request.files['imagen']
-        result = cloudinary.uploader.upload(image_file)
-        asociacion.asociacion_image = result['secure_url']
+        #image_file = request.files['imagen']
+        #result = cloudinary.uploader.upload(image_file)
+        #asociacion.asociacion_image = result['secure_url']
 
         db.session.add(asociacion)
         db.session.commit()
