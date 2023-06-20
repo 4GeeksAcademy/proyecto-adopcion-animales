@@ -46,34 +46,26 @@ const AsociacionDetail = () => {
     console.log(asociacion)
     return (
         <>
-            <Link to="/asociacion">
-                <button className="btn btn-primary">Volver</button>
-            </Link>
-
-
             <div className="container py-5">
                 <div className="row d-flex justify-content-center align-items-center ">
                     <div className="card border border-3 rounded-3 shadow" style={{ width: "700px", backgroundColor: "transparent" }}>
-                    <img src={asociacion.image_url} alt={asociacion.nombre} className="card-img-top p-2 mt-2 mx-auto" style={imageStyle} />
-                    <div className="card-body">
-                        <h3 className="card-title">{asociacion.nombre}</h3>
-
-                    </div>
-
-                    <ul className="list-group list-group-flush p-3">
-                        {/* <li>Descripción: {asociacion.descripcion}</li> */}
-                        {/* <li>Descripción: </li> */}
-                        <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Email: {asociacion.email}</li>
-                        <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {asociacion.provincia}</li>
-                    </ul>
-                    <h4 className="p-3">Descripción
+                        <img src={asociacion.image_url} alt={asociacion.nombre} className="card-img-top p-2 mt-2 mx-auto" style={imageStyle} />
+                        <div className="card-body">
+                            <h3 className="card-title">{asociacion.nombre}</h3>
+                        </div>
+                        <ul className="list-group list-group-flush p-3">
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Email: {asociacion.email}</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {asociacion.provincia}</li>
+                        </ul>
+                        <h4 className="p-3">Descripción
                             <p className="p-1 mt-1 text-muted">{asociacion['descripcion']}</p>
                         </h4>
+                        <div className="card-body d-flex justify-content-between">
+                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/asociacion" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
         </>
     );
 };
