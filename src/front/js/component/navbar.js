@@ -1,5 +1,4 @@
 
-
 import React, { useState, useEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
@@ -84,10 +83,10 @@ export const Navbar = () => {
 					)}
 					<div className="navbar-nav">
 							<Link to="/donacion">
-								<button className="btn btn-light m-1">Haz una donacion</button>
+								<button className="btn m-1" style={{backgroundColor:"#f9e4df"}}>Haz una donación</button>
 							</Link>
 						</div>
-					<button onClick={handleToggleDarkMode} className="btn btn-light m-1" style={{backgroundColor:"#A96D60"}}>
+					<button onClick={handleToggleDarkMode} className="btn m-1" style={{backgroundColor:"#A96D60"}}>
 						{store.darkMode ? (
 							<>
 								<i className="fas fa-sun" alt="Modo claro" style={{ color:"white"}} ></i>

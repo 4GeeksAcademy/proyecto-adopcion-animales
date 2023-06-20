@@ -103,7 +103,7 @@ export default function ContactForm() {
         </div>
       )}
       <div className="container py-2 vh-100">
-        <Link className="btn btn-lg btn-block shadow-sm" style={{ backgroundColor: "#A96D60" }} to="/usuario">Volver Atrás</Link>
+        <Link className="btn btn-lg btn-block shadow-sm" style={{ backgroundColor: "#ff914d" }} to="/usuario">Volver Atrás</Link>
         <form ref={formRef} onSubmit={handleSubmit}>
           <label className="none">
             Nombre del Usuario:
@@ -162,10 +162,11 @@ export default function ContactForm() {
             </div>
           </div>
           <div className="d-flex justify-content-center align-items-center">
-            <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>Enviar correo electrónico</button>
+            <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#A96D60" }}>Enviar correo electrónico</button>
           </div>
         </form>
       </div>
     </>
   );
 }
+

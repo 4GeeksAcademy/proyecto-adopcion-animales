@@ -30,7 +30,7 @@ export const Footer = () => (
         </a>
       </li>
     </ul>
-    <p className="text-center text-muted">© 2021 Company, Inc</p>
+    <p className="text-center text-muted">© 2023 Appatitas</p>
   </footer>
 </div>
 
