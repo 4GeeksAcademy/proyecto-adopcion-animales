@@ -47,8 +47,8 @@ export default function Asociacion() {
 
                 const data = await response.json();
                 console.log(data);
-                const nombre_asociacion =  
-                fetchAnimal();
+                const nombre_asociacion =
+                    fetchAnimal();
                 setSuccessMessage(true);
                 setTimeout(() => {
                     setSuccessMessage(false);
@@ -79,7 +79,7 @@ export default function Asociacion() {
                     </Link>
                 </div>
                 <div className='container mt-4'>
-                    <div className='row g-3'>
+                    <div className='row g-3 container justify-content-center'>
                         {animals !== null && animals.length > 0 ? (
                             animals.map((animal) => {
                                 return (
@@ -109,7 +109,7 @@ export default function Asociacion() {
                                 )
                             })
                         ) : (
-                            <h1>No hay animales</h1>
+                            <h1>Cargando...</h1>
                         )}
                     </div>
                 </div>
