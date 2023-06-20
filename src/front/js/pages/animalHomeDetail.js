@@ -39,18 +39,18 @@ export default function AnimalHomeDetail() {
                             <h6 className="card-subtitle mb-2 text-muted">Asociación: {animal.asociacion_nombre}</h6>
                         </div>
                         <ul className="list-group list-group-flush p-3">
-                            <li className="list-group-item rounded-pill "style={{backgroundColor:"#f9e4df"}}>Raza: {animal.raza}</li>
-                            <li className="list-group-item rounded-pill "style={{backgroundColor:"#f9e4df"}}>Edad: {animal.edad}</li>
-                            <li className="list-group-item rounded-pill "style={{backgroundColor:"#f9e4df"}}>Género: {animal.genero}</li>
-                            <li className="list-group-item rounded-pill "style={{backgroundColor:"#f9e4df"}}>Provincia: {animal.asociacion_provincia}</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Raza: {animal.raza}</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Edad: {animal.edad} años</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Género: {animal.genero}</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {animal.asociacion_provincia}</li>
                         </ul>
                         <h4 className="p-3">Descripción
                             <p className="p-1 mt-1 text-muted">{animal.descripcion}</p>
                         </h4>
                         <div className="card-body d-flex justify-content-between">
-                            <button type="button" className="btn btn-lg shadow-sm" style={{backgroundColor:"#ff914d"}} ><a href="/" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
+                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
                             <div className="mx-3"></div>
-                            <button type="button" className="btn btn-lg shadow-sm" style={{backgroundColor:"#ff914d"}} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black"  }}>Ver más</a></button>
+                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Ver más</a></button>
                         </div>
                     </div>
                 </div>
