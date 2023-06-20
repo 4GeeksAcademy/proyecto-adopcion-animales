@@ -61,7 +61,7 @@ const AsociacionDetail = () => {
                             <p className="p-1 mt-1 text-muted">{asociacion['descripcion']}</p>
                         </h4>
                         <div className="card-body d-flex justify-content-between">
-                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/asociacion" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
+                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
                         </div>
                     </div>
                 </div>
