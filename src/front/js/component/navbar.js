@@ -45,7 +45,7 @@ export const Navbar = () => {
 		<nav className={`navbar navbar-expand-lg ${handleColor()}`} id="navbar">
 			<div className="container-fluid" >
 				<Link to='/' className="navbar-brand">
-					<span className="navbar-brand mb-0 h1"><img src={logoImg} className="navbar-logo roudend" alt="Logo"></img></span>
+					<span className="navbar-brand mb-0"><img src={logoImg} className="navbar-logo roudend" alt="Logo" style={{width:"200px"}}></img></span>
 				</Link>
 				<button
 					className="navbar-toggler"

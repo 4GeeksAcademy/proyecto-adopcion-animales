@@ -35,3 +35,6 @@
     max-height: 200px;
   }
 }
+.carousel-item{
+  max-height: 500px;
+}
