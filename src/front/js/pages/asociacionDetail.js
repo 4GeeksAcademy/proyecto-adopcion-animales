@@ -24,6 +24,14 @@ const AsociacionDetail = () => {
         fetchAsociacion();
     }, [id]);
 
+
+    const imageStyle = {
+        maxWidth: "500px",
+        maxHeight: "500px",
+        marginBottom: "10px",
+
+    };
+
     const handleColor = () => {
         if (store.darkMode) {
             return "dark-card";
@@ -41,16 +49,31 @@ const AsociacionDetail = () => {
             <Link to="/asociacion">
                 <button className="btn btn-primary">Volver</button>
             </Link>
-            <div className={handleColor()}>
-                <h2>Nombre de la Asociación: {asociacion.nombre}</h2>
-                <img src={asociacion.image_url} alt={asociacion.nombre} />
-                <ul>
-                    {/* <li>Descripción: {asociacion.descripcion}</li> */}
-                    <li>Descripción: {asociacion['descripcion']}</li>
-                    <li>Email: {asociacion.email}</li>
-                    <li>Provincia: {asociacion.provincia}</li>
-                </ul>
+
+
+            <div className="container py-5">
+                <div className="row d-flex justify-content-center align-items-center ">
+                    <div className="card border border-3 rounded-3 shadow" style={{ width: "700px", backgroundColor: "transparent" }}>
+                    <img src={asociacion.image_url} alt={asociacion.nombre} className="card-img-top p-2 mt-2 mx-auto" style={imageStyle} />
+                    <div className="card-body">
+                        <h3 className="card-title">{asociacion.nombre}</h3>
+
+                    </div>
+
+                    <ul className="list-group list-group-flush p-3">
+                        {/* <li>Descripción: {asociacion.descripcion}</li> */}
+                        {/* <li>Descripción: </li> */}
+                        <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Email: {asociacion.email}</li>
+                        <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {asociacion.provincia}</li>
+                    </ul>
+                    <h4 className="p-3">Descripción
+                            <p className="p-1 mt-1 text-muted">{asociacion['descripcion']}</p>
+                        </h4>
+                    </div>
+                </div>
             </div>
+
+
         </>
     );
 };
