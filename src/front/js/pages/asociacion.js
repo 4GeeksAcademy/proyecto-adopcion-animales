@@ -64,7 +64,7 @@ export default function Asociacion() {
         fetchAnimal();
     }, [pageNumber, animalUpdate]);
 
-    
+
 
     return (
         <>
@@ -111,7 +111,7 @@ export default function Asociacion() {
                                 )
                             })
                         ) : (
-                            <h1>Cargando...</h1>
+                            <h1>No hay Animales</h1>
                         )}
                     </div>
                 </div>
