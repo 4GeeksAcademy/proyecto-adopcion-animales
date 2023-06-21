@@ -2,6 +2,7 @@ import React from "react";
 import juan from "../../img/equipo/juan.jpg";
 import jonathan from "../../img/equipo/jonathan.jpg";
 import miguelinho from "../../img/equipo/miguelinho.jpg";
+import jose from "../../img/equipo/jose.jpg";
 
 export const About = (props) => {
   return (
@@ -12,7 +13,7 @@ export const About = (props) => {
             <h1>Equipo APPATITAS</h1>
             <br />
             <p>
-              Nuestro equipo en <strong>APPATITAS</strong> está formado por individuos <strong>apasionados</strong> y <strong>comprometidos</strong> con el bienestar animal. Desde expertos en tecnología hasta amantes de los animales, cada miembro aporta habilidades únicas para crear una experiencia excepcional en nuestro sitio web de adopción. Trabajamos juntos para conectar a los animales necesitados con hogares amorosos y brindar un seguimiento continuo para garantizar que cada adopción sea un éxito.
+              Nuestro equipo en <strong>APPATITAS</strong> está formado por individuos <strong>apasionados</strong> y <strong>comprometidos</strong> con el bienestar animal. Desde expertos en tecnología hasta amantes de los animales, cada miembro aporta habilidades únicas para crear una experiencia excepcional en nuestro sitio web de adopción. <strong>Trabajamos juntos</strong> para conectar a los animales necesitados con hogares amorosos y brindar un seguimiento continuo para garantizar que cada adopción sea un éxito.
             </p>
           </div>
         </div>
@@ -51,7 +52,7 @@ export const About = (props) => {
             <div className="row section-danger ourTeam-box text-center">
               <div className="col-md-12 section1">
                 <img
-                  src="#"
+                  src={jose}
                   style={{ objectFit: "cover", height: "500px", width: "100%" }}
                 />
               </div>
