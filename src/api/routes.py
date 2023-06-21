@@ -433,30 +433,51 @@ def get_asociation_id(id):
 #         response_body = {"msg": "La asociación fué añadida exitosamente"}
 #         return jsonify(response_body), 200
 
+# #POST
+# @api.route('/asociacion', methods=['POST'])
+# def post_asociacion():
+ 
+#         body = request.form
+ 
+#         asociacion = Asociacion(
+#             nombre=body['nombre'], 
+#             email=body['email'], 
+#             provincia = body['provincia'], 
+#             CIF = body['CIF'], 
+#             descripcion= ['descripcion'],
+#             password = body['password']
+#         )
+
+#         #image_file = request.files['imagen']
+#         #result = cloudinary.uploader.upload(image_file)
+#         #asociacion.asociacion_image = result['secure_url']
+
+#         db.session.add(asociacion)
+#         db.session.commit()
+ 
+#         response_body = {"msg": "La asociación fué añadida exitosamente"}
+#         return jsonify(response_body), 200
+
 #POST
 @api.route('/asociacion', methods=['POST'])
 def post_asociacion():
  
-        body = request.form
+    body = request.get_json()
  
-        asociacion = Asociacion(
-            nombre=body['nombre'], 
-            email=body['email'], 
-            provincia = body['provincia'], 
-            CIF = body['CIF'], 
-            descripcion= ['descripcion'],
-            password = body['password']
-        )
-
-        #image_file = request.files['imagen']
-        #result = cloudinary.uploader.upload(image_file)
-        #asociacion.asociacion_image = result['secure_url']
-
-        db.session.add(asociacion)
-        db.session.commit()
+    nombre = body.get('nombre')
+    email = body.get('email')
+    provincia = body.get('provincia')
+    CIF = body.get('CIF')
+    descripcion = body.get('descripcion')
+    password = body.get('password')
  
-        response_body = {"msg": "La asociación fué añadida exitosamente"}
-        return jsonify(response_body), 200
+    asociacion = Asociacion(nombre=nombre, email=email, provincia=provincia, CIF=CIF, descripcion=descripcion, password=password)
+ 
+    db.session.add(asociacion)
+    db.session.commit()
+ 
+    response_body = {"msg": "La asociación fue añadida exitosamente"}
+    return jsonify(response_body), 200
 
 
 #DELETE
