@@ -59,41 +59,31 @@ export default function SignUpAsociacion() {
 
         if (Object.keys(newError).length === 0) {
             try {
+                const formData = new FormData();
+                formData.append("nombre", form.nombre);
+                formData.append("email", form.email);
+                formData.append("provincia", form.provincia);
+                formData.append("CIF", form.CIF);
+                formData.append("descripcion", form.descripcion);
+                formData.append("password", form.password);
+                {/*formData.append("imagen", form.imagen);*/}
+
                 const response = await fetch(process.env.BACKEND_URL + "/api/asociacion", {
                     method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                        Accept: "application/json",
-                    },
-                    body: JSON.stringify({
-                        nombre: form.nombre,
-                        email: form.email,
-                        provincia: form.provincia,
-                        CIF: form.CIF,
-                        descripcion: form.descripcion,
-                        password: form.password,
-                    }),
-
-                });
-
-                const data = await response.json();
-                console.log(data);
-                if (response.status === 200) {
-                    setForm({ ...initialForm });
-                    setIsSubmitted(true);
-
-                    setTimeout(() => {
-                        navigate("/");
-                    }, 2000);
-                    setIsSubmitted(true);
-                }
-            } catch (error) {
-                console.log(error);
+                    body: formData,
+                  });
+                  const data = await response.json();
+                  console.log(data);
+                } catch (error) {
+                  console.log(error);
             }
-        }
+        };
         setErrors(newError);
     };
 
+    {/*const handleImageChange = (e) => {
+        setForm({ ...form, imagen: e.target.files[0] });
+      };*/}
 
     let styles = {
         fontWeight: "bold",
@@ -231,6 +221,19 @@ export default function SignUpAsociacion() {
                                                         {errors.CIF && <p style={styles}>{errors.CIF}</p>}
                                                     </div>
                                                 </div>
+                                                {/*<div className="d-flex flex-row align-items-center mb-4">
+                                                    <i className="<fa-solid fa-imag fa-lg me-3 fa-fw" />
+                                                    <div className="form-outline flex-fill mb-0">
+                                                    <label htmlFor="imagen">Logo:</label>
+                                                        <input
+                                                            type="file"
+                                                            id="logo_asociacion"
+                                                            onChange={handleImageChange}
+                                                            accept="image/*"
+                                                            required
+                                                        />
+                                                    </div>
+                                                </div>*/}
                                                 <div className="d-flex flex-row align-items-center mb-4">
                                                     <i className="fas fa-info fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
                                                     <div className="form-outline flex-fill mb-0">

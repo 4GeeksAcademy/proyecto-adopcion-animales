@@ -64,6 +64,8 @@ export default function Asociacion() {
         fetchAnimal();
     }, [pageNumber, animalUpdate]);
 
+    
+
     return (
         <>
             {successMessage && (
