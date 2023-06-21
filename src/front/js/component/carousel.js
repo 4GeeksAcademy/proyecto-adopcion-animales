@@ -9,8 +9,8 @@ export const Carousel = () => {
     return (
         <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner rounded">
-                <div className="carousel-item active" data-bs-interval={10000} >
-                    <img src={carouselImg1} className="d-block w-100 img-fluid" alt="Perros" 
+                <div className="carousel-item active " data-bs-interval={10000} >
+                    <img src={carouselImg1} className="d-block w-100 img-fluid" alt="Perros"
                     />
                 </div>
                 <div className="carousel-item" data-bs-interval={2000} >

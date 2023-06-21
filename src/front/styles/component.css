@@ -1,11 +1,10 @@
-
-#imgcarousel{
+#imgcarousel {
   height: 500px;
 }
-#infoAdoption{
+#infoAdoption {
   margin-top: 100px;
 }
-#navbar{
+#navbar {
   margin-bottom: 0;
 }
 .footer {
@@ -16,8 +15,8 @@
   height: 50px; /* Ajusta la altura del footer */
 }
 .navbar-logo {
-  width: 140px; 
-  height: auto; 
+  width: 140px;
+  height: auto;
   border-radius: 5%;
 }
 
@@ -26,7 +25,6 @@
   max-height: 200px;
   width: 100%;
   height: auto;
-  
 }
 
 @media (max-width: 576px) {
@@ -35,6 +33,4 @@
     max-height: 200px;
   }
 }
-.carousel-item{
-  max-height: 500px;
-}
+

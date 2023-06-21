@@ -10,8 +10,7 @@
   margin: 2rem auto;
 }
 
-
-.ligth-card{
+.ligth-card {
   background-color: #f9e4df;
   color: #000000;
   max-width: 55rem;
@@ -22,16 +21,14 @@
   color: #ffffff;
 }
 
-
-.ligth{
+.ligth {
   background-color: #ffffff;
   color: #000000;
 }
 
-.navbar{
+.navbar {
   background-color: #ffffff;
 }
- .none{
+.none {
   display: none;
-} 
-
+}
