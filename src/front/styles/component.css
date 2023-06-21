@@ -35,6 +35,39 @@
     max-height: 200px;
   }
 }
-.carousel-item{
+/* .carousel-item{
+  max-height: 800px;
+} */
+
+/* .carousel-item {
+  align-items: center;
+  justify-content: center;
   max-height: 500px;
+} */
+/* 
+.carousel-item {
+  position: relative;
+  width: 100%;
+  min-height: 500px;
+}
+.carousel-item img {
+  max-height: 100%;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.fit {
+  position: absolute;
+  top: -50px;
+} */
+
+.carousel-item {
+  align-items: center;
+  justify-content: center;
+  max-height: 600px;
+}
+.carousel-item img {
+  max-height: 100%;
+  width: 1440px;
+  margin: 0 auto;
 }

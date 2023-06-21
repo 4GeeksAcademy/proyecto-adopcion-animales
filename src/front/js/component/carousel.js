@@ -10,14 +10,14 @@ export const Carousel = () => {
         <div id="carouselExampleInterval" className="carousel slide" data-bs-ride="carousel">
             <div className="carousel-inner rounded">
                 <div className="carousel-item active" data-bs-interval={10000} >
-                    <img src={carouselImg1} className="d-block w-100 img-fluid" alt="Perros" 
+                    <img src={carouselImg1} className="d-block img-fluid" alt="Perros"
                     />
                 </div>
                 <div className="carousel-item" data-bs-interval={2000} >
-                    <img src={carouselImg2} className="d-block w-100 img-fluid" alt="Perro y Gato" />
+                    <img src={carouselImg2} className="d-block img-fluid" alt="Perro y Gato" />
                 </div>
                 <div className="carousel-item">
-                    <img src={carouselImg3} className="d-block w-100 img-fluid" alt="Gato" />
+                    <img src={carouselImg3} className="d-block img-fluid" alt="Gato" />
                 </div>
             </div>
             <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval" data-bs-slide="prev">
