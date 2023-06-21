@@ -1,10 +1,5 @@
 """empty message
 
-<<<<<<<< HEAD:migrations/versions/e9a89289e1ac_.py
-Revision ID: e9a89289e1ac
-Revises: 
-Create Date: 2023-06-19 17:36:23.135194
-========
 <<<<<<<< HEAD:migrations/versions/db829df4137b_.py
 Revision ID: db829df4137b
 Revises: 
@@ -14,7 +9,6 @@ Revision ID: 1cce2fa3fa9e
 Revises: 
 Create Date: 2023-06-19 11:01:24.173547
 >>>>>>>> main:migrations/versions/1cce2fa3fa9e_.py
->>>>>>>> main:migrations/versions/db829df4137b_.py
 
 """
 from alembic import op
@@ -22,15 +16,11 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<<< HEAD:migrations/versions/e9a89289e1ac_.py
-revision = 'e9a89289e1ac'
-========
 <<<<<<<< HEAD:migrations/versions/db829df4137b_.py
 revision = 'db829df4137b'
 ========
 revision = '1cce2fa3fa9e'
 >>>>>>>> main:migrations/versions/1cce2fa3fa9e_.py
->>>>>>>> main:migrations/versions/db829df4137b_.py
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -46,9 +36,8 @@ def upgrade():
     sa.Column('CIF', sa.String(length=80), nullable=False),
     sa.Column('descripcion', sa.String(length=180), nullable=False),
     sa.Column('password', sa.String(length=80), nullable=False),
-    sa.Column('asociacion_image', sa.String(length=550), nullable=False),
-    sa.PrimaryKeyConstraint('id'),
-    sa.UniqueConstraint('asociacion_image')
+    sa.Column('image_url', sa.String(length=500), nullable=False),
+    sa.PrimaryKeyConstraint('id')
     )
     op.create_table('user',
     sa.Column('id', sa.Integer(), nullable=False),

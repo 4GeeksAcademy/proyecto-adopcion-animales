@@ -35,3 +35,14 @@
     max-height: 200px;
   }
 }
+.carousel-item {
+  align-items: center;
+  justify-content: center;
+  max-height: 600px;
+}
+
+.carousel-item img {
+  max-height: 100%;
+  width: 1440px;
+  margin: 0 auto;
+}
