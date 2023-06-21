@@ -10,7 +10,7 @@ import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
 
 import { Navbar } from "./component/navbar";
-import { Footer } from "./component/footer";
+import Footer from "./component/footer";
 
 import ChooseSignUp from "./pages/chooseSignUp";
 import SingUpAsociacion from "./pages/signUpAsociacion";
@@ -30,6 +30,7 @@ import ContactForm from "./pages/contactForm";
 import AsociacionDetail from "./pages/asociacionDetail";
 import { UploadView } from "./pages/upload";
 import Donacion from "./pages/donacion";
+import { About } from "./pages/about";
 
 //create your first component
 const Layout = () => {
@@ -66,6 +67,7 @@ const Layout = () => {
                         <Route element={<AsociacionDetail />} path="/asociacion/asociacionDetail/:id" />
                         <Route element={<UploadView />} path="/upload" />
                         <Route element={<Donacion />} path="/donacion" />
+                        <Route element={<About />} path="/about" />
                         <Route element={<h1>Not found!</h1>} />
                     </Routes>
                     <Footer />

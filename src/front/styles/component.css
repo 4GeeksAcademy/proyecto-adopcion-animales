@@ -35,6 +35,7 @@
     max-height: 200px;
   }
 }
+<<<<<<< HEAD
 /* .carousel-item{
   max-height: 800px;
 } */
@@ -61,11 +62,17 @@
   top: -50px;
 } */
 
+=======
+>>>>>>> main
 .carousel-item {
   align-items: center;
   justify-content: center;
   max-height: 600px;
 }
+<<<<<<< HEAD
+=======
+
+>>>>>>> main
 .carousel-item img {
   max-height: 100%;
   width: 1440px;

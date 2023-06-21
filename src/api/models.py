@@ -102,6 +102,7 @@ class Asociacion(db.Model):
             "CIF": self.CIF,
             "descripcion": self.descripcion,
             "image_url": self.image_url
+            #"asociacion_image": self.asociacion_image
             # do not serialize the password, its a security breach
         }    
     

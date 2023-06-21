@@ -455,7 +455,6 @@ def post_asociacion():
     return jsonify(response_body), 200
 
 
-
 #DELETE
 @api.route('/asociacion/<int:asociacion_id>', methods=['DELETE'])
 @jwt_required()

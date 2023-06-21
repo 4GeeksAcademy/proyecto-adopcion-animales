@@ -64,6 +64,8 @@ export default function Asociacion() {
         fetchAnimal();
     }, [pageNumber, animalUpdate]);
 
+    
+
     return (
         <>
             {successMessage && (
@@ -109,7 +111,7 @@ export default function Asociacion() {
                                 )
                             })
                         ) : (
-                            <h1>Cargando...</h1>
+                            <h1>No hay animales registrados</h1>
                         )}
                     </div>
                 </div>
