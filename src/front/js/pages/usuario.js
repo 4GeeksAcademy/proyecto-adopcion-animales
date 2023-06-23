@@ -68,7 +68,7 @@ export default function Usuario() {
             <div>
                 {/* <h1>Recuperando todos los animales en la vista de usuario</h1> */}
                 <div className='container mt-1 py-2 text-center'>
-                    <div className='container border border-3 p-1 rounded-pill shadow ' id='containersearch'>
+                    <div className='container border border-1 p-1 rounded-pill shadow-sm ' id='containersearch'>
                         <div className='row justify-content-center align-items-center'>
                             <form>
                                 <div className={`d-inline-flex p-2 align-items-center ${colWidth}`}>
@@ -150,13 +150,11 @@ export default function Usuario() {
                         </div>
                     </div>
                 </div>
-                <div className="row mt-4">
-
+                <div className="g-4 pt-4">
                     <FilterAnimal animals={animals} filtros={filtros} showMessage={showMessage} setShowMessage={setShowMessage} />
-
                 </div>
             </div>
-            <div className="text-center">
+            <div className="text-center mt-4">
                 <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} onClick={() => setPageNumber(pageNumber - 1)} disabled={pageNumber === 1}>Anterior</button>
                 <button className="btn  shadow-sm rounded-pill" style={{ backgroundColor: "#a96d60", textDecoration: "none", color: "white" }} onClick={() => setPageNumber(pageNumber + 1)} disabled={animals.length < pageSize}>Siguiente</button>
             </div>

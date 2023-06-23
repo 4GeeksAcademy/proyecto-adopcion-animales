@@ -31,16 +31,16 @@ const Favorite = () => {
 
             <div className='container mt-4'>
                 <Link to="/usuario"><button className='btn btn-lg' style={{ backgroundColor: "#ff914d" }}>Volver Atrás</button></Link>
-                <div className='row g-3 pt-3'>
+                <div className='row g-4 pt-4'>
                     {store.favorites.map((fav, index) => (
                         <div key={index} className='col-12 col-md-6 col-lg-4'>
                             <div className='card border border-2 shadow' style={{ background: "transparent" }}>
                                 <div className='text-center'>
                                     <img
                                         src={fav.animal.animal_image}
-                                        className='card-img-top '
+                                        className='img-fluid'
                                         alt={fav.animal.nombre}
-                                        style={{ maxWidth: '250px', maxHeight: '250px' }}
+                                        
                                     />
                                 </div>
                                 <div className='card-body'>
