@@ -34,7 +34,7 @@ const Favorite = () => {
                 <div className='row g-4 pt-4'>
                     {store.favorites.map((fav, index) => (
                         <div key={index} className='col-12 col-md-6 col-lg-4'>
-                            <div className='card border border-2 shadow' style={{ background: "transparent" }}>
+                            <div className='card border border-1 shadow-sm' style={{ background: "transparent" }}>
                                 <div className='text-center'>
                                     <img
                                         src={fav.animal.animal_image}
@@ -43,14 +43,16 @@ const Favorite = () => {
                                         
                                     />
                                 </div>
-                                <div className='card-body'>
+                                <div className='card-body d-flex justify-content-between'>
+                                    <div>
                                     <h2 className='card-title' style={{ color: "#ff914d" }}> {fav.animal.nombre}</h2>
                                     <p className='card-text'><i
-                                        className="fa-solid fa-house fa-lg fa-fw me-1" style={{ color: "#ff914d" }}
+                                        className="fa-solid fa-house fa-lg fa-fw me-2" style={{ color: "#ff914d" }}
                                     />{fav.animal.asociacion_nombre}</p>
-                                    <p className='card-text'><i className="fa-solid fa-location-dot fa-lg fa-fw" style={{ color: "#ff914d" }} /> {fav.animal.asociacion_provincia}</p>
+                                    <p className='card-text'><i className="fa-solid fa-location-dot fa-lg fa-fw me-1" style={{ color: "#ff914d" }} /> {fav.animal.asociacion_provincia}</p>
                                     {/* <button onClick={() => actions.selectId(fav)}>Agregar</button> */}
-                                    <div className='d-flex justify-content-start'>
+                                    </div>
+                                    <div className='d-flex align-items-end'>
                                         <button className='btn btn-lg' style={{ backgroundColor: "#a96d60", color: "white" }} onClick={() => handleRemoveFavorite(fav.id)}>
                                             <i className="fa-solid fa-trash" ></i>
                                         </button>
