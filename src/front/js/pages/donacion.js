@@ -21,21 +21,48 @@ export default function Donacion() {
                         <div className='d-flex justify-content-center'>
                             <PayPalScriptProvider
                                 options={{
-                                    'client-id': 'AXAbpXS5XM3nNJCq8gVcVRv-x2cFxB9SPAuHdJ6nPTfQuS6CvS9VJ-tO6odW35x6Fo5XfWIqvEbAALR9'
+                                    'client-id': 'AXAbpXS5XM3nNJCq8gVcVRv-x2cFxB9SPAuHdJ6nPTfQuS6CvS9VJ-tO6odW35x6Fo5XfWIqvEbAALR9',
+                                    currency: "EUR"
+                                    
                                 }}
                             >
                                 <PayPalButtons
-                                    createOrder={(data, actions) => {
-                                        return actions.order.create({
+                                fundingSource="paypal"
+                                style={{"layout":"vertical","label":"donate"}}
+                                disabled={false}
+                                createOrder={(data, actions) => {
+                                    return actions.order
+                                        .create({
                                             purchase_units: [
                                                 {
                                                     amount: {
-                                                        value: '9.99',
+                                                        value: "9.99",
+                                                        breakdown: {
+                                                            item_total: {
+                                                                currency_code: "EUR",
+                                                                value: "9.99",
+                                                            },
+                                                        },
                                                     },
+                                                    items: [
+                                                        {
+                                                            name: "donation-example",
+                                                            quantity: "1",
+                                                            unit_amount: {
+                                                                currency_code: "EUR",
+                                                                value: "9.99",
+                                                            },
+                                                            category: "DONATION",
+                                                        },
+                                                    ],
                                                 },
                                             ],
+                                        })
+                                        .then((orderId) => {
+                                            // Your code here after create the donation
+                                            return orderId;
                                         });
-                                    }}
+                                }}
                                     onApprove={(data, actions) => {
                                         return actions.order.capture().then(function (details) {
                                             alert('Transaction completed by ' + details.payer.name.given_name);

@@ -53,9 +53,9 @@ export default function AnimalHomeDetail() {
                                 <a href="/" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a>
                             </button>
                             <div className="mx-3"></div>
-                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} >
+                            {/* <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} >
                                 <a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Ver más</a>
-                            </button>
+                            </button> */}
                         </div>
                     </div>
                 </div>
