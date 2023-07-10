@@ -50,7 +50,7 @@ export default function AnimalHomeDetail() {
                         </div>
                         <ul className="list-group list-group-flush p-3">
                             <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Raza: {animal.raza}</li>
-                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Edad: {animal.edad}</li>
+                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Edad: {animal.edad} años</li>
                             <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Género: {animal.genero}</li>
                             <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {animal.asociacion_provincia}</li>
                         </ul>

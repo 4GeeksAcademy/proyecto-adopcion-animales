@@ -25,7 +25,7 @@ export default function AnimalHomeDetail() {
         maxWidth: "500px",
         maxHeight: "500px",
         marginBottom: "10px",
-        
+
     };
 
     return (
@@ -50,7 +50,7 @@ export default function AnimalHomeDetail() {
                         <div className="card-body d-flex justify-content-between">
                             <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
                             <div className="mx-3"></div>
-                            <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Ver más</a></button>
+                            {/* <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Ver más</a></button> */}
                         </div>
                     </div>
                 </div>

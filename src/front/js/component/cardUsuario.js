@@ -61,7 +61,7 @@ export default function Card({ animal, showMessage, setShowMessage }) {
             <div className=" p-3 d-flex justify-content-between shadow">
                 <ul className="list-group fs-6 " style={{ marginLeft: "10px" }}>
                     <li className="list-group">Raza: {animal.raza}</li>
-                    <li className="list-group">Edad: {animal.edad}</li>
+                    <li className="list-group">Edad: {animal.edad} años</li>
                     <li className="list-group">Género: {animal.genero}</li>
                     <li className="list-group">Provincia: {animal.asociacion_provincia}</li>
                 </ul>

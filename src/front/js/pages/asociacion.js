@@ -95,7 +95,7 @@ export default function Asociacion() {
                                                 <ul className="list-group list-group-flush">
                                                     <li className="list-group-item">Animal: {animal.tipo_animal}</li>
                                                     <li className="list-group-item">Raza: {animal.raza}</li>
-                                                    <li className="list-group-item">Edad: {animal.edad}</li>
+                                                    <li className="list-group-item">Edad: {animal.edad} años</li>
                                                     <li className="list-group-item">Género: {animal.genero}</li>
                                                     <li className="list-group-item">Descripción: {animal.descripcion}</li>
                                                 </ul>
@@ -111,7 +111,7 @@ export default function Asociacion() {
                                 )
                             })
                         ) : (
-                            <h1>No hay Animales</h1>
+                            <h1>No hay animales registrados</h1>
                         )}
                     </div>
                 </div>
