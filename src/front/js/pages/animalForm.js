@@ -17,6 +17,7 @@ const AnimalForm = () => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState(false);
+  const [imagePreview, setImagePreview] = useState("");
 
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
@@ -84,7 +85,9 @@ const AnimalForm = () => {
   };
 
   const handleImageChange = (e) => {
-    setForm({ ...form, imagen: e.target.files[0] });
+    const selectedImage = e.target.files[0];
+    setForm({ ...form, imagen: selectedImage });
+    setImagePreview(URL.createObjectURL(selectedImage));
   };
 
   return (
@@ -215,19 +218,27 @@ const AnimalForm = () => {
                               />
                             </div>
                           </div>
-                          <div className="d-flex flex-row align-items-center mb-4">
+
+
+                      <div className="d-flex flex-row align-items-center mb-4">
                             <i className="fas fa-camera fa-lg me-3 fa-fw" style={{ color: "#a96d60" }} />
-                            <div className="form-outline flex-fill mb-0">
-                              <input
-                                type="file"
-                                id="imagen"
-                                className="form-control"
-                                onChange={handleImageChange}
-                                accept="image/*"
-                                required
-                              />
-                            </div>
-                          </div>
+                        <div className="form-outline flex-fill mb-0">
+                          <input
+                            type="file"
+                            id="imagen"
+                            className="form-control"
+                            onChange={handleImageChange}
+                            accept="image/*"
+                            required
+                          />
+                        </div>
+                    </div>
+                    <div className="preview" style={{ border: "1px solid gray", margin: "10px" }}>
+                      <h5 style={{ margin: "10px" }}>Imagen seleccionada:</h5>
+                      {imagePreview && <img src={imagePreview} alt="Preview" style={{ width: "200px", padding: "10px" }} />}
+                    </div>
+
+
                           <div>
                             <div className="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
                               <button className="btn btn-lg btn-block shadow-sm" type="submit" style={{ backgroundColor: "#ff914d" }}>
