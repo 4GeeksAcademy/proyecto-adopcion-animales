@@ -86,9 +86,9 @@ export default function Asociacion() {
                             animals.map((animal) => {
                                 return (
                                     <div className="col-12 col-md-6 col-lg-4" key={animal.id}>
-                                        <div className='card border border-2 shadow' style={{ background: "transparent" }}>
+                                        <div className='card border border-2 ' style={{ background: "transparent" }}>
                                             <div className='text-center'>
-                                                <img src={animal.animal_image} className='card-img-top ' style={{ maxWidth: '250px', maxHeight: '250px' }} alt={animal.nombre} />
+                                                <img src={animal.animal_image} className='img-fluid'  alt={animal.nombre} />
                                             </div>
                                             <div className='card-body'>
                                                 <h2 className='card-title' style={{ color: "#ff914d" }}>{animal.nombre}</h2>
@@ -97,7 +97,7 @@ export default function Asociacion() {
                                                     <li className="list-group-item">Raza: {animal.raza}</li>
                                                     <li className="list-group-item">Edad: {animal.edad}</li>
                                                     <li className="list-group-item">Género: {animal.genero}</li>
-                                                    <li className="list-group-item">Descripción: {animal.descripcion}</li>
+                                                    <li className="list-group-item mb-2">Descripción: {animal.descripcion}</li>
                                                 </ul>
                                                 <div className='d-flex justify-content-between'>
                                                     <Link to={`animalData${animal.id}`}><button className='btn btn-lg' style={{ backgroundColor: "#ff914d" }}>Editar</button></Link>

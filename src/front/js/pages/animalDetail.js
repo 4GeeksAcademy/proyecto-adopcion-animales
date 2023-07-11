@@ -53,7 +53,7 @@ export default function AnimalHomeDetail() {
                             <p><i className="fas fa-paw fa-lg me-2 fa-fw" style={{ color: "#a96d60" }} />{animal.raza}</p>
                             <p><i className="fas fa-calendar-days fa-lg me-2 fa-fw" style={{ color: "#a96d60" }} />{animal.edad} años</p>
                             <p><i className="fas fa-venus-mars fa-lg me-1 fa-fw" style={{ color: "#a96d60" }} /> {animal.genero}</p>
-                            <p><i className="fa-solid fa-location-dot fa-lg me-2 fa-fw" style={{ color: "#a96d60" }} />Provincia: {animal.asociacion_provincia}</p>
+                            <p><i className="fa-solid fa-location-dot fa-lg me-2 fa-fw" style={{ color: "#a96d60" }} /> {animal.asociacion_provincia}</p>
                         </div>
                         <div className="p-3 pt-0">
                             <h3>Descripción</h3>

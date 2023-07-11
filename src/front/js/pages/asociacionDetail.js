@@ -40,6 +40,14 @@ const AsociacionDetail = () => {
         }
     };
 
+    const cardStyle = {
+        maxWidth: "650px",
+        backgroundColor: "transparent",
+        padding: "0"
+
+    };
+
+
     if (!asociacion) {
         return <div>Loading...</div>;
     }
@@ -48,18 +56,20 @@ const AsociacionDetail = () => {
         <>
             <div className="container py-5">
                 <div className="row d-flex justify-content-center align-items-center ">
-                    <div className="card border border-3 rounded-3 shadow" style={{ width: "700px", backgroundColor: "transparent" }}>
-                        <img src={asociacion.image_url} alt={asociacion.nombre} className="card-img-top p-2 mt-2 mx-auto" style={imageStyle} />
+                    <div className="card border border-2 rounded-3 shadow" style={cardStyle}>
+                        <img src={asociacion.image_url} alt={asociacion.nombre} className="img-fluid" />
                         <div className="card-body">
                             <h3 className="card-title">{asociacion.nombre}</h3>
                         </div>
-                        <ul className="list-group list-group-flush p-3">
-                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Email: {asociacion.email}</li>
-                            <li className="list-group-item rounded-pill " style={{ backgroundColor: "#f9e4df" }}>Provincia: {asociacion.provincia}</li>
-                        </ul>
-                        <h4 className="p-3">Descripción
-                            <p className="p-1 mt-1 text-muted">{asociacion['descripcion']}</p>
-                        </h4>
+                        <div className=" border-2  border-top p-3 pb-0">
+                        <p><i className="fa-solid fa-envelope fa-lg me-2 fa-fw" style={{ color: "#a96d60" }} />{asociacion.email}</p>
+                            <p><i className="fa-solid fa-location-dot fa-lg me-1 fa-fw" style={{ color: "#a96d60" }} /> {asociacion.provincia}</p>
+                        </div>
+                        <div className="p-3 pt-0">
+                        <h3>Descripción</h3>
+                            <p className="mt-2 fs-5 text-muted">{asociacion['descripcion']}</p>
+                        
+                        </div>
                         <div className="card-body d-flex justify-content-between">
                             <button type="button" className="btn btn-lg shadow-sm" style={{ backgroundColor: "#ff914d" }} ><a href="/usuario" className="card-link" style={{ textDecoration: "none", color: "black" }}>Volver Atrás</a></button>
                         </div>
