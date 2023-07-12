@@ -88,7 +88,7 @@ export const Navbar = () => {
 						</div>
 					<div className="navbar-nav">
 							<Link to="/about">
-								<button className="btn m-1" style={{backgroundColor:"#f9e4df"}}>About Us</button>
+								<button className="btn m-1" style={{backgroundColor:"#f9e4df"}}>Conócenos</button>
 							</Link>
 					</div>
 					<button onClick={handleToggleDarkMode} className="btn m-1" style={{backgroundColor:"#A96D60"}}>

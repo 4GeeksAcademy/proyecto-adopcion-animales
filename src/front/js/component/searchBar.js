@@ -58,7 +58,7 @@ export const SearchBar = () => {
   return (
     <>
       <div className='container mt-1 py-2'>
-        <div className='container border border-3 p-1 rounded-pill shadow' id='containersearch'>
+        <div className='container border border-1 p-1 rounded-pill shadow' id='containersearch'>
           <div className='row'>
             <form>
               <div className={`d-inline-flex p-2 align-items-center ${colWidth}`}>

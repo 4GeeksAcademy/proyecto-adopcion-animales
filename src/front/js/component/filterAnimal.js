@@ -40,7 +40,8 @@ export default function FilterAnimal({ animals, filtros, showMessage, setShowMes
 
 
     return (
-        <div className="row container justify-content-center">
+        <div className="container">
+        <div className='row g-4 pt-4'>
             {animalsFiltered.length > 0 ? (
                 animalsFiltered.map((animal) => (
                     <Card key={animal.id} animal={animal} showMessage={showMessage} setShowMessage={setShowMessage} />
@@ -48,6 +49,7 @@ export default function FilterAnimal({ animals, filtros, showMessage, setShowMes
             ) : (
                 <h2>No hay resultados</h2>
             )}
+        </div>
         </div>
     );
 }
